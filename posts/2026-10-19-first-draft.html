@@ -1,0 +1,34 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1350px;overflow:hidden}
+  body{position:relative;background:#f8fbff;color:#1c2f5e;
+       font-family:"DejaVu Sans",sans-serif;padding:110px;box-sizing:border-box}
+  /* circuit-line accent echoing the logo */
+  .glow{position:absolute;right:-260px;top:-260px;width:820px;height:820px;border-radius:50%;
+        background:radial-gradient(circle,rgba(44,167,231,.22),rgba(44,167,231,0) 70%)}
+  .lines{position:absolute;right:0;top:0}
+  .logo{position:absolute;top:100px;left:110px;height:96px}
+  .main{position:absolute;left:110px;right:110px;top:50%;transform:translateY(-50%)}
+  .tag{display:inline-block;font-size:30px;font-weight:bold;letter-spacing:5px;text-transform:uppercase;
+       color:#fff;background:#2d59a9;padding:14px 26px;border-radius:999px}
+  h1{font-size:100px;line-height:1.05;margin:44px 0 40px;color:#1c2f5e}
+  h1 span{color:#2ca7e7}
+  p{font-size:44px;line-height:1.4;margin:0;color:#3d4f78}
+  .footer{position:absolute;left:110px;right:110px;bottom:100px;display:flex;justify-content:space-between;
+          align-items:center;font-size:32px;color:#2d59a9;border-top:3px solid #dbe6f7;padding-top:36px}
+  .footer b{color:#2ca7e7}
+</style></head><body>
+  <div class="glow"></div>
+  <svg class="lines" width="420" height="420" viewBox="0 0 420 420" fill="none" stroke="#2ca7e7" stroke-width="6" stroke-linecap="round" opacity=".55">
+    <path d="M420 90 H300 L250 140 H170"/><circle cx="160" cy="140" r="12"/>
+    <path d="M420 190 H330 L290 230 H230"/><circle cx="218" cy="230" r="12"/>
+    <path d="M420 290 H360 L330 320"/><circle cx="322" cy="328" r="12"/>
+  </svg>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+  <div class="main">
+    <div class="tag">AI tip of the day</div>
+    <h1>Let AI write your <span>first draft.</span></h1>
+    <p>Then spend your time editing, not staring at a blank page.</p>
+  </div>
+  <div class="footer"><span>@byronsystems</span><span>Save this for later <b>→</b></span></div>
+</body></html>
