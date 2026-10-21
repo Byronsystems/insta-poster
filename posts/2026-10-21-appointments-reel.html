@@ -1,0 +1,73 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#f8fbff;color:#1c2f5e;font-family:"Inter","DejaVu Sans",sans-serif}
+  /* Reels UI covers the bottom ~400px and the right edge, so content stays inside .safe */
+  .safe{position:absolute;left:100px;right:160px;top:260px;bottom:440px}
+  .glow{position:absolute;width:1000px;height:1000px;border-radius:50%;right:-380px;top:-300px;
+        background:radial-gradient(circle,rgba(44,167,231,.25),rgba(44,167,231,0) 70%);
+        animation:drift 14s ease-in-out both}
+  @keyframes drift{from{transform:translate(0,0)}to{transform:translate(-220px,520px)}}
+  .lines{position:absolute;right:0;top:120px}
+  .lines path{stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1.4s ease-out both}
+  .lines path:nth-of-type(2){animation-delay:.25s}.lines path:nth-of-type(3){animation-delay:.5s}
+  .lines circle{opacity:0;animation:pop .3s ease-out both}
+  .lines circle:nth-of-type(1){animation-delay:1.2s}.lines circle:nth-of-type(2){animation-delay:1.4s}.lines circle:nth-of-type(3){animation-delay:1.6s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+  .logo{position:absolute;top:110px;left:100px;height:110px}
+
+  .scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0}
+  .s1{animation:show 3s 0s both}
+  .s2{animation:show 6.6s 3s both}
+  .s3{animation:showlast 4.4s 9.6s both}
+  @keyframes show{0%{opacity:0}6%,92%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}10%,100%{opacity:1}}
+  .up{animation:up .7s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+
+  .tag{align-self:flex-start;font-size:34px;font-weight:700;letter-spacing:5px;text-transform:uppercase;
+       color:#fff;background:#2d59a9;padding:16px 30px;border-radius:999px}
+  h1{font-size:124px;line-height:1.02;font-weight:800;margin:44px 0 0;letter-spacing:-2px}
+  h1 span,h2 span{color:#2ca7e7}
+  h2{font-size:96px;line-height:1.05;font-weight:800;margin:0 0 70px;letter-spacing:-1px}
+  .step{display:flex;align-items:center;background:#fff;border:3px solid #dbe6f7;border-radius:36px;
+        padding:38px 40px;margin-bottom:34px;box-shadow:0 12px 30px rgba(45,89,169,.08)}
+  .step b{flex:none;width:92px;height:92px;border-radius:50%;background:#2ca7e7;color:#fff;font-size:50px;
+          display:flex;align-items:center;justify-content:center;margin-right:36px}
+  .step div{font-size:48px;font-weight:600;line-height:1.2}
+  .step small{display:block;font-size:34px;font-weight:400;color:#3d4f78;margin-top:6px}
+  .cta{font-size:56px;font-weight:600;color:#3d4f78;margin:40px 0 70px;line-height:1.3}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#fff;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .7s 10.4s cubic-bezier(.2,.8,.2,1) both,pulse 1.2s 11.4s ease-in-out 3 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:40px;color:#2d59a9;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+  <svg class="lines" width="460" height="460" viewBox="0 0 420 420" fill="none" stroke="#2ca7e7" stroke-width="6" stroke-linecap="round" opacity=".55">
+    <path d="M420 90 H300 L250 140 H170"/><path d="M420 190 H330 L290 230 H230"/><path d="M420 290 H360 L330 320"/>
+    <circle cx="160" cy="140" r="12"/><circle cx="218" cy="230" r="12"/><circle cx="322" cy="328" r="12"/>
+  </svg>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <div class="safe">
+    <section class="scene s1">
+      <div class="tag up" style="animation-delay:.2s">Busy day?</div>
+      <h1 class="up" style="animation-delay:.5s">Every slow<br>reply is a<br><span>lost booking.</span></h1>
+    </section>
+
+    <section class="scene s2">
+      <h2 class="up" style="animation-delay:3.2s">Let AI book<br><span>for you.</span></h2>
+      <div class="step up" style="animation-delay:3.9s"><b>1</b><div>A customer gets in touch<small>Message, form or email</small></div></div>
+      <div class="step up" style="animation-delay:5.4s"><b>2</b><div>AI replies instantly<small>Answers questions, day or night</small></div></div>
+      <div class="step up" style="animation-delay:6.9s"><b>3</b><div>Appointment booked<small>Straight into your calendar</small></div></div>
+    </section>
+
+    <section class="scene s3">
+      <div class="tag up" style="animation-delay:9.8s">Bookings on autopilot</div>
+      <div class="cta up" style="animation-delay:10.1s">No more chasing enquiries. No more missed bookings.</div>
+      <div class="btn">DM us “AUTO”</div>
+      <div class="handle up" style="animation-delay:10.7s">@byronsystems</div>
+    </section>
+  </div>
+</body></html>
