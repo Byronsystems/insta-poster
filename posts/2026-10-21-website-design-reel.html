@@ -1,0 +1,118 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#070d22;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:360px;
+        background:radial-gradient(circle,rgba(44,167,231,.25),rgba(44,167,231,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.12)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .6s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:118px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#2ca7e7}
+  .sub{font-size:52px;color:#c9d6f2;margin-top:40px;font-weight:500}
+
+  .s1{animation:show 3.2s 0s both}
+  .s2{animation:show 8.4s 3s both}
+  .s3{animation:show 3.6s 11.2s both}
+  .s4{animation:showlast 3.4s 14.6s both}
+
+  /* browser */
+  .browser{position:absolute;left:90px;top:360px;width:900px;height:1020px;border-radius:34px;overflow:hidden;
+           background:#fff;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+  .chrome{height:76px;background:#e6eaf2;display:flex;align-items:center;padding:0 30px;gap:14px}
+  .chrome i{width:22px;height:22px;border-radius:50%;background:#c3cad8}
+  .chrome i:nth-child(1){background:#ff6058}.chrome i:nth-child(2){background:#ffbd2e}.chrome i:nth-child(3){background:#28c941}
+  .url{margin-left:20px;flex:1;height:44px;border-radius:22px;background:#fff;color:#56627a;font-size:24px;display:flex;align-items:center;padding-left:26px}
+  .page{position:absolute;top:76px;left:0;right:0;bottom:0}
+
+  /* before: dated site */
+  .old{background:#efefe4;font-family:"DejaVu Serif",serif;color:#333;padding:30px}
+  .old .hd{background:#556b2f;color:#ff0;font-size:46px;text-align:center;padding:24px;border:4px ridge #999}
+  .old .nav{font-size:24px;color:#00e;text-decoration:underline;text-align:center;margin:20px 0}
+  .old .box{background:#fff;border:2px solid #aaa;padding:24px;font-size:28px;line-height:1.5;margin-bottom:22px}
+  .old .blink{color:#c00;font-weight:bold;font-size:32px;text-align:center}
+  .old .img{height:220px;background:repeating-linear-gradient(45deg,#ccc 0 20px,#ddd 20px 40px);border:2px solid #aaa;
+            display:flex;align-items:center;justify-content:center;font-size:26px;color:#777}
+
+  /* after: modern site */
+  .new{background:#f8fbff;color:#1c2f5e;clip-path:inset(0 100% 0 0);animation:wipe 1.3s 6.4s cubic-bezier(.7,0,.3,1) both}
+  @keyframes wipe{to{clip-path:inset(0 0 0 0)}}
+  .wipe{position:absolute;top:76px;bottom:0;width:8px;background:#2ca7e7;box-shadow:0 0 30px #2ca7e7;left:0;opacity:0;
+        animation:line 1.3s 6.4s cubic-bezier(.7,0,.3,1) both}
+  @keyframes line{0%{left:0;opacity:0}3%{opacity:1}95%{opacity:1}100%{left:892px;opacity:0}}
+  .new .nav{display:flex;align-items:center;padding:34px 44px;font-size:26px;color:#3d4f78;gap:34px}
+  .new .brand{font-size:34px;font-weight:800;color:#1c2f5e;margin-right:auto}.new .brand span{color:#2ca7e7}
+  .new .navbtn{background:#1c2f5e;color:#fff;padding:14px 26px;border-radius:999px;font-weight:600}
+  .hero{margin:30px 44px 0;padding:60px 50px;border-radius:36px;background:linear-gradient(135deg,#2d59a9,#2ca7e7);color:#fff}
+  .hero h3{font-size:70px;line-height:1.05;margin:0 0 22px;font-weight:800}
+  .hero p{font-size:30px;margin:0 0 36px;opacity:.9}
+  .hero .cta{display:inline-block;background:#fff;color:#2d59a9;font-size:30px;font-weight:700;padding:20px 36px;border-radius:999px}
+  .cards{display:flex;gap:22px;margin:34px 44px 0}
+  .card{flex:1;background:#fff;border:2px solid #dbe6f7;border-radius:26px;padding:28px 24px;font-size:26px;font-weight:600}
+  .card b{display:block;width:56px;height:56px;border-radius:16px;background:#e3f3fc;margin-bottom:18px}
+  .stars{margin:34px 44px;font-size:28px;color:#3d4f78}.stars span{color:#f5b400;font-size:34px;letter-spacing:4px}
+  .label{position:absolute;top:200px;left:50%;transform:translateX(-50%);font-size:40px;font-weight:800;letter-spacing:6px;
+         padding:18px 40px;border-radius:999px;text-transform:uppercase}
+  .lb{background:#3a4566;color:#c9d6f2;animation:lab 3.4s 3.2s both}
+  .la{background:#2ca7e7;animation:lab2 3.6s 7.6s both}
+  @keyframes lab{0%{opacity:0}10%,88%{opacity:1}100%{opacity:0}}
+  @keyframes lab2{0%{opacity:0}12%,100%{opacity:1}}
+
+  /* benefits */
+  .ben{display:flex;align-items:center;font-size:56px;font-weight:700;margin-bottom:50px}
+  .ben b{flex:none;width:84px;height:84px;border-radius:50%;background:#2ca7e7;font-size:46px;display:flex;align-items:center;justify-content:center;margin-right:34px}
+
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:60px}
+  .cta2{font-size:60px;font-weight:700;line-height:1.2;margin-bottom:60px}.cta2 span{color:#2ca7e7}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 15.6s both,pulse 1.2s 16.3s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:36px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="big up" style="animation-delay:.1s">Your website<br>is your<br><span>first impression.</span></div>
+    <div class="sub up" style="animation-delay:1s">Is yours helping or hurting?</div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="label lb">Before</div>
+    <div class="label la">After</div>
+    <div class="browser up" style="animation-delay:3.1s">
+      <div class="chrome"><i></i><i></i><i></i><div class="url">www.yourbusiness.co.uk</div></div>
+      <div class="page old">
+        <div class="hd">Welcome To Our Website!!!</div>
+        <div class="nav">Home | About Us | Services | Contact | Links</div>
+        <div class="blink">*** Under Construction ***</div><br>
+        <div class="box">We are a family run business established many years ago. Please call us during office hours for a quote. Thank you for visiting.</div>
+        <div class="img">image coming soon</div><br>
+        <div class="box">Last updated: 2014 &nbsp; | &nbsp; Visitors: 000317</div>
+      </div>
+      <div class="page new">
+        <div class="nav"><div class="brand">your<span>business</span></div>Services<span>Reviews</span><div class="navbtn">Book now</div></div>
+        <div class="hero"><h3>Fast, friendly, local experts.</h3><p>Trusted by hundreds of happy customers.</p><div class="cta">Get a free quote →</div></div>
+        <div class="cards"><div class="card"><b></b>Same-week bookings</div><div class="card"><b></b>Fixed, fair prices</div><div class="card"><b></b>Fully insured</div></div>
+        <div class="stars"><span>★★★★★</span> &nbsp;Rated 4.9 by local customers</div>
+      </div>
+      <div class="wipe"></div>
+    </div>
+  </section>
+
+  <section class="scene s3"><div class="center">
+    <div class="ben up" style="animation-delay:11.4s"><b>✓</b>Looks great on mobile</div>
+    <div class="ben up" style="animation-delay:12.1s"><b>✓</b>Built to win enquiries</div>
+    <div class="ben up" style="animation-delay:12.8s"><b>✓</b>Ready for AI booking</div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <img class="logo up" style="animation-delay:14.7s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta2 up" style="animation-delay:15s">Websites that<br><span>win you work.</span></div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:16.2s">@byronsystems</div>
+  </div></section>
+</body></html>
