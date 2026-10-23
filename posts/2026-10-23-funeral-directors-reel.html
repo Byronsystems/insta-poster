@@ -1,0 +1,114 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#efe8df;color:#3b342e;font-family:"Liberation Serif","FreeSerif",serif}
+  /* soft window light drifting across the frame */
+  .light{position:absolute;width:1500px;height:1500px;left:-500px;top:-400px;border-radius:50%;
+         background:radial-gradient(circle,rgba(255,236,205,.95),rgba(255,236,205,0) 62%);animation:light 21s ease-in-out both}
+  @keyframes light{to{transform:translate(380px,420px)}}
+  .vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 55%,rgba(60,45,30,.18) 100%)}
+  .mote{position:absolute;width:8px;height:8px;border-radius:50%;background:#fff6e6;opacity:.0;animation:mote 9s linear infinite}
+  @keyframes mote{0%{opacity:0;transform:translate(0,0)}20%,80%{opacity:.55}100%{opacity:0;transform:translate(60px,-260px)}}
+
+  .scene{position:absolute;inset:0;opacity:0}
+  .s1{animation:show 5.4s 0s both}
+  .s2{animation:show 7.2s 5s both}
+  .s3{animation:show 5.4s 11.8s both}
+  .s4{animation:showlast 4s 16.8s both}
+  @keyframes show{0%{opacity:0}12%,88%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}18%,100%{opacity:1}}
+  /* slow camera push */
+  .push{position:absolute;inset:0;animation:push 7s ease-out both}
+  @keyframes push{from{transform:scale(1)}to{transform:scale(1.05)}}
+
+  svg.art{position:absolute;left:50%;transform:translateX(-50%);fill:none;stroke:#7d6a55;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .draw{stroke-dasharray:3000;stroke-dashoffset:3000;animation:draw 3.2s ease-in-out both}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .fill{fill:#e3d6c5;stroke:none;opacity:0;animation:fade 1.4s both}
+  @keyframes fade{to{opacity:1}}
+  .steam{stroke:#a8957d;stroke-width:3;opacity:0;animation:steam 3.5s ease-in-out infinite}
+  @keyframes steam{0%{opacity:0;transform:translateY(10px)}40%{opacity:.7}100%{opacity:0;transform:translateY(-40px)}}
+
+  .text{position:absolute;left:110px;right:170px;text-align:center}
+  .line{font-size:72px;line-height:1.25;font-style:italic;color:#3b342e;opacity:0;animation:rise 1.6s ease-out both}
+  @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  .rule{width:120px;height:2px;background:#9a8a6a;margin:36px auto 0;opacity:0;animation:fade 1.2s both}
+
+  .closing{font-size:84px;font-style:italic;line-height:1.2}
+  .byron{position:absolute;left:110px;right:170px;top:1180px;text-align:center;font-family:"Inter","DejaVu Sans",sans-serif}
+  .byron img{height:84px;opacity:.9}
+  .byron p{font-size:32px;color:#6d6153;margin:24px 0 0;line-height:1.4}
+</style></head><body>
+  <div class="light"></div>
+  <div class="mote" style="left:300px;top:900px;animation-delay:-1s"></div>
+  <div class="mote" style="left:620px;top:1200px;animation-delay:-4s"></div>
+  <div class="mote" style="left:820px;top:700px;animation-delay:-6s"></div>
+  <div class="mote" style="left:180px;top:1350px;animation-delay:-2.5s"></div>
+  <div class="mote" style="left:520px;top:600px;animation-delay:-7.5s"></div>
+
+  <!-- 1: a traditional British shopfront door on a quiet morning -->
+  <section class="scene s1"><div class="push">
+    <svg class="art" style="top:300px" width="560" height="780" viewBox="0 0 560 780">
+      <rect class="fill" style="animation-delay:2.4s" x="150" y="210" width="260" height="470"/>
+      <path class="draw" d="M120 700 V200 a160 160 0 0 1 320 0 V700"/>
+      <path class="draw" style="animation-delay:.3s" d="M150 700 V210 H410 V700"/>
+      <path class="draw" style="animation-delay:.6s" d="M140 196 a140 140 0 0 1 280 0 M280 196 V60 M280 196 L180 96 M280 196 L380 96 M280 196 L155 160 M280 196 L405 160"/>
+      <path class="draw" style="animation-delay:.9s" d="M180 250 H270 V420 H180 Z M290 250 H380 V420 H290 Z M180 460 H270 V650 H180 Z M290 460 H380 V650 H290 Z"/>
+      <path class="draw" style="animation-delay:1.2s" d="M390 470 a8 8 0 1 0 0.1 0"/>
+      <path class="draw" style="animation-delay:1.4s" d="M60 700 H500 M40 740 H520 M60 700 V740 M500 700 V740"/>
+      <path class="draw" style="animation-delay:1.7s" d="M40 700 V640 H90 V700 M65 640 V560 M65 560 a40 40 0 1 1 0.1 0 M470 700 V640 H520 V700 M495 640 V560 M495 560 a40 40 0 1 1 0.1 0"/>
+    </svg>
+    <div class="text" style="top:1180px">
+      <div class="line" style="animation-delay:1.6s">A personal approach<br>to every farewell</div>
+      <div class="rule" style="animation-delay:2.6s"></div>
+    </div>
+  </div></section>
+
+  <!-- 2: a quiet table, a folder and two cups of tea -->
+  <section class="scene s2"><div class="push" style="animation-delay:5s;animation-duration:7.5s">
+    <svg class="art" style="top:420px" width="820" height="560" viewBox="0 0 820 560">
+      <path class="fill" style="animation-delay:7.2s" d="M290 250 L560 220 L600 400 L330 430 Z"/>
+      <path class="draw" style="animation-delay:5.3s" d="M40 470 H780 M90 470 L60 560 M730 470 L760 560"/>
+      <path class="draw" style="animation-delay:5.6s" d="M290 250 L560 220 L600 400 L330 430 Z M300 262 L548 234 M330 300 L520 280 M338 330 L500 312 M346 360 L470 347"/>
+      <path class="draw" style="animation-delay:6s" d="M110 360 H230 L215 460 H125 Z M230 385 a26 26 0 1 1 -6 50 M95 462 H245"/>
+      <path class="draw" style="animation-delay:6.3s" d="M620 360 H740 L725 460 H635 Z M740 385 a26 26 0 1 1 -6 50 M605 462 H755"/>
+      <path class="draw" style="animation-delay:6.6s" d="M460 300 L600 120 M600 120 l14 -6 l-4 14"/>
+      <path class="steam" style="animation-delay:7.4s" d="M150 330 q-14 -30 0 -60 q14 -30 0 -60"/>
+      <path class="steam" style="animation-delay:8.6s" d="M190 330 q-14 -30 0 -60 q14 -30 0 -60"/>
+      <path class="steam" style="animation-delay:8s" d="M680 330 q-14 -30 0 -60 q14 -30 0 -60"/>
+    </svg>
+    <div class="text" style="top:1140px">
+      <div class="line" style="animation-delay:6.8s">Compassionate guidance,<br>every step of the way</div>
+      <div class="rule" style="animation-delay:7.8s"></div>
+    </div>
+  </div></section>
+
+  <!-- 3: a closed folder and a single flower -->
+  <section class="scene s3"><div class="push" style="animation-delay:11.8s;animation-duration:5.6s">
+    <svg class="art" style="top:380px" width="600" height="680" viewBox="0 0 600 680">
+      <path class="fill" style="animation-delay:13.4s" d="M120 520 L470 480 L500 640 L150 680 Z"/>
+      <path class="draw" style="animation-delay:12s" d="M120 520 L470 480 L500 640 L150 680 Z"/>
+      <g transform="translate(150 610) rotate(78) scale(0.62) translate(-300 -500)">
+      <path class="draw" style="animation-delay:12.3s" d="M300 500 C300 380 290 260 310 120 M302 380 C250 360 230 320 240 290 C280 300 300 330 302 380 M306 300 C350 280 370 240 362 214 C326 226 308 256 306 300"/>
+      <path class="draw" style="animation-delay:12.8s" d="M310 120 C280 90 282 50 310 20 C338 50 340 90 310 120 M310 120 C270 110 250 80 252 46 C286 52 304 84 310 120 M310 120 C350 110 370 80 368 46 C334 52 316 84 310 120"/>
+      </g>
+    </svg>
+    <div class="text" style="top:1150px">
+      <div class="line" style="animation-delay:13s">Funeral arrangements<br>by appointment</div>
+      <div class="rule" style="animation-delay:14s"></div>
+    </div>
+  </div></section>
+
+  <!-- final frame -->
+  <section class="scene s4">
+    <div class="text" style="top:640px">
+      <div class="line closing" style="animation-delay:17.2s">We’re here<br>when you need us.</div>
+      <div class="rule" style="animation-delay:18.2s"></div>
+    </div>
+    <div class="byron line" style="animation-delay:18.6s;font-style:normal">
+      <img src="assets/logo.png" alt="Byron AI">
+      <p>A sample film for funeral directors by Byron AI.<br>DM us “AUTO” · @byronsystems</p>
+    </div>
+  </section>
+  <div class="vignette"></div>
+</body></html>

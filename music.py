@@ -2,6 +2,7 @@
 
 Usage:
   python music.py out.wav 19.5 [impact_seconds] [drums_in_seconds] [minor|major]
+  python music.py out.wav 21 piano       -> gentle solo piano, no drums
 
 A minor-key (moody) or major-key (upbeat) bed at 120 BPM: soft pads, sub bass, kick and hats,
 with a riser into an impact hit so a big moment in the video can land on it.
@@ -116,6 +117,48 @@ def compose(seconds, impact=None, drums_in=2.0, chords=MINOR):
     return stereo
 
 
+def piano_note(freq, length):
+    t = np.arange(int(length * SR)) / SR
+    tone = sum(np.sin(2 * np.pi * freq * h * t) * np.exp(-t * (1.2 + h * 0.9)) / h ** 1.3 for h in range(1, 7))
+    return tone * np.minimum(t / 0.005, 1)  # soft hammer attack
+
+
+def piano(seconds):
+    """Slow, warm arpeggios (F, C/E, Dm, Bb) with a sparse melody on top."""
+    n = int(seconds * SR)
+    left, right = np.zeros(n), np.zeros(n)
+    beat = 60 / 66
+    chords = [[87.31, 130.81, 174.61, 220.00, 261.63], [82.41, 130.81, 164.81, 196.00, 261.63],
+              [73.42, 110.00, 146.83, 174.61, 220.00], [58.27, 116.54, 146.83, 174.61, 233.08]]
+    melody = [(0, 523.25), (2, 440.00), (4, 392.00), (6, 440.00), (8, 349.23), (10, 392.00),
+              (12, 440.00), (14, 466.16), (16, 440.00), (18, 349.23), (20, 392.00), (22, 349.23)]
+    t, b = 0.0, 0
+    while t < seconds - 1:
+        chord = chords[(b // 4) % len(chords)]
+        for i, f in enumerate(chord[:4] if b % 2 else chord[1:]):
+            note = piano_note(f, 3.5) * 0.18
+            at = t + i * beat / 4
+            place(left, note * (1.1 - i * 0.1), at)
+            place(right, note * (0.7 + i * 0.1), at)
+        t += beat
+        b += 1
+    for beat_no, f in melody:
+        if beat_no * beat < seconds - 2:
+            note = piano_note(f, 4) * 0.22
+            place(left, note, beat_no * beat + 0.02)
+            place(right, note, beat_no * beat)
+    for side in (left, right):  # longer, softer hall reverb
+        wet = np.zeros(n)
+        for delay, gain in ((0.043, .35), (0.071, .3), (0.113, .26), (0.167, .22), (0.239, .18), (0.331, .14), (0.457, .1)):
+            d = int(delay * SR)
+            wet[d:] += side[:-d] * gain
+        side += wet
+    stereo = np.stack([left, right], axis=1)
+    stereo *= env(n, 1.0, 2.5)[:, None]
+    stereo /= np.abs(stereo).max() / 0.8
+    return stereo
+
+
 def save(path, stereo):
     with wave.open(path, "wb") as w:
         w.setnchannels(2)
@@ -126,6 +169,10 @@ def save(path, stereo):
 
 if __name__ == "__main__":
     out, seconds, *rest = sys.argv[1:]
+    if rest == ["piano"]:
+        save(out, piano(float(seconds)))
+        print(out)
+        sys.exit()
     impact = float(rest[0]) if rest else None
     drums_in = float(rest[1]) if len(rest) > 1 else 2.0
     chords = MAJOR if len(rest) > 2 and rest[2] == "major" else MINOR
