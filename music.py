@@ -1,9 +1,9 @@
 """Synthesise an original, royalty-free soundtrack for a Reel.
 
 Usage:
-  python music.py out.wav 19.5 [impact_seconds] [drums_in_seconds]
+  python music.py out.wav 19.5 [impact_seconds] [drums_in_seconds] [minor|major]
 
-A moody minor-key bed (A minor, 120 BPM): soft pads, sub bass, kick and hats,
+A minor-key (moody) or major-key (upbeat) bed at 120 BPM: soft pads, sub bass, kick and hats,
 with a riser into an impact hit so a big moment in the video can land on it.
 """
 import sys
@@ -14,11 +14,17 @@ import numpy as np
 SR = 44100
 BPM = 120
 BEAT = 60 / BPM
-CHORDS = [  # Am, F, C, G as frequencies (root + triad an octave up)
+MINOR = [  # Am, F, C, G as frequencies (root + triad an octave up)
     [110.00, 220.00, 261.63, 329.63],
     [87.31, 174.61, 220.00, 261.63],
     [130.81, 261.63, 329.63, 392.00],
     [98.00, 196.00, 246.94, 293.66],
+]
+MAJOR = [  # C, G, Am, F
+    [130.81, 261.63, 329.63, 392.00],
+    [98.00, 196.00, 246.94, 293.66],
+    [110.00, 220.00, 261.63, 329.63],
+    [87.31, 174.61, 220.00, 261.63],
 ]
 
 
@@ -54,7 +60,7 @@ def place(track, sound, at):
         track[i:end] += sound[:end - i]
 
 
-def compose(seconds, impact=None, drums_in=2.0):
+def compose(seconds, impact=None, drums_in=2.0, chords=MINOR):
     rng = np.random.default_rng(7)
     n = int(seconds * SR)
     left, right = np.zeros(n), np.zeros(n)
@@ -62,7 +68,7 @@ def compose(seconds, impact=None, drums_in=2.0):
 
     # pads + sub bass, one chord per bar
     for b in range(int(seconds / bar) + 1):
-        chord = CHORDS[b % len(CHORDS)]
+        chord = chords[b % len(chords)]
         start, length = b * bar, int(bar * SR)
         e = env(length, 0.35, 0.4)
         for side, detune in ((left, -0.002), (right, 0.002)):
@@ -122,5 +128,6 @@ if __name__ == "__main__":
     out, seconds, *rest = sys.argv[1:]
     impact = float(rest[0]) if rest else None
     drums_in = float(rest[1]) if len(rest) > 1 else 2.0
-    save(out, compose(float(seconds), impact, drums_in))
+    chords = MAJOR if len(rest) > 2 and rest[2] == "major" else MINOR
+    save(out, compose(float(seconds), impact, drums_in, chords))
     print(out)
