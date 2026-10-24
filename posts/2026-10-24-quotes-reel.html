@@ -1,0 +1,95 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#070d22;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:360px;
+        background:radial-gradient(circle,rgba(44,167,231,.25),rgba(44,167,231,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.12)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .6s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:124px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#2ca7e7}
+  .sub{font-size:54px;color:#c9d6f2;margin-top:40px;font-weight:500}
+
+  .s1{animation:show 3s 0s both}
+  .s2{animation:show 9.4s 2.8s both}
+  .s3{animation:show 3.2s 12s both}
+  .s4{animation:showlast 3.2s 15s both}
+
+  /* invoice */
+  .inv{position:absolute;left:120px;top:330px;width:840px;background:#fff;color:#1c2f5e;border-radius:30px;padding:56px 56px 50px;
+       box-sizing:border-box;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+  .ih{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:44px}
+  .ih h4{margin:0;font-size:58px;font-weight:800;letter-spacing:2px}
+  .ih small{display:block;font-size:28px;color:#6f80a8;font-weight:500;margin-top:8px;letter-spacing:0}
+  .ih .co{font-size:30px;font-weight:700;color:#2d59a9;text-align:right}
+  .to{font-size:28px;color:#6f80a8;margin-bottom:6px}
+  .client{font-size:38px;font-weight:700;margin-bottom:40px}
+  .line{display:flex;justify-content:space-between;font-size:34px;padding:22px 0;border-top:2px solid #e7edf7}
+  .line span{color:#3d4f78}
+  @property --n{syntax:"<integer>";initial-value:0;inherits:false}
+  .total{display:flex;justify-content:space-between;align-items:center;font-size:40px;font-weight:800;padding-top:30px;border-top:4px solid #1c2f5e;margin-top:6px}
+  .amount::before{content:"£"}
+  .amount{counter-reset:n var(--n);animation:count 1s 5.6s ease-out both}
+  .amount::after{content:counter(n) ".00"}
+  @keyframes count{from{--n:0}to{--n:900}}
+  .stamp{position:absolute;right:60px;top:300px;font-size:84px;font-weight:900;color:#1aa35a;border:12px solid #1aa35a;border-radius:24px;
+         padding:6px 34px;letter-spacing:8px;animation:slam .45s 10.2s cubic-bezier(.2,1.5,.4,1) both}
+  @keyframes slam{from{opacity:0;transform:rotate(-14deg) scale(2.4)}to{opacity:.9;transform:rotate(-14deg) scale(1)}}
+
+  .steps{position:absolute;left:120px;right:120px;top:1290px;display:flex;justify-content:space-between}
+  .st{font-size:28px;font-weight:700;padding:16px 22px;border-radius:999px;background:#1a264d;color:#8da0cc;animation:on .4s both}
+  @keyframes on{to{background:#2ca7e7;color:#fff}}
+
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:60px}
+  .tag{align-self:flex-start;font-size:34px;font-weight:700;letter-spacing:5px;text-transform:uppercase;background:#2d59a9;padding:16px 30px;border-radius:999px;margin-bottom:40px}
+  .cta2{font-size:60px;font-weight:700;line-height:1.2;margin-bottom:60px;color:#c9d6f2}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 16s both,pulse 1.2s 16.7s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:36px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="big up" style="animation-delay:.1s;font-size:96px">New enquiry.<br>How long until<br><span>they get<br>a quote?</span></div>
+    <div class="sub up" style="animation-delay:1s">The fastest quote often wins the job.</div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="inv up" style="animation-delay:3s">
+      <div class="ih"><h4>QUOTE<small>#Q-218 · Valid for 30 days</small></h4><div class="co">Your Business</div></div>
+      <div class="to up" style="animation-delay:3.6s">Prepared for</div>
+      <div class="client up" style="animation-delay:3.8s">James Carter</div>
+      <div class="line up" style="animation-delay:4.3s"><span>Kitchen rewire</span><b>£450.00</b></div>
+      <div class="line up" style="animation-delay:4.7s"><span>New consumer unit</span><b>£300.00</b></div>
+      <div class="line up" style="animation-delay:5.1s"><span>VAT (20%)</span><b>£150.00</b></div>
+      <div class="total up" style="animation-delay:5.5s">Total<span class="amount"></span></div>
+      <div class="stamp">ACCEPTED</div>
+    </div>
+    <div class="steps">
+      <div class="st" style="animation-delay:4s">Enquiry</div>
+      <div class="st" style="animation-delay:6.4s">Quote drafted</div>
+      <div class="st" style="animation-delay:7.8s">Sent</div>
+      <div class="st" style="animation-delay:10.2s">Accepted ✓</div>
+    </div>
+  </section>
+
+  <section class="scene s3"><div class="center">
+    <div class="big up" style="animation-delay:12.2s;font-size:88px">Not days.</div>
+    <div class="big up" style="animation-delay:12.7s;font-size:88px">Minutes.</div>
+    <div class="big up" style="animation-delay:13.2s;font-size:88px"><span>Win more jobs.</span></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <img class="logo up" style="animation-delay:15.1s" src="assets/logo.png" alt="Byron AI">
+    <div class="tag up" style="animation-delay:15.3s">Quotes on autopilot</div>
+    <div class="cta2 up" style="animation-delay:15.6s">Drafted and sent while the customer is still keen.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:16.6s">@byronsystems</div>
+  </div></section>
+</body></html>
