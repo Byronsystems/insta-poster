@@ -1,0 +1,83 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#070d22;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:360px;
+        background:radial-gradient(circle,rgba(44,167,231,.25),rgba(44,167,231,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.12)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .6s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:124px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#2ca7e7}
+  .sub{font-size:54px;color:#c9d6f2;margin-top:40px;font-weight:500}
+
+  .s1{animation:show 3s 0s both}
+  .s2{animation:show 9.8s 2.8s both}
+  .s3{animation:show 3s 12.4s both}
+  .s4{animation:showlast 3.4s 15.2s both}
+
+  .inbox{position:absolute;left:100px;top:300px;width:880px;background:#fff;color:#1c2f5e;border-radius:34px;overflow:hidden;
+         box-shadow:0 40px 120px rgba(0,0,0,.6)}
+  .ibh{display:flex;align-items:center;justify-content:space-between;padding:34px 40px;border-bottom:2px solid #e7edf7}
+  .ibh b{font-size:48px;font-weight:800}
+  @property --n{syntax:"<integer>";initial-value:0;inherits:false}
+  .badge{font-size:34px;font-weight:800;color:#fff;background:#e5484d;border-radius:999px;padding:10px 26px;
+         counter-reset:n var(--n);animation:up47 2.4s 3.4s ease-out both,down0 1.6s 8.6s ease-in both}
+  .badge::after{content:counter(n) " unread"}
+  @keyframes up47{from{--n:0}to{--n:47}}
+  @keyframes down0{from{--n:47;background:#e5484d}to{--n:0;background:#1aa35a}}
+  .row{position:relative;display:flex;align-items:center;padding:28px 40px;border-bottom:2px solid #f0f3f9}
+  .dot{flex:none;width:18px;height:18px;border-radius:50%;background:#2ca7e7;margin-right:26px;animation:read .3s both}
+  @keyframes read{to{background:#dbe6f7}}
+  .row div{font-size:32px;line-height:1.3;font-weight:700;padding-right:180px}
+  .row small{display:block;font-size:26px;font-weight:500;color:#6f80a8;margin-top:2px}
+  .done{position:absolute;right:30px;top:50%;margin-top:-26px;font-size:26px;font-weight:800;color:#0b2a1c;background:#5ee08f;
+        border-radius:999px;padding:12px 22px;animation:pop .4s cubic-bezier(.2,1.5,.4,1) both}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  .with{position:absolute;left:50%;top:180px;transform:translateX(-50%);font-size:40px;font-weight:800;letter-spacing:5px;text-transform:uppercase;
+        background:#2ca7e7;padding:16px 36px;border-radius:999px;white-space:nowrap;animation:fade .5s 8.2s both}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .chip{position:absolute;left:100px;right:100px;top:1330px;text-align:center;font-size:36px;font-weight:700;color:#c9f7da;
+        background:#0b2a1c;border:3px solid #5ee08f;border-radius:28px;padding:26px;animation:up .6s 10.6s both}
+  .tag{align-self:flex-start;font-size:34px;font-weight:700;letter-spacing:5px;text-transform:uppercase;background:#2d59a9;padding:16px 30px;border-radius:999px;margin-bottom:40px}
+  .without{position:absolute;left:50%;top:180px;transform:translateX(-50%);font-size:40px;font-weight:800;letter-spacing:5px;text-transform:uppercase;
+        background:#3a4566;color:#c9d6f2;padding:16px 36px;border-radius:999px;white-space:nowrap;animation:wo 5s 3.2s both}
+  @keyframes wo{0%{opacity:0}10%,88%{opacity:1}100%{opacity:0}}
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:60px}
+  .cta2{font-size:60px;font-weight:700;line-height:1.2;margin-bottom:60px;color:#c9d6f2}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 16.2s both,pulse 1.2s 16.9s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:36px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+  <section class="scene s1"><div class="center">
+    <div class="tag up" style="animation-delay:.1s">POV</div>
+    <div class="big up" style="animation-delay:.4s;font-size:110px">It's Monday.<br>You open<br><span>your inbox.</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="without">Without automation</div><div class="with">With Byron AI</div>
+    <div class="inbox up" style="animation-delay:3s">
+      <div class="ibh"><b>Inbox</b><span class="badge"></span></div>
+      <div class="row up" style="animation-delay:3.60s"><i class="dot" style="animation-delay:8.70s"></i><div>Do you have anything free Thursday?<small>Fri 9:14pm</small></div><span class="done" style="animation-delay:8.70s">✓ Replied</span></div><div class="row up" style="animation-delay:3.95s"><i class="dot" style="animation-delay:9.10s"></i><div>Could I get a quote for a new kitchen?<small>Sat 8:02am</small></div><span class="done" style="animation-delay:9.10s">✓ Replied</span></div><div class="row up" style="animation-delay:4.30s"><i class="dot" style="animation-delay:9.50s"></i><div>Is this still available?<small>Sat 3:47pm</small></div><span class="done" style="animation-delay:9.50s">✓ Replied</span></div><div class="row up" style="animation-delay:4.65s"><i class="dot" style="animation-delay:9.90s"></i><div>Still waiting to hear back…<small>Sun 11:20am</small></div><span class="done" style="animation-delay:9.90s">✓ Replied</span></div><div class="row up" style="animation-delay:5.00s"><i class="dot" style="animation-delay:10.30s"></i><div>Can I book in for next week?<small>Sun 7:55pm</small></div><span class="done" style="animation-delay:10.30s">✓ Replied</span></div>
+    </div>
+    <div class="chip">✓ 6 bookings made over the weekend</div>
+  </section>
+
+  <section class="scene s3"><div class="center">
+    <div class="big up" style="animation-delay:12.6s;font-size:104px">Start the week</div>
+    <div class="big up" style="animation-delay:13.1s;font-size:104px"><span>already ahead.</span></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <img class="logo up" style="animation-delay:15.3s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta2 up" style="animation-delay:15.6s">AI that replies and books while you're off.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:16.8s">@byronsystems</div>
+  </div></section>
+</body></html>
