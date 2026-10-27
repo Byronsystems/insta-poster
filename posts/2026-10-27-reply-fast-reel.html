@@ -1,0 +1,92 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#070d22;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:360px;
+        background:radial-gradient(circle,rgba(44,167,231,.24),rgba(44,167,231,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.12)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:96px;font-weight:800;line-height:1.08;letter-spacing:-2px}
+  .big span{color:#2ca7e7}
+  .dim{color:#8da0cc}
+  .big .word{color:inherit}
+  .word{display:inline-block;animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+
+  .s1{animation:show 3.6s 0s both}
+  .s2{animation:show 3.4s 3.4s both}
+  .s3{animation:show 5.6s 6.6s both}
+  .s4{animation:show 3s 12s both}
+  .s5{animation:showlast 3.6s 14.8s both}
+
+  /* reply-time meter */
+  .head{font-size:44px;font-weight:700;color:#8da0cc;margin-bottom:50px;letter-spacing:1px}
+  .row{margin-bottom:56px}
+  .row .top{display:flex;justify-content:space-between;align-items:center;font-size:44px;font-weight:700;margin-bottom:18px}
+  .res{font-size:36px;font-weight:800;padding:10px 24px;border-radius:999px;animation:pop .4s cubic-bezier(.2,1.5,.4,1) both}
+  .ok{background:#0b2a1c;color:#5ee08f;border:3px solid #5ee08f}
+  .meh{background:#2e2410;color:#f5b400;border:3px solid #f5b400}
+  .bad{background:#3b1215;color:#ff8a8a;border:3px solid #e5484d}
+  .track{height:26px;border-radius:26px;background:#1a264d;overflow:hidden}
+  .fill{height:100%;border-radius:26px;transform-origin:left;transform:scaleX(0);animation:fill .9s ease-out both}
+  @keyframes fill{to{transform:scaleX(1)}}
+
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:60px}
+  .cta{font-size:56px;font-weight:600;color:#c9d6f2;line-height:1.3;margin-bottom:60px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 15.7s both,pulse 1.2s 16.4s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:36px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="big dim">
+      <span class="word" style="animation-delay:.1s">Customers</span><br>
+      <span class="word" style="animation-delay:.4s">don't</span>
+      <span class="word" style="animation-delay:.7s">care</span><br>
+      <span class="word" style="animation-delay:1.1s">how</span>
+      <span class="word" style="animation-delay:1.35s">busy</span><br>
+      <span class="word" style="animation-delay:1.6s">you</span>
+      <span class="word" style="animation-delay:1.85s">are.</span>
+    </div>
+  </div></section>
+
+  <section class="scene s2"><div class="center">
+    <div class="big up" style="animation-delay:3.5s;font-size:110px">They care<br>how fast</div>
+    <div class="big up" style="animation-delay:4.1s;font-size:130px"><span>you reply.</span></div>
+  </div></section>
+
+  <section class="scene s3"><div class="center">
+    <div class="head up" style="animation-delay:6.8s">Same enquiry. Different reply times.</div>
+    <div class="row up" style="animation-delay:7.1s">
+      <div class="top">Reply in seconds<span class="res ok" style="animation-delay:8.1s">✓ Booked</span></div>
+      <div class="track"><div class="fill" style="background:#5ee08f;animation-delay:7.3s;width:12%"></div></div>
+    </div>
+    <div class="row up" style="animation-delay:8.4s">
+      <div class="top">Reply in 3 hours<span class="res meh" style="animation-delay:9.5s">? Maybe</span></div>
+      <div class="track"><div class="fill" style="background:#f5b400;animation-delay:8.6s;width:55%"></div></div>
+    </div>
+    <div class="row up" style="animation-delay:9.8s">
+      <div class="top">Reply tomorrow<span class="res bad" style="animation-delay:10.9s">✗ Gone</span></div>
+      <div class="track"><div class="fill" style="background:#e5484d;animation-delay:10s;width:100%"></div></div>
+    </div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:12.1s">With Byron AI,</div>
+    <div class="big up" style="animation-delay:12.6s"><span>every reply<br>is instant.</span></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <img class="logo up" style="animation-delay:14.9s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta up" style="animation-delay:15.2s">AI that replies to your enquiries and books customers in, day or night.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:16.5s">@byronsystems</div>
+  </div></section>
+</body></html>
