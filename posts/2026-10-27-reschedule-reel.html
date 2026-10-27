@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#f8fbff;color:#1c2f5e;font-family:"Inter","DejaVu Sans",sans-serif}
+  /* Reels UI covers the bottom ~400px and the right edge, so content stays inside .safe */
+  .safe{position:absolute;left:100px;right:160px;top:260px;bottom:440px}
+  .glow{position:absolute;width:1000px;height:1000px;border-radius:50%;right:-380px;top:-300px;
+        background:radial-gradient(circle,rgba(44,167,231,.25),rgba(44,167,231,0) 70%);
+        animation:drift 19s ease-in-out both}
+  @keyframes drift{from{transform:translate(0,0)}to{transform:translate(-220px,520px)}}
+  .lines{position:absolute;right:0;top:120px}
+  .lines path{stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1.4s ease-out both}
+  .lines path:nth-of-type(2){animation-delay:.25s}.lines path:nth-of-type(3){animation-delay:.5s}
+  .lines circle{opacity:0;animation:pop .3s ease-out both}
+  .lines circle:nth-of-type(1){animation-delay:1.2s}.lines circle:nth-of-type(2){animation-delay:1.4s}.lines circle:nth-of-type(3){animation-delay:1.6s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+  .logo{position:absolute;top:110px;left:100px;height:110px}
+
+  .scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0}
+  .s1{animation:show 3.4s 0s both}
+  .s2{animation:show 8.4s 3.2s both}
+  .s3{animation:show 3.2s 11.4s both}
+  .s4{animation:showlast 3.8s 14.4s both}
+  @keyframes show{0%{opacity:0}6%,92%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}10%,100%{opacity:1}}
+  .up{animation:up .7s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+
+  .tag{align-self:flex-start;font-size:34px;font-weight:700;letter-spacing:5px;text-transform:uppercase;
+       color:#fff;background:#2d59a9;padding:16px 30px;border-radius:999px}
+  h1{font-size:124px;line-height:1.02;font-weight:800;margin:44px 0 0;letter-spacing:-2px}
+  h1 span,h2 span{color:#2ca7e7}
+  h2{font-size:96px;line-height:1.05;font-weight:800;margin:0 0 70px;letter-spacing:-1px}
+  .step{display:flex;align-items:center;background:#fff;border:3px solid #dbe6f7;border-radius:36px;
+        padding:38px 40px;margin-bottom:34px;box-shadow:0 12px 30px rgba(45,89,169,.08)}
+  .step b{flex:none;width:92px;height:92px;border-radius:50%;background:#2ca7e7;color:#fff;font-size:50px;
+          display:flex;align-items:center;justify-content:center;margin-right:36px}
+  .step div{font-size:48px;font-weight:600;line-height:1.2}
+  .step small{display:block;font-size:34px;font-weight:400;color:#3d4f78;margin-top:6px}
+  .cta{font-size:56px;font-weight:600;color:#3d4f78;margin:40px 0 70px;line-height:1.3}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#fff;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .7s 15.4s cubic-bezier(.2,.8,.2,1) both,pulse 1.2s 16.2s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:40px;color:#2d59a9;margin-top:50px}
+  .chat{position:absolute;left:90px;right:90px;top:290px;background:#fff;border:3px solid #dbe6f7;border-radius:36px;padding:30px;
+        display:flex;flex-direction:column;gap:20px;box-shadow:0 20px 60px rgba(45,89,169,.12)}
+  .chh{display:flex;align-items:center;gap:20px;padding-bottom:20px;border-bottom:2px solid #eef2f9;font-size:34px;font-weight:800}
+  .chh i{width:70px;height:70px;border-radius:50%;background:#2ca7e7;color:#fff;font-style:normal;display:flex;align-items:center;justify-content:center;font-size:34px}
+  .chh small{display:block;font-size:24px;color:#1aa35a;font-weight:600}
+  .msg{max-width:80%;font-size:34px;line-height:1.3;padding:20px 26px;border-radius:30px}
+  .them{align-self:flex-end;background:#2d59a9;color:#fff;border-bottom-right-radius:8px}
+  .ai{align-self:flex-start;background:#eef4fc;color:#1c2f5e;border-bottom-left-radius:8px}
+  .cal{position:absolute;left:90px;right:90px;top:1110px;background:#fff;border:3px solid #dbe6f7;border-radius:30px;padding:26px 30px}
+  .calt{display:flex;justify-content:space-between;font-size:28px;font-weight:700;color:#3d4f78;margin-bottom:18px}
+  .calt span{color:#1aa35a;opacity:0;animation:fadein .4s 9.2s both}
+  @keyframes fadein{to{opacity:1}}
+  .days{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .days .d{height:110px;border-radius:16px;background:#f1f5fc;font-size:24px;font-weight:700;color:#8a97b5;padding:10px;box-sizing:border-box}
+  .appt{position:absolute;top:44px;left:calc(20% + 2px);width:calc(20% - 12px);height:58px;border-radius:12px;background:#2ca7e7;color:#fff;
+        font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;animation:move .9s 8.4s cubic-bezier(.6,0,.3,1) both}
+  @keyframes move{to{left:calc(60% + 6px);background:#1aa35a}}
+</style></head><body>
+  <div class="glow"></div>
+  <svg class="lines" width="460" height="460" viewBox="0 0 420 420" fill="none" stroke="#2ca7e7" stroke-width="6" stroke-linecap="round" opacity=".55">
+    <path d="M420 90 H300 L250 140 H170"/><path d="M420 190 H330 L290 230 H230"/><path d="M420 290 H360 L330 320"/>
+    <circle cx="160" cy="140" r="12"/><circle cx="218" cy="230" r="12"/><circle cx="322" cy="328" r="12"/>
+  </svg>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <div class="safe" style="display:none"></div>
+  <section class="scene s1"><div class="safe" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="tag up" style="animation-delay:.2s">Sound familiar?</div>
+    <h1 class="up" style="animation-delay:.5s;font-size:100px">Rescheduling<br>used to mean<br><span>phone tag.</span></h1>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="chat up" style="animation-delay:3.3s">
+      <div class="chh"><i>Y</i><div>Your Business<small>● AI assistant online</small></div></div>
+      <div class="msg them up" style="animation-delay:3.7s">Hi, I can't make Tuesday any more. Can I move my appointment?</div>
+      <div class="msg ai up" style="animation-delay:5.1s">No problem! I can do Thursday at 11am or Friday at 3pm.</div>
+      <div class="msg them up" style="animation-delay:6.5s">Thursday at 11 please</div>
+      <div class="msg ai up" style="animation-delay:7.5s">Done, you're moved to Thursday at 11am. See you then!</div>
+    </div>
+    <div class="cal up" style="animation-delay:3.6s">
+      <div class="calt">This week<span>✓ Diary updated</span></div>
+      <div class="days"><div class="d">Mon</div><div class="d">Tue</div><div class="d">Wed</div><div class="d">Thu</div><div class="d">Fri</div>
+        <div class="appt">11:00</div></div>
+    </div>
+  </section>
+
+  <section class="scene s3"><div class="safe" style="display:flex;flex-direction:column;justify-content:center">
+    <h1 class="up" style="animation-delay:11.6s;font-size:96px;margin:0">No calls.<br>No admin.</h1>
+    <h1 class="up" style="animation-delay:12.2s;font-size:96px;margin:20px 0 0"><span>Diary sorted.</span></h1>
+  </div></section>
+
+  <section class="scene s4"><div class="safe" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="tag up" style="animation-delay:14.6s">Bookings, handled</div>
+    <div class="cta up" style="animation-delay:14.9s">AI that books, moves and cancels appointments for you.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:16.1s">Example conversation · @byronsystems</div>
+  </div></section>
+</body></html>
