@@ -1,0 +1,91 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif;
+       background-color:#0a2350;
+       background-image:repeating-linear-gradient(0deg,rgba(127,211,255,.10) 0 2px,transparent 2px 60px),
+                        repeating-linear-gradient(90deg,rgba(127,211,255,.10) 0 2px,transparent 2px 60px)}
+  body::before{content:"";position:absolute;inset:0;
+       background:repeating-linear-gradient(0deg,rgba(127,211,255,.05) 0 1px,transparent 1px 15px),
+                  repeating-linear-gradient(90deg,rgba(127,211,255,.05) 0 1px,transparent 1px 15px)}
+  .vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(10,35,80,0) 40%,rgba(5,15,40,.75) 100%)}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.4) rotate(-12deg)}to{opacity:1;transform:rotate(-8deg)}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:96px;font-weight:800;line-height:1.08;letter-spacing:-2px}
+  .big span{color:#7fd3ff}
+  .mono{font-family:"DejaVu Sans Mono",monospace}
+
+  .s1{animation:show 3.4s 0s both}
+  .s2{animation:show 3.2s 3.2s both}
+  .s3{animation:show 8s 6.2s both}
+  .s4{animation:show 2.8s 14s both}
+  .s5{animation:showlast 3.6s 16.6s both}
+
+  /* the plan */
+  .plan{position:absolute;left:90px;right:90px;top:300px;height:1030px;border:3px solid rgba(255,255,255,.85);padding:36px 40px;box-sizing:border-box}
+  .plan::before,.plan::after{content:"";position:absolute;width:30px;height:30px;border:3px solid #7fd3ff}
+  .plan::before{left:-14px;top:-14px;border-right:none;border-bottom:none}
+  .plan::after{right:-14px;bottom:-14px;border-left:none;border-top:none}
+  .title{display:flex;justify-content:space-between;font-size:26px;letter-spacing:3px;color:#7fd3ff;border-bottom:2px dashed rgba(127,211,255,.5);padding-bottom:22px;margin-bottom:40px}
+  .step{position:relative;display:flex;align-items:center;gap:30px;margin-bottom:64px}
+  .num{flex:none;width:110px;height:110px;border:3px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700}
+  .step b{display:block;font-size:44px;font-weight:800;line-height:1.15}
+  .step small{display:block;font-size:30px;color:#bfe6ff;margin-top:6px}
+  .link{position:absolute;left:55px;top:118px;width:0;height:56px;border-left:3px dashed #7fd3ff;transform-origin:top;transform:scaleY(0);animation:grow .4s both}
+  @keyframes grow{to{transform:scaleY(1)}}
+  .tick{position:absolute;right:0;top:50%;margin-top:-30px;font-size:30px;font-weight:800;color:#5ee08f;border:3px solid #5ee08f;border-radius:12px;padding:8px 14px;
+        animation:pop .35s cubic-bezier(.2,1.5,.4,1) both}
+  .stamp{position:absolute;right:50px;bottom:40px;font-size:40px;font-weight:900;letter-spacing:4px;color:#7fd3ff;border:5px solid #7fd3ff;border-radius:14px;
+         padding:10px 24px;animation:pop .45s 12.6s cubic-bezier(.2,1.5,.4,1) both}
+
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:60px}
+  .cta{font-size:56px;font-weight:600;color:#d8efff;line-height:1.3;margin-bottom:60px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 17.5s both,pulse 1.2s 18.2s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:34px;color:#bfe6ff;margin-top:50px}
+</style></head><body>
+  <div class="vig"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="big up" style="animation-delay:.1s">Off-the-shelf<br>software makes<br>you work</div>
+    <div class="big up" style="animation-delay:.8s"><span>its way.</span></div>
+  </div></section>
+
+  <section class="scene s2"><div class="center">
+    <div class="big up" style="animation-delay:3.3s">We build<br>automation that<br>works</div>
+    <div class="big up" style="animation-delay:3.9s"><span>your way.</span></div>
+  </div></section>
+
+  <section class="scene s3">
+    <div class="plan up" style="animation-delay:6.3s">
+      <div class="title mono"><span>AUTOMATION PLAN</span><span>BUILT FOR: YOUR BUSINESS</span></div>
+      <div class="step up" style="animation-delay:6.9s"><div class="num mono">01</div><div><b>We learn how you work</b><small>Your services, tools and customers</small></div>
+        <span class="tick" style="animation-delay:7.8s">✓</span><div class="link" style="animation-delay:8s"></div></div>
+      <div class="step up" style="animation-delay:8.3s"><div class="num mono">02</div><div><b>We find the repetitive jobs</b><small>The admin eating your week</small></div>
+        <span class="tick" style="animation-delay:9.2s">✓</span><div class="link" style="animation-delay:9.4s"></div></div>
+      <div class="step up" style="animation-delay:9.7s"><div class="num mono">03</div><div><b>We build it around you</b><small>Fitted to how you already work</small></div>
+        <span class="tick" style="animation-delay:10.6s">✓</span><div class="link" style="animation-delay:10.8s"></div></div>
+      <div class="step up" style="animation-delay:11.1s"><div class="num mono">04</div><div><b>It runs in the background</b><small>While you get on with the job</small></div>
+        <span class="tick" style="animation-delay:12s">✓</span></div>
+      <div class="stamp mono">APPROVED</div>
+    </div>
+  </section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:14.1s">Your process.</div>
+    <div class="big up" style="animation-delay:14.6s"><span>Automated.</span></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <img class="logo up" style="animation-delay:16.7s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta up" style="animation-delay:17s">Custom AI automation, built around your business.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18.2s">@byronsystems</div>
+  </div></section>
+</body></html>
