@@ -1,0 +1,69 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#070d22;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:360px;
+        background:radial-gradient(circle,rgba(44,167,231,.24),rgba(44,167,231,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.12)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:100px;font-weight:800;line-height:1.06;letter-spacing:-2px}
+  .big span{color:#2ca7e7}
+  .tag{align-self:flex-start;font-size:32px;font-weight:700;letter-spacing:5px;text-transform:uppercase;background:#2d59a9;padding:16px 30px;border-radius:999px;margin-bottom:40px}
+
+  .s1{animation:show 3.6s 0s both}
+  .s2{animation:show 8.4s 3.4s both}
+  .s3{animation:show 3.2s 11.6s both}
+  .s4{animation:showlast 3.8s 14.6s both}
+
+  .h2{font-size:60px;font-weight:800;line-height:1.1;margin-bottom:50px}
+  .h2 span{color:#2ca7e7}
+  .step{display:flex;align-items:center;gap:30px;background:#0f1a3a;border:3px solid #233465;border-radius:32px;padding:32px 34px;margin-bottom:30px}
+  .step .ic{flex:none;width:100px;height:100px;border-radius:26px;background:#1a2a5c;display:flex;align-items:center;justify-content:center;font-size:54px}
+  .step b{display:block;font-size:42px;font-weight:800;line-height:1.15}
+  .step small{display:block;font-size:30px;color:#9fb2dc;margin-top:6px}
+  @property --n{syntax:"<integer>";initial-value:0;inherits:false}
+  .timer{margin:6px 0 34px 130px;display:flex;align-items:center;gap:20px;font-size:32px;color:#9fb2dc;animation:up .4s 6.6s both}
+  .timer b{font-size:56px;font-weight:800;color:#ff8a8a;counter-reset:n var(--n);animation:hrs 1.6s 6.8s ease-out both}
+  .timer b::after{content:counter(n) " hrs"}
+  @keyframes hrs{from{--n:0}to{--n:14}}
+
+  .cta{font-size:56px;font-weight:600;color:#c9d6f2;line-height:1.3;margin-bottom:60px}
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:60px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 15.6s both,pulse 1.2s 16.3s ease-in-out 2 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:34px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="tag up" style="animation-delay:.2s">Free for local businesses</div>
+    <div class="big up" style="animation-delay:.5s">How fast does<br>your business<br><span>really reply?</span></div>
+  </div></section>
+
+  <section class="scene s2"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:3.5s">Our free<br><span>missed enquiry check</span></div>
+    <div class="step up" style="animation-delay:4.1s"><div class="ic">🕵️</div><div><b>We message you</b><small>Like a real customer, after hours</small></div></div>
+    <div class="step up" style="animation-delay:5.6s"><div class="ic">⏱️</div><div><b>We time your reply</b><small>Minutes? Hours? Never?</small></div></div>
+    <div class="timer">Example reply time: <b></b></div>
+    <div class="step up" style="animation-delay:8.4s"><div class="ic">📋</div><div><b>We send you the results</b><small>Plus what an instant reply looks like</small></div></div>
+  </div></section>
+
+  <section class="scene s3"><div class="center">
+    <div class="big up" style="animation-delay:11.7s;font-size:96px">No cost.<br>No catch.</div>
+    <div class="big up" style="animation-delay:12.3s;font-size:96px;margin-top:20px"><span>Just the truth.</span></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <img class="logo up" style="animation-delay:14.7s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta up" style="animation-delay:15s">Want to know how many enquiries you're missing?</div>
+    <div class="btn">DM us “CHECK”</div>
+    <div class="handle up" style="animation-delay:16.2s">Free · @byronsystems</div>
+  </div></section>
+</body></html>
