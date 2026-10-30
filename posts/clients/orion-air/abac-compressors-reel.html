@@ -1,0 +1,104 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#012e69;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1200px;height:1200px;border-radius:50%;left:-60px;top:300px;
+        background:radial-gradient(circle,rgba(44,186,234,.30),rgba(44,186,234,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.1)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:100px;font-weight:800;line-height:1.06;letter-spacing:-2px}
+  .big span{color:#2cbaea}
+  .tag{align-self:flex-start;font-size:34px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#012e69;background:#2cbaea;padding:16px 30px;border-radius:999px;margin-bottom:40px}
+  .logobar{position:absolute;left:100px;top:110px;background:#fff;border-radius:22px;padding:22px 30px}
+  .logobar img{height:52px;display:block}
+
+  .s1{animation:show 3.6s 0s both}
+  .s2{animation:show 5.6s 3.4s both}
+  .s3{animation:show 4.2s 8.8s both}
+  .s4{animation:show 3s 12.8s both}
+  .s5{animation:showlast 3.6s 15.6s both}
+
+  /* compressor line drawing */
+  svg.comp{margin-top:60px;fill:none;stroke:#2cbaea;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+  svg.comp .d{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 1.6s ease-out both}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .needle{transform-origin:640px 92px;animation:gauge 1.4s 1.6s ease-out both}
+  @keyframes gauge{from{transform:rotate(-80deg)}to{transform:rotate(40deg)}}
+
+  /* range tiles */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:10px}
+  .tile{background:#fff;color:#012e69;border-radius:30px;padding:34px 30px;animation:pop .45s cubic-bezier(.2,1.4,.4,1) both}
+  .tile .ic{font-size:52px}
+  .tile b{display:block;font-size:38px;font-weight:800;line-height:1.15;margin-top:14px}
+  .tile small{display:block;font-size:27px;color:#34567b;margin-top:8px;line-height:1.3}
+  .h2{font-size:64px;font-weight:800;line-height:1.1;margin-bottom:40px}
+  .h2 span{color:#2cbaea}
+
+  /* specs */
+  .spec{display:flex;align-items:baseline;justify-content:space-between;border-bottom:3px solid rgba(44,186,234,.35);padding:30px 0}
+  .spec b{white-space:nowrap;font-size:84px;font-weight:800;color:#2cbaea;letter-spacing:-2px}
+  .spec span{font-size:40px;font-weight:600;color:#d6ecfb}
+
+  .cta{font-size:52px;font-weight:600;color:#d6ecfb;line-height:1.3;margin:10px 0 50px}
+  .btn{align-self:flex-start;font-size:48px;font-weight:800;color:#012e69;background:#2cbaea;padding:30px 50px;border-radius:999px;
+       animation:up .6s 16.6s both,pulse 1.2s 17.3s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  .contact{font-size:36px;color:#d6ecfb;margin-top:46px;line-height:1.5}
+  .contact b{color:#fff}
+  .bigLogo{align-self:flex-start;background:#fff;border-radius:28px;padding:30px 40px;margin-bottom:50px}
+  .bigLogo img{height:76px;display:block}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1">
+    <div class="logobar up" style="animation-delay:.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="center">
+      <div class="tag up" style="animation-delay:.2s">ABAC Compressors</div>
+      <div class="big up" style="animation-delay:.5s">Reliable<br>compressed air<br><span>for every job.</span></div>
+      <svg class="comp" width="760" height="300" viewBox="0 0 760 300">
+        <rect class="d" style="animation-delay:.8s" x="40" y="130" width="560" height="120" rx="60"/>
+        <rect class="d" style="animation-delay:1.1s" x="200" y="40" width="230" height="90" rx="16"/>
+        <path class="d" style="animation-delay:1.3s" d="M430 85 H560 V130 M250 40 V20 H380 V40"/>
+        <circle class="d" style="animation-delay:1.4s" cx="640" cy="92" r="52"/>
+        <path class="needle" d="M640 92 L640 56"/>
+        <circle class="d" style="animation-delay:1.6s" cx="130" cy="268" r="26"/><circle class="d" style="animation-delay:1.6s" cx="510" cy="268" r="26"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="scene s2"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:3.5s">The ABAC range at<br><span>Orion Air</span></div>
+    <div class="grid">
+      <div class="tile" style="animation-delay:4s"><div class="ic">💨</div><b>Oil-free &amp; silent</b><small>Clean air for labs, dental &amp; food prep</small></div>
+      <div class="tile" style="animation-delay:4.5s"><div class="ic">🔧</div><b>Oil-lubricated piston</b><small>Workshop workhorses, up to 20 bar</small></div>
+      <div class="tile" style="animation-delay:5s"><div class="ic">🔇</div><b>Belt-driven silent</b><small>Quiet power for busy spaces</small></div>
+      <div class="tile" style="animation-delay:5.5s"><div class="ic">⛽</div><b>Petrol portable</b><small>Compressed air wherever you work</small></div>
+    </div>
+  </div></section>
+
+  <section class="scene s3"><div class="center">
+    <div class="h2 up" style="animation-delay:8.9s">Sized to <span>suit you</span></div>
+    <div class="spec up" style="animation-delay:9.3s"><b>1.5–4 HP</b><span>Motor power</span></div>
+    <div class="spec up" style="animation-delay:9.8s"><b>4–270 L</b><span>Tank sizes</span></div>
+    <div class="spec up" style="animation-delay:10.3s"><b>Up to 20 bar</b><span>Pressure</span></div>
+    <div class="spec up" style="animation-delay:10.8s"><b>230V · 400V</b><span>Single &amp; 3 phase</span></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:12.9s;font-size:92px">Not sure<br>which one?</div>
+    <div class="cta up" style="animation-delay:13.5s;margin-top:30px">Use the free <b style="color:#2cbaea">Air Compressor Selection Tool</b> on our website.</div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="bigLogo up" style="animation-delay:15.7s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="cta up" style="animation-delay:16s">ABAC compressors, with free delivery on orders over £30.</div>
+    <div class="btn">Shop the range</div>
+    <div class="contact up" style="animation-delay:17.2s"><b>orionairsales.co.uk</b><br>info@orionair.co.uk</div>
+  </div></section>
+</body></html>
