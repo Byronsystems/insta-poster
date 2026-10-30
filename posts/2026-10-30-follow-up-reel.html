@@ -1,0 +1,82 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#070d22;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:360px;
+        background:radial-gradient(circle,rgba(44,167,231,.24),rgba(44,167,231,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.12)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:100px;font-weight:800;line-height:1.08;letter-spacing:-2px}
+  .big span{color:#2ca7e7}
+  .dim{color:#8da0cc}
+
+  .s1{animation:show 3.4s 0s both}
+  .s2{animation:show 9.6s 3.2s both}
+  .s3{animation:show 3s 12.6s both}
+  .s4{animation:showlast 3.6s 15.4s both}
+
+  .phone{position:absolute;left:150px;top:230px;width:780px;height:1190px;border-radius:70px;background:#0f1a3a;border:6px solid #233465;overflow:hidden;
+         box-shadow:0 40px 120px rgba(0,0,0,.6)}
+  .bar{display:flex;align-items:center;padding:34px 40px 24px;border-bottom:2px solid #1f2d57}
+  .avatar{width:80px;height:80px;border-radius:50%;background:#2ca7e7;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800;margin-right:24px}
+  .who{font-size:36px;font-weight:700}.who small{display:block;font-size:26px;font-weight:500;color:#8da0cc;margin-top:4px}
+  .chat{padding:22px 32px;display:flex;flex-direction:column;gap:16px}
+  .day{align-self:center;font-size:24px;font-weight:700;letter-spacing:2px;color:#8da0cc;background:#1a264d;border-radius:999px;padding:8px 22px;text-transform:uppercase}
+  .msg{max-width:82%;font-size:30px;line-height:1.3;padding:18px 24px;border-radius:32px}
+  .us{align-self:flex-end;background:#2d59a9;border-bottom-right-radius:10px}
+  .us small{display:block;font-size:20px;color:#bcd0f5;margin-top:8px;text-align:right}
+  .them{align-self:flex-start;background:#fff;color:#1c2f5e;border-bottom-left-radius:10px}
+  .won{align-self:stretch;background:#0b2a1c;border:3px solid #5ee08f;border-radius:28px;padding:22px 26px;font-size:34px;font-weight:700;color:#c9f7da;
+       animation:pop .5s 9.9s cubic-bezier(.2,1.4,.4,1) both}
+  .chip{position:absolute;left:0;right:0;margin:0 auto;width:fit-content;top:1450px;white-space:nowrap;font-size:36px;font-weight:700;background:#2ca7e7;
+        padding:18px 36px;border-radius:999px;animation:up .5s 10.5s both}
+
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:60px}
+  .cta{font-size:56px;font-weight:600;color:#c9d6f2;line-height:1.3;margin-bottom:60px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 16.3s both,pulse 1.2s 17s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:34px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="big up" style="animation-delay:.1s">You sent<br>the quote.</div>
+    <div class="big up" style="animation-delay:1s;margin-top:24px"><span>Then…<br>silence.</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="phone up" style="animation-delay:3.3s">
+      <div class="bar"><div class="avatar">E</div><div class="who">Emma<small>Bathroom refit enquiry</small></div></div>
+      <div class="chat">
+        <div class="day up" style="animation-delay:3.6s">Monday</div>
+        <div class="msg us up" style="animation-delay:3.9s">Hi Emma, here's your quote for the bathroom refit. Any questions, just ask!<small>Sent automatically</small></div>
+        <div class="day up" style="animation-delay:5.4s">Thursday</div>
+        <div class="msg us up" style="animation-delay:5.7s">Just checking the quote came through OK? Happy to talk any of it through.<small>Sent automatically</small></div>
+        <div class="day up" style="animation-delay:7.3s">Next Monday</div>
+        <div class="msg us up" style="animation-delay:7.6s">We've got a slot free from the 14th if you'd like to go ahead.<small>Sent automatically</small></div>
+        <div class="msg them up" style="animation-delay:9.1s">Yes please, let's book it in!</div>
+        <div class="won">✓ Quote accepted, job booked</div>
+      </div>
+    </div>
+    <div class="chip">Followed up for you, automatically</div>
+  </section>
+
+  <section class="scene s3"><div class="center">
+    <div class="big dim up" style="animation-delay:12.7s;font-size:92px">Most jobs<br>aren't lost.</div>
+    <div class="big up" style="animation-delay:13.3s;font-size:92px;margin-top:20px"><span>They're<br>forgotten.</span></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <img class="logo up" style="animation-delay:15.5s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta up" style="animation-delay:15.8s">Automatic follow-ups that turn quotes into booked jobs.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:17s">Example conversation · @byronsystems</div>
+  </div></section>
+</body></html>
