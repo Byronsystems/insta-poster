@@ -1,0 +1,90 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#070d22;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:360px;
+        background:radial-gradient(circle,rgba(44,167,231,.24),rgba(44,167,231,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.12)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:96px;font-weight:800;line-height:1.08;letter-spacing:-2px}
+  .big span{color:#2ca7e7}
+  .dim{color:#8da0cc}
+  .big .word{color:inherit}
+  .word{display:inline-block;animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+
+  .s1{animation:show 3.4s 0s both}
+  .s2{animation:show 9.6s 3.2s both}
+  .s3{animation:show 3s 12.6s both}
+  .s4{animation:showlast 3.6s 15.4s both}
+
+  .cols{position:absolute;left:60px;right:60px;top:250px;display:flex;gap:30px}
+  .col{flex:1;border-radius:36px;padding:40px 30px 30px;display:flex;flex-direction:column;align-items:center;animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  .without{background:#14193a;border:3px solid #3a4566}
+  .with{background:#0d2350;border:3px solid #2ca7e7;box-shadow:0 0 60px rgba(44,167,231,.25)}
+  .lab{font-size:32px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:30px;text-align:center;min-height:80px;display:flex;align-items:center}
+  .without .lab{color:#9fb2dc}.with .lab{color:#2ca7e7}
+  .clock{width:340px;height:340px}
+  .hand{transform-origin:150px 150px;transform:rotate(var(--from));animation-name:spin;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+  @keyframes spin{from{transform:rotate(var(--from))}to{transform:rotate(var(--to))}}
+  .time{font-size:72px;font-weight:800;margin:26px 0 30px;animation:up .4s both}
+  .without .time{color:#ff8a8a}.with .time{color:#5ee08f}
+  .item{align-self:stretch;display:flex;align-items:center;gap:16px;font-size:31px;font-weight:600;padding:18px 0;border-top:2px solid rgba(255,255,255,.08);animation:up .4s both}
+  .item i{font-style:normal;flex:none;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
+  .without .item i{background:#3b1215;color:#ff8a8a}.with .item i{background:#0b2a1c;color:#5ee08f}
+  .note{position:absolute;left:0;right:0;top:1390px;text-align:center;font-size:56px;font-weight:800;animation:up .5s 10.6s both}
+  .note span{color:#2ca7e7}
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:60px}
+  .cta{font-size:56px;font-weight:600;color:#c9d6f2;line-height:1.3;margin-bottom:60px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 16.3s both,pulse 1.2s 17s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:36px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+  <section class="scene s1"><div class="center">
+    <div class="big up" style="animation-delay:.1s">When does your<br>working day</div>
+    <div class="big up" style="animation-delay:.7s"><span>actually end?</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="cols">
+      <div class="col without" style="animation-delay:3.3s"><div class="lab">Without automation</div>
+        <svg class="clock" width="300" height="300" viewBox="0 0 300 300">
+      <circle cx="150" cy="150" r="138" fill="#0b1430" stroke="#ff8a8a" stroke-width="8"/>
+      <line x1="150" y1="24" x2="150" y2="44" stroke="#5a6b96" stroke-width="7" stroke-linecap="round" transform="rotate(0 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(30 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(60 150 150)"/><line x1="150" y1="24" x2="150" y2="44" stroke="#5a6b96" stroke-width="7" stroke-linecap="round" transform="rotate(90 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(120 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(150 150 150)"/><line x1="150" y1="24" x2="150" y2="44" stroke="#5a6b96" stroke-width="7" stroke-linecap="round" transform="rotate(180 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(210 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(240 150 150)"/><line x1="150" y1="24" x2="150" y2="44" stroke="#5a6b96" stroke-width="7" stroke-linecap="round" transform="rotate(270 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(300 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(330 150 150)"/>
+      <line class="hand" x1="150" y1="150" x2="150" y2="82" stroke="#fff" stroke-width="12" stroke-linecap="round"
+        style="--from:270deg;--to:315deg;animation-delay:3.8s;animation-duration:1.6s"/>
+      <line class="hand" x1="150" y1="150" x2="150" y2="50" stroke="#ff8a8a" stroke-width="7" stroke-linecap="round"
+        style="--from:0deg;--to:540deg;animation-delay:3.8s;animation-duration:1.6s"/>
+      <circle cx="150" cy="150" r="12" fill="#fff"/></svg><div class="time" style="animation-delay:5.3s">10:30pm</div><div class="item" style="animation-delay:5.4s"><i>✗</i>Replying to messages</div><div class="item" style="animation-delay:5.7s"><i>✗</i>Writing quotes</div><div class="item" style="animation-delay:6.0s"><i>✗</i>Chasing invoices</div><div class="item" style="animation-delay:6.3s"><i>✗</i>Booking jobs</div></div>
+      <div class="col with" style="animation-delay:6.8s"><div class="lab">With Byron AI</div>
+        <svg class="clock" width="300" height="300" viewBox="0 0 300 300">
+      <circle cx="150" cy="150" r="138" fill="#0b1430" stroke="#2ca7e7" stroke-width="8"/>
+      <line x1="150" y1="24" x2="150" y2="44" stroke="#5a6b96" stroke-width="7" stroke-linecap="round" transform="rotate(0 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(30 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(60 150 150)"/><line x1="150" y1="24" x2="150" y2="44" stroke="#5a6b96" stroke-width="7" stroke-linecap="round" transform="rotate(90 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(120 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(150 150 150)"/><line x1="150" y1="24" x2="150" y2="44" stroke="#5a6b96" stroke-width="7" stroke-linecap="round" transform="rotate(180 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(210 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(240 150 150)"/><line x1="150" y1="24" x2="150" y2="44" stroke="#5a6b96" stroke-width="7" stroke-linecap="round" transform="rotate(270 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(300 150 150)"/><line x1="150" y1="24" x2="150" y2="36" stroke="#5a6b96" stroke-width="4" stroke-linecap="round" transform="rotate(330 150 150)"/>
+      <line class="hand" x1="150" y1="150" x2="150" y2="82" stroke="#fff" stroke-width="12" stroke-linecap="round"
+        style="--from:270deg;--to:525deg;animation-delay:7.3s;animation-duration:1.8s"/>
+      <line class="hand" x1="150" y1="150" x2="150" y2="50" stroke="#2ca7e7" stroke-width="7" stroke-linecap="round"
+        style="--from:0deg;--to:3060deg;animation-delay:7.3s;animation-duration:1.8s"/>
+      <circle cx="150" cy="150" r="12" fill="#fff"/></svg><div class="time" style="animation-delay:9s">5:30pm</div><div class="item" style="animation-delay:9.0s"><i>✓</i>Replying to messages</div><div class="item" style="animation-delay:9.3s"><i>✓</i>Writing quotes</div><div class="item" style="animation-delay:9.6s"><i>✓</i>Chasing invoices</div><div class="item" style="animation-delay:9.9s"><i>✓</i>Booking jobs</div></div>
+    </div>
+    <div class="note">Get your <span>evenings back.</span></div>
+  </section>
+
+  <section class="scene s3"><div class="center">
+    <div class="big up" style="animation-delay:12.7s;font-size:92px">Finish work</div>
+    <div class="big up" style="animation-delay:13.2s;font-size:92px"><span>when the work<br>finishes.</span></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <img class="logo up" style="animation-delay:15.5s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta up" style="animation-delay:15.8s">AI that handles the admin, so it doesn't eat your evenings.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:17s">@byronsystems</div>
+  </div></section>
+</body></html>
