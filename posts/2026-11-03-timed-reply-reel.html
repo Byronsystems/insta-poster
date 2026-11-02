@@ -1,0 +1,119 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#070d22;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:360px;
+        background:radial-gradient(circle,rgba(44,167,231,.24),rgba(44,167,231,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.12)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}5%,95%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  @keyframes fadein{to{opacity:1}}
+  @keyframes fadeout{to{opacity:0}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:96px;font-weight:800;line-height:1.08;letter-spacing:-2px}
+  .big span{color:#2ca7e7}
+  .tag{align-self:flex-start;font-size:34px;font-weight:800;letter-spacing:4px;text-transform:uppercase;background:#2ca7e7;padding:16px 30px;border-radius:999px;margin-bottom:40px}
+
+  .s1{animation:show 3.4s 0s both}
+  .s2{animation:show 11.4s 3.2s both}
+  .s3{animation:show 3s 14.4s both}
+  .s4{animation:showlast 3.6s 17.2s both}
+
+  /* stopwatch */
+  @property --n{syntax:"<integer>";initial-value:0;inherits:false}
+  .watch{position:absolute;left:0;right:0;top:130px;margin:0 auto;width:720px;height:150px;border-radius:40px;background:#1a264d;border:4px solid #2ca7e7}
+  .w{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:24px;opacity:0}
+  .w .t{font-size:84px;font-weight:800;font-variant-numeric:tabular-nums;counter-reset:n var(--n)}
+  .w .t::before{content:"0:" counter(n,decimal-leading-zero)}
+  .w small{font-size:30px;font-weight:700;color:#9fb2dc}
+  .w1{animation:fadein .2s 3.7s both,fadeout .2s 7.9s both}
+  .w1 .t{animation:c24 3s 3.8s linear both}
+  @keyframes c24{from{--n:0}to{--n:24}}
+  .w2{animation:fadein .2s 8.1s both,fadeout .2s 11.9s both}
+  .w2 .t{animation:c21 2.6s 8.2s linear both}
+  @keyframes c21{from{--n:0}to{--n:21}}
+  .ff{position:absolute;right:24px;top:-24px;font-size:24px;font-weight:800;background:#f5b400;color:#2e2410;border-radius:999px;padding:6px 16px}
+  .ff1{animation:fadein .2s 3.8s both,fadeout .2s 6.8s both}
+  .ff2{animation:fadein .2s 8.2s both,fadeout .2s 10.8s both}
+  .done{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:800;color:#5ee08f;opacity:0}
+  .d1{animation:fadein .3s 6.8s both,fadeout .2s 7.9s both}
+  .d2{animation:fadein .3s 10.8s both}
+  .watch{animation:g1 .3s 6.8s both,b1 .2s 7.9s both,g2 .3s 10.8s both}
+  @keyframes g1{to{border-color:#5ee08f;background:#0b2a1c}}
+  @keyframes b1{to{border-color:#2ca7e7;background:#1a264d}}
+  @keyframes g2{to{border-color:#5ee08f;background:#0b2a1c}}
+
+  /* phone */
+  .phone{position:absolute;left:150px;top:320px;width:780px;height:1080px;border-radius:70px;background:#0f1a3a;border:6px solid #233465;overflow:hidden;
+         box-shadow:0 40px 120px rgba(0,0,0,.6)}
+  .bar{display:flex;align-items:center;padding:34px 40px 24px;border-bottom:2px solid #1f2d57}
+  .avatar{width:80px;height:80px;border-radius:50%;background:#2ca7e7;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800;margin-right:24px}
+  .who{font-size:36px;font-weight:700}.who small{display:block;font-size:26px;font-weight:500;color:#5ee08f;margin-top:4px}
+  .chat{padding:26px 34px;display:flex;flex-direction:column;gap:18px}
+  .msg{max-width:80%;font-size:33px;line-height:1.3;padding:20px 26px;border-radius:32px}
+  .msg small{display:block;font-size:21px;margin-top:8px;opacity:.7}
+  .them{align-self:flex-end;background:#2d59a9;border-bottom-right-radius:10px}
+  .them small{text-align:right}
+  .ai{align-self:flex-start;background:#fff;color:#1c2f5e;border-bottom-left-radius:10px}
+  .slot{align-self:flex-start;position:relative;max-width:80%}.slot .msg{max-width:none}
+  .typing{position:absolute;left:0;top:0;background:#fff;border-radius:32px;padding:24px 28px;display:flex;gap:10px;opacity:0}
+  .typing i{width:14px;height:14px;border-radius:50%;background:#8da0cc;animation:dot .9s ease-in-out infinite}
+  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes dot{50%{transform:translateY(-8px);opacity:.5}}
+  .t1{animation:fadein .2s 5.2s both,fadeout .2s 6.7s both}
+  .t2{animation:fadein .2s 9.4s both,fadeout .2s 10.7s both}
+  .booked{align-self:stretch;background:#0b2a1c;border:3px solid #5ee08f;border-radius:28px;padding:22px 26px;font-size:32px;font-weight:700;color:#c9f7da;
+          animation:pop .45s 11.4s cubic-bezier(.2,1.4,.4,1) both}
+
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:60px}
+  .cta{font-size:56px;font-weight:600;color:#c9d6f2;line-height:1.3;margin-bottom:60px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 18.1s both,pulse 1.2s 18.8s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:34px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="tag up" style="animation-delay:.1s">Timed for real ⏱</div>
+    <div class="big up" style="animation-delay:.4s">A customer<br>messages at<br><span>9:41pm.</span></div>
+    <div class="big up" style="animation-delay:1.4s;font-size:72px;color:#9fb2dc;margin-top:24px">How long until<br>they get a reply?</div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="watch up" style="animation-delay:3.3s">
+      <div class="w w1"><span class="t"></span><small>waiting for reply</small><span class="ff ff1">⏩ SPED UP</span></div>
+      <div class="done d1">✓ Replied in 24 seconds</div>
+      <div class="w w2"><span class="t"></span><small>waiting for reply</small><span class="ff ff2">⏩ SPED UP</span></div>
+      <div class="done d2">✓ Replied in 21 seconds</div>
+    </div>
+    <div class="phone up" style="animation-delay:3.3s">
+      <div class="bar"><div class="avatar">Y</div><div class="who">Your Business<small>● AI assistant online</small></div></div>
+      <div class="chat">
+        <div class="msg them up" style="animation-delay:3.6s">Hi, have you got anything Saturday morning?<small>9:41:05 pm</small></div>
+        <div class="slot"><div class="typing t1"><i></i><i></i><i></i></div>
+          <div class="msg ai up" style="animation-delay:6.8s">Hi! Yes, we have 9:30 or 11:00 free on Saturday. Which suits you best?<small>9:41:29 pm</small></div></div>
+        <div class="msg them up" style="animation-delay:8s">9:30 please<small>9:42:10 pm</small></div>
+        <div class="slot"><div class="typing t2"><i></i><i></i><i></i></div>
+          <div class="msg ai up" style="animation-delay:10.8s">Lovely, you're booked in for Saturday at 9:30. See you then!<small>9:42:31 pm</small></div></div>
+        <div class="booked">✓ Booked: Saturday, 9:30 AM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene s3"><div class="center">
+    <div class="big up" style="animation-delay:14.5s">Every message.<br>Any time.</div>
+    <div class="big up" style="animation-delay:15.1s;margin-top:20px"><span>Under 30<br>seconds.</span></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <img class="logo up" style="animation-delay:17.3s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta up" style="animation-delay:17.6s">AI that responds to every message, no matter the time.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18.8s">Example conversation · @byronsystems</div>
+  </div></section>
+</body></html>
