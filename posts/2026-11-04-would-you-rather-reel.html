@@ -1,0 +1,91 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#070d22;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:360px;
+        background:radial-gradient(circle,rgba(44,167,231,.24),rgba(44,167,231,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.12)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}7%,93%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:120px;font-weight:800;line-height:1.04;letter-spacing:-2px}
+  .big span{color:#2ca7e7}
+  .tag{align-self:flex-start;font-size:34px;font-weight:800;letter-spacing:4px;text-transform:uppercase;background:#2d59a9;padding:16px 30px;border-radius:999px;margin-bottom:40px}
+
+  .s1{animation:show 3.2s 0s both}
+  .r1{animation:show 3.6s 3s both}
+  .r2{animation:show 3.6s 6.4s both}
+  .r3{animation:show 3.6s 9.8s both}
+  .s5{animation:show 2.8s 13.2s both}
+  .s6{animation:showlast 3.8s 15.8s both}
+
+  .round{position:absolute;left:90px;right:130px;top:250px;bottom:420px;display:flex;flex-direction:column;justify-content:center}
+  .wyr{font-size:44px;font-weight:800;color:#9fb2dc;margin-bottom:34px}
+  .wyr span{color:#2ca7e7}
+  .card{position:relative;display:flex;align-items:center;gap:28px;border-radius:34px;padding:42px 40px;font-size:50px;font-weight:800;line-height:1.15}
+  .card .l{flex:none;width:90px;height:90px;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:48px}
+  .a{background:#14193a;border:4px solid #3a4566}
+  .a .l{background:#3a4566}
+  .b{background:#0d2350;border:4px solid #2ca7e7}
+  .b .l{background:#2ca7e7}
+  .or{align-self:center;font-size:40px;font-weight:900;letter-spacing:6px;color:#9fb2dc;margin:26px 0}
+  .dim{animation:dim .3s both}
+  @keyframes dim{to{opacity:.35;transform:scale(.97)}}
+  .pick{animation:pick .35s cubic-bezier(.2,1.5,.4,1) both}
+  @keyframes pick{to{box-shadow:0 0 70px rgba(44,167,231,.55);border-color:#5ee08f;transform:scale(1.03)}}
+  .chk{position:absolute;right:-22px;top:-28px;width:78px;height:78px;border-radius:50%;background:#5ee08f;color:#0b2a1c;font-size:44px;font-weight:900;
+       display:flex;align-items:center;justify-content:center;animation:pop .35s cubic-bezier(.2,1.6,.4,1) both}
+
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:56px}
+  .ask{font-size:58px;font-weight:800;margin-bottom:24px}
+  .cta{font-size:50px;font-weight:600;color:#c9d6f2;line-height:1.3;margin-bottom:56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 16.9s both,pulse 1.2s 17.6s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:34px;color:#8da0cc;margin-top:46px}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="tag up" style="animation-delay:.1s">Business owner edition</div>
+    <div class="big up" style="animation-delay:.4s">Would you<br><span>rather…</span> 🤔</div>
+  </div></section>
+
+  <section class="scene r1"><div class="round">
+    <div class="wyr up" style="animation-delay:3.1s">Would you rather… <span>1/3</span></div>
+    <div class="card a" style="animation:up .45s cubic-bezier(.2,.8,.2,1) 3.3s both,dim .3s 5.0s both"><span class="l">A</span><div>Answer messages at 10pm</div></div>
+    <div class="or up" style="animation-delay:3.6s">OR</div>
+    <div class="card b" style="animation:up .45s cubic-bezier(.2,.8,.2,1) 3.9s both,pick .35s 5.0s both"><span class="chk" style="animation-delay:5.0s">✓</span><span class="l">B</span><div>Let AI answer them for you</div></div>
+  </div></section>
+
+  <section class="scene r2"><div class="round">
+    <div class="wyr up" style="animation-delay:6.5s">Would you rather… <span>2/3</span></div>
+    <div class="card a" style="animation:up .45s cubic-bezier(.2,.8,.2,1) 6.7s both,dim .3s 8.4s both"><span class="l">A</span><div>Chase unpaid invoices yourself</div></div>
+    <div class="or up" style="animation-delay:7s">OR</div>
+    <div class="card b" style="animation:up .45s cubic-bezier(.2,.8,.2,1) 7.3s both,pick .35s 8.4s both"><span class="chk" style="animation-delay:8.4s">✓</span><span class="l">B</span><div>Have reminders sent automatically</div></div>
+  </div></section>
+
+  <section class="scene r3"><div class="round">
+    <div class="wyr up" style="animation-delay:9.9s">Would you rather… <span>3/3</span></div>
+    <div class="card a" style="animation:up .45s cubic-bezier(.2,.8,.2,1) 10.1s both,dim .3s 11.8s both"><span class="l">A</span><div>Lose a customer to a slow reply</div></div>
+    <div class="or up" style="animation-delay:10.4s">OR</div>
+    <div class="card b" style="animation:up .45s cubic-bezier(.2,.8,.2,1) 10.7s both,pick .35s 11.8s both"><span class="chk" style="animation-delay:11.8s">✓</span><span class="l">B</span><div>Get booked while you work</div></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="big up" style="animation-delay:13.3s;font-size:104px">Easy choice,</div>
+    <div class="big up" style="animation-delay:13.8s;font-size:104px"><span>right?</span></div>
+  </div></section>
+
+  <section class="scene s6"><div class="center">
+    <img class="logo up" style="animation-delay:15.9s" src="assets/logo.png" alt="Byron AI">
+    <div class="ask up" style="animation-delay:16.1s">A or B? Comment below 👇</div>
+    <div class="cta up" style="animation-delay:16.4s">We set up the AI that makes B happen.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:17.6s">@byronsystems</div>
+  </div></section>
+</body></html>
