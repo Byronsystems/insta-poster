@@ -1,0 +1,108 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif;background:#0b2a55;animation:warm 1.6s 3.2s ease-in-out both}
+  @keyframes warm{to{background:#2a0f05}}
+  .frost{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(160,215,255,.18),rgba(160,215,255,0) 65%);animation:fadeout 1.2s 3.2s both}
+  .heat{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 50% 42%,rgba(255,120,40,.42),rgba(255,120,40,0) 60%);animation:fadein 1.4s 3.4s both,throb 3s 5s ease-in-out infinite}
+  @keyframes throb{50%{transform:scale(1.08)}}
+  @keyframes fadein{to{opacity:1}} @keyframes fadeout{to{opacity:0}}
+  .flake{position:absolute;color:#cfe8ff;opacity:.8;animation:fall 6s linear infinite,fadeout .8s 3.2s both}
+  @keyframes fall{from{transform:translateY(-200px) rotate(0)}to{transform:translateY(2100px) rotate(360deg)}}
+
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:110px;font-weight:800;line-height:1.04;letter-spacing:-2px}
+  .cold{color:#9fd6ff}.hot{color:#ff8a3d}
+  .tag{align-self:flex-start;font-size:32px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#2a0f05;background:#ff8a3d;padding:16px 30px;border-radius:999px;margin-bottom:30px}
+  .logobar{position:absolute;left:100px;top:110px;background:#fff;border-radius:22px;padding:22px 30px}
+  .logobar img{height:52px;display:block}
+
+  .s1{animation:show 3.6s 0s both}
+  .s2{animation:show 4.8s 3.4s both}
+  .s3{animation:show 4.4s 8s both}
+  .s4{animation:show 3.4s 12.2s both}
+  .s5{animation:showlast 4s 15.4s both}
+
+  /* product hero */
+  .prod{position:absolute;left:140px;right:140px;top:300px;height:800px;background:#fff;border-radius:50px;overflow:hidden;
+        box-shadow:0 0 120px rgba(255,138,61,.45);animation:hero .8s 3.6s cubic-bezier(.2,1.2,.4,1) both,float 3s 4.6s ease-in-out infinite}
+  @keyframes hero{from{opacity:0;transform:scale(.7) rotate(-4deg)}to{opacity:1;transform:none}}
+  @keyframes float{50%{transform:translateY(-14px)}}
+  .prod img{width:100%;height:100%;object-fit:contain}
+  .name{position:absolute;left:100px;right:100px;top:1150px;text-align:center}
+  .name b{display:block;font-size:56px;font-weight:800}
+  .name span{display:block;font-size:44px;font-weight:700;color:#ff8a3d;margin-top:10px}
+
+  .feat{display:flex;align-items:center;gap:26px;font-size:44px;font-weight:700;margin-bottom:34px;line-height:1.15}
+  .feat i{flex:none;width:76px;height:76px;border-radius:50%;background:#ff8a3d;color:#2a0f05;font-style:normal;font-weight:800;font-size:40px;
+          display:flex;align-items:center;justify-content:center}
+  .h2{font-size:64px;font-weight:800;line-height:1.1;margin-bottom:40px}
+  .h2 span{color:#ff8a3d}
+  .cov{background:rgba(255,255,255,.08);border:3px solid rgba(255,138,61,.5);border-radius:30px;padding:30px 34px;margin-bottom:26px}
+  .cov b{display:block;font-size:96px;font-weight:800;color:#ff8a3d;letter-spacing:-2px;line-height:1}
+  .cov span{display:block;font-size:34px;color:#ffe2cf;margin-top:8px}
+
+  .smallprod{align-self:flex-start;width:300px;height:300px;background:#fff;border-radius:34px;overflow:hidden;margin-bottom:34px}
+  .smallprod img{width:100%;height:100%;object-fit:contain}
+  .price{font-size:150px;font-weight:800;letter-spacing:-4px;line-height:1;color:#ff8a3d}
+  .price small{font-size:44px;letter-spacing:0;color:#ffe2cf;margin-left:16px}
+  .stock{font-size:40px;color:#ffe2cf;margin:20px 0 40px}
+  .stock b{color:#5ee08f}
+  .btn{align-self:flex-start;font-size:48px;font-weight:800;color:#2a0f05;background:#ff8a3d;padding:28px 50px;border-radius:999px;
+       animation:up .6s 16.6s both,pulse 1.2s 17.3s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  .contact{display:flex;align-items:center;gap:30px;margin-top:40px}
+  .contact img{height:56px;background:#fff;border-radius:16px;padding:14px 20px}
+  .contact span{font-size:34px;color:#ffe2cf;line-height:1.4}
+</style></head><body>
+  <div class="frost"></div>
+  <div class="heat"></div>
+  <span class="flake" style="left:90px;top:0;font-size:46px;animation-delay:-1s,3.2s">❄</span>
+  <span class="flake" style="left:330px;top:0;font-size:30px;animation-delay:-3s,3.2s">❄</span>
+  <span class="flake" style="left:560px;top:0;font-size:54px;animation-delay:-2s,3.2s">❄</span>
+  <span class="flake" style="left:790px;top:0;font-size:36px;animation-delay:-4.5s,3.2s">❄</span>
+  <span class="flake" style="left:960px;top:0;font-size:44px;animation-delay:-.4s,3.2s">❄</span>
+  <span class="flake" style="left:200px;top:0;font-size:26px;animation-delay:-5.2s,3.2s">❄</span>
+
+  <section class="scene s1">
+    <div class="logobar up" style="animation-delay:.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="center">
+      <div class="big up" style="animation-delay:.3s"><span class="cold">Cold</span><br>garage?</div>
+      <div class="big up" style="animation-delay:1.1s;margin-top:20px">Chilly<br>workshop?</div>
+    </div>
+  </section>
+
+  <section class="scene s2">
+    <div class="prod"><img src="oly-j31.jpg" alt="Olympus JetHeat OLY-J3/1"></div>
+    <div class="name up" style="animation-delay:4.3s"><b>Olympus JetHeat OLY-J3/1</b><span>3kW · 12,000 BTU</span></div>
+  </section>
+
+  <section class="scene s3"><div class="center">
+    <div class="tag up" style="animation-delay:8.1s">Why you'll love it</div>
+    <div class="feat up" style="animation-delay:8.4s"><i>✓</i>Plugs into a standard UK socket</div>
+    <div class="feat up" style="animation-delay:8.9s"><i>✓</i>Adjustable thermostat</div>
+    <div class="feat up" style="animation-delay:9.4s"><i>✓</i>Fan only, 1.5kW &amp; 3kW settings</div>
+    <div class="feat up" style="animation-delay:9.9s"><i>✓</i>Overheat protection</div>
+    <div class="feat up" style="animation-delay:10.4s"><i>✓</i>Just 6.6kg, with carry handle</div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="h2 up" style="animation-delay:12.3s">Heats <span>up to</span></div>
+    <div class="cov up" style="animation-delay:12.7s"><b>46m²</b><span>Well-insulated space</span></div>
+    <div class="cov up" style="animation-delay:13.2s"><b>19m²</b><span>Badly insulated space (e.g. warehouse)</span></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="smallprod up" style="animation-delay:15.5s"><img src="oly-j31.jpg" alt=""></div>
+    <div class="price up" style="animation-delay:15.8s">£99<small>inc. VAT</small></div>
+    <div class="stock up" style="animation-delay:16.1s"><b>In stock</b> · Free delivery on orders over £30</div>
+    <div class="btn">Shop now</div>
+    <div class="contact up" style="animation-delay:17.2s"><img src="logo.png" alt="Orion Air"><span>orionairsales.co.uk<br>info@orionair.co.uk</span></div>
+  </div></section>
+</body></html>
