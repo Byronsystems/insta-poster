@@ -1,0 +1,89 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif;background:linear-gradient(180deg,#012e69 0%,#0a4f8f 60%,#0e7ab8 100%)}
+  /* caustic light and waves */
+  .caustic{position:absolute;inset:0;opacity:.18;background:
+     radial-gradient(ellipse 200px 60px at 20% 30%,#9fe8ff,transparent 70%),
+     radial-gradient(ellipse 260px 70px at 70% 55%,#9fe8ff,transparent 70%),
+     radial-gradient(ellipse 180px 50px at 40% 80%,#9fe8ff,transparent 70%);animation:shimmer 6s ease-in-out infinite alternate}
+  @keyframes shimmer{to{transform:translate(40px,30px) scale(1.08)}}
+  .waves{position:absolute;left:0;bottom:0;width:2160px;height:300px}
+  .w1{animation:slide 7s linear infinite}.w2{animation:slide 11s linear infinite reverse;opacity:.55}
+  @keyframes slide{to{transform:translateX(-1080px)}}
+  .bub{position:absolute;border-radius:50%;border:3px solid rgba(190,240,255,.45);animation:rise 6s linear infinite}
+  @keyframes rise{from{transform:translateY(0)}to{transform:translateY(-2200px)}}
+
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:112px;font-weight:800;line-height:1.04;letter-spacing:-2px}
+  .big span{color:#5fd4ff}
+  .tag{align-self:flex-start;font-size:34px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#012e69;background:#5fd4ff;padding:16px 30px;border-radius:999px;margin-bottom:40px}
+  .logobar{position:absolute;left:100px;top:110px;background:#fff;border-radius:22px;padding:22px 30px}
+  .logobar img{height:52px;display:block}
+
+  .s1{animation:show 3.8s 0s both}
+  .s2{animation:show 8.6s 3.6s both}
+  .s3{animation:show 3.2s 12s both}
+  .s4{animation:showlast 4.2s 15s both}
+
+  .h2{font-size:62px;font-weight:800;line-height:1.1;margin-bottom:36px}
+  .h2 span{color:#5fd4ff}
+  .cat{display:flex;align-items:center;gap:30px;background:rgba(255,255,255,.95);color:#012e69;border-radius:32px;padding:30px 34px;margin-bottom:26px;
+       box-shadow:0 16px 40px rgba(0,20,60,.3);animation:pop .45s cubic-bezier(.2,1.4,.4,1) both}
+  .cat .ic{flex:none;width:96px;height:96px;border-radius:26px;background:#e2f6ff;display:flex;align-items:center;justify-content:center;font-size:52px}
+  .cat b{display:block;font-size:46px;font-weight:800}
+  .cat small{display:block;font-size:30px;color:#34567b;margin-top:6px;line-height:1.25}
+
+  .bigLogo{align-self:flex-start;background:#fff;border-radius:28px;padding:30px 40px;margin-bottom:50px}
+  .bigLogo img{height:76px;display:block}
+  .cta{font-size:52px;font-weight:600;color:#e2f6ff;line-height:1.3;margin-bottom:50px}
+  .btn{align-self:flex-start;font-size:48px;font-weight:800;color:#012e69;background:#5fd4ff;padding:30px 50px;border-radius:999px;
+       animation:up .6s 16.1s both,pulse 1.2s 16.8s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  .contact{font-size:36px;color:#e2f6ff;margin-top:46px;line-height:1.5}
+  .contact b{color:#fff}
+</style></head><body>
+  <div class="caustic"></div>
+  <div class="bub" style="left:120px;top:1900px;width:40px;height:40px;animation-delay:-1s"></div>
+  <div class="bub" style="left:420px;top:2000px;width:24px;height:24px;animation-delay:-3.5s;animation-duration:5s"></div>
+  <div class="bub" style="left:860px;top:1950px;width:52px;height:52px;animation-delay:-2s;animation-duration:7s"></div>
+  <div class="bub" style="left:640px;top:2100px;width:30px;height:30px;animation-delay:-4.6s"></div>
+  <div class="bub" style="left:980px;top:2050px;width:20px;height:20px;animation-delay:-.6s;animation-duration:5.5s"></div>
+  <svg class="waves w2" viewBox="0 0 2160 300" preserveAspectRatio="none"><path fill="#5fd4ff" fill-opacity=".35" d="M0 120 Q135 60 270 120 T540 120 T810 120 T1080 120 T1350 120 T1620 120 T1890 120 T2160 120 V300 H0Z"/></svg>
+  <svg class="waves w1" viewBox="0 0 2160 300" preserveAspectRatio="none"><path fill="#012e69" fill-opacity=".55" d="M0 170 Q135 120 270 170 T540 170 T810 170 T1080 170 T1350 170 T1620 170 T1890 170 T2160 170 V300 H0Z"/></svg>
+
+  <section class="scene s1">
+    <div class="logobar up" style="animation-delay:.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="center">
+      <div class="tag up" style="animation-delay:.3s">Certikin pool &amp; spa</div>
+      <div class="big up" style="animation-delay:.6s">Everything<br>your pool<br><span>needs.</span></div>
+    </div>
+  </section>
+
+  <section class="scene s2"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:3.7s">The <span>Certikin</span> range</div>
+    <div class="cat" style="animation-delay:4.2s"><div class="ic">⚙️</div><div><b>Pumps</b><small>From 0.25HP mini pumps to 25HP commercial</small></div></div>
+    <div class="cat" style="animation-delay:5.8s"><div class="ic">💧</div><div><b>Filters</b><small>Sand filters from 18 to 42 inch</small></div></div>
+    <div class="cat" style="animation-delay:7.4s"><div class="ic">🔥</div><div><b>Heating</b><small>Electric &amp; gas heaters, heat exchangers</small></div></div>
+    <div class="cat" style="animation-delay:9s"><div class="ic">🔧</div><div><b>Spares</b><small>Valves, fittings &amp; pool cover reels</small></div></div>
+  </div></section>
+
+  <section class="scene s3"><div class="center">
+    <div class="big up" style="animation-delay:12.1s;font-size:100px">Domestic</div>
+    <div class="big up" style="animation-delay:12.6s;font-size:100px">&amp; <span>commercial</span></div>
+    <div class="big up" style="animation-delay:13.1s;font-size:100px">pools.</div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="bigLogo up" style="animation-delay:15.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="cta up" style="animation-delay:15.4s">Certikin swimming pool &amp; spa equipment, with free delivery on orders over £30.</div>
+    <div class="btn">Shop pool &amp; spa</div>
+    <div class="contact up" style="animation-delay:16.8s"><b>orionairsales.co.uk</b><br>info@orionair.co.uk</div>
+  </div></section>
+</body></html>
