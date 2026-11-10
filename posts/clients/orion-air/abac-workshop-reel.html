@@ -1,0 +1,95 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#012e69;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1200px;height:1200px;border-radius:50%;left:-60px;top:280px;
+        background:radial-gradient(circle,rgba(44,186,234,.32),rgba(44,186,234,0) 65%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.1)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:106px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#2cbaea}
+  .tag{display:inline-block;font-size:32px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#012e69;background:#2cbaea;padding:16px 30px;border-radius:999px}
+  .logobar{position:absolute;left:100px;top:110px;background:#fff;border-radius:22px;padding:22px 30px}
+  .logobar img{height:52px;display:block}
+
+  .s1{animation:show 3.6s 0s both}
+  .s2{animation:show 5.6s 3.4s both}
+  .s3{animation:show 4.4s 8.8s both}
+  .s4{animation:show 3s 13s both}
+  .s5{animation:showlast 4.2s 15.8s both}
+
+  /* hero with callouts */
+  .htitle{position:absolute;left:100px;right:100px;top:200px}
+  .htitle b{display:block;font-size:62px;font-weight:800;line-height:1.08;margin-top:22px}
+  .card{position:absolute;left:150px;width:780px;top:430px;height:830px;background:#fff;border-radius:50px;overflow:hidden;
+        box-shadow:0 0 120px rgba(44,186,234,.45);animation:heroin .8s 3.6s cubic-bezier(.2,1.2,.4,1) both}
+  @keyframes heroin{from{opacity:0;transform:scale(.7) rotate(-4deg)}to{opacity:1;transform:none}}
+  .card img{width:100%;height:100%;object-fit:contain;animation:zoom 5.4s 3.6s ease-in-out both}
+  @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+  .call{position:absolute;display:flex;align-items:center;gap:14px;font-size:30px;font-weight:800;color:#012e69;background:#2cbaea;border-radius:999px;
+        padding:14px 24px;box-shadow:0 10px 30px rgba(0,20,60,.35);animation:pop .4s cubic-bezier(.2,1.5,.4,1) both;white-space:nowrap}
+  .call i{width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid #012e69}
+
+  .h2{font-size:62px;font-weight:800;line-height:1.1;margin-bottom:36px}
+  .h2 span{color:#2cbaea}
+  .row{display:flex;align-items:center;gap:26px;background:#fff;color:#012e69;border-radius:30px;padding:28px 32px;margin-bottom:22px;animation:pop .45s cubic-bezier(.2,1.4,.4,1) both}
+  .row .ic{flex:none;width:90px;height:90px;border-radius:24px;background:#e2f6ff;display:flex;align-items:center;justify-content:center;font-size:48px}
+  .row b{display:block;font-size:42px;font-weight:800}
+  .row small{display:block;font-size:28px;color:#34567b;margin-top:4px}
+  .stats{display:flex;gap:16px;margin-top:16px}
+  .stats div{flex:1;text-align:center;background:rgba(44,186,234,.15);border:3px solid rgba(44,186,234,.5);border-radius:24px;padding:18px 6px;font-size:36px;font-weight:800;color:#2cbaea}
+
+  .bigLogo{align-self:flex-start;background:#fff;border-radius:28px;padding:30px 40px;margin-bottom:46px}
+  .bigLogo img{height:76px;display:block}
+  .cta{font-size:52px;font-weight:600;color:#d6ecfb;line-height:1.3;margin-bottom:46px}
+  .cta b{color:#2cbaea}
+  .btn{align-self:flex-start;font-size:48px;font-weight:800;color:#012e69;background:#2cbaea;padding:30px 50px;border-radius:999px;
+       animation:up .6s 16.9s both,pulse 1.2s 17.6s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  .contact{font-size:36px;color:#d6ecfb;margin-top:44px;line-height:1.5}
+  .contact b{color:#fff}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1">
+    <div class="logobar up" style="animation-delay:.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="center">
+      <div class="big up" style="animation-delay:.3s">Your workshop<br>runs on</div>
+      <div class="big up" style="animation-delay:1s"><span>compressed air.</span></div>
+    </div>
+  </section>
+
+  <section class="scene s2">
+    <div class="htitle up" style="animation-delay:3.5s"><span class="tag">ABAC</span><b>Piston compressors built<br>for everyday work</b></div>
+    <div class="card"><img src="abac-photo.jpg" alt="ABAC piston air compressor"></div>
+    <div class="call" style="left:110px;top:560px;animation-delay:5s"><i></i>Powerful piston pump</div>
+    <div class="call" style="left:540px;top:560px;animation-delay:5.7s"><i></i>Pressure regulator &amp; gauge</div>
+    <div class="call" style="left:420px;top:1190px;animation-delay:6.4s"><i></i>Wheels &amp; handle to move it</div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:8.9s">The full <span>ABAC range</span></div>
+    <div class="row" style="animation-delay:9.3s"><div class="ic">🔧</div><div><b>Oil-lubricated piston</b><small>Workshop workhorses</small></div></div>
+    <div class="row" style="animation-delay:9.7s"><div class="ic">🔇</div><div><b>Oil-free &amp; silent</b><small>Clean, quiet air for labs &amp; dental</small></div></div>
+    <div class="row" style="animation-delay:10.1s"><div class="ic">⛽</div><div><b>Petrol portable</b><small>Air wherever you're working</small></div></div>
+    <div class="stats up" style="animation-delay:10.7s"><div>1.5–4HP</div><div>4–270L</div><div>Up to 20 bar</div></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:13.1s;font-size:92px">Not sure<br>which one?</div>
+    <div class="cta up" style="animation-delay:13.7s;margin-top:30px">Try our free <b>Air Compressor Selection Tool</b> or give us a call.</div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="bigLogo up" style="animation-delay:15.9s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="cta up" style="animation-delay:16.2s">ABAC compressors, with free delivery on orders over £30.</div>
+    <div class="btn">Shop ABAC</div>
+    <div class="contact up" style="animation-delay:17.6s"><b>orionairsales.co.uk</b><br>01234 841221 · info@orionair.co.uk</div>
+  </div></section>
+</body></html>
