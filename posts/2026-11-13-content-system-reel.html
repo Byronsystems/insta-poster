@@ -1,0 +1,134 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#f2f6fb;color:#0f1b33;font-family:"Inter","DejaVu Sans",sans-serif}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}7%,93%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  @keyframes fadein{to{opacity:1}}
+  .logo{position:absolute;left:90px;top:110px;height:84px}
+  .center{position:absolute;left:90px;right:150px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:100px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#2563c9}
+
+  /* progress */
+  .prog{position:absolute;left:90px;right:150px;top:240px;height:10px;border-radius:10px;background:#dbe4f1;overflow:hidden;opacity:0;animation:fadein .3s 3.2s both}
+  .prog i{display:block;height:100%;background:#2563c9;transform-origin:left;transform:scaleX(0);animation:prog 13.8s 3.4s linear both}
+  @keyframes prog{to{transform:scaleX(1)}}
+  .step{position:absolute;left:90px;right:150px;top:300px}
+  .step small{display:block;font-size:30px;font-weight:800;letter-spacing:2px;color:#2563c9}
+  .step h3{font-size:70px;line-height:1.08;margin:10px 0 12px;font-weight:800}
+  .step p{font-size:36px;color:#5b6b85;margin:0;line-height:1.35}
+  .stage{position:absolute;left:90px;right:150px;top:720px;height:700px;display:flex;align-items:center;justify-content:center}
+  .panel{background:#fff;border-radius:36px;box-shadow:0 24px 60px rgba(15,27,51,.10);padding:40px;box-sizing:border-box}
+
+  .st1{animation:show 2.5s 3.2s both}.st2{animation:show 2.3s 5.6s both}.st3{animation:show 2.3s 7.8s both}
+  .st4{animation:show 2.3s 10s both}.st5{animation:show 2.3s 12.2s both}.st6{animation:show 2.9s 14.4s both}
+  .s1{animation:show 3.4s 0s both}.s8{animation:showlast 3.8s 17.2s both}
+
+  /* 1 brief */
+  .bub{max-width:640px;background:#2563c9;color:#fff;font-size:40px;line-height:1.3;padding:30px 36px;border-radius:40px;border-bottom-right-radius:10px;align-self:flex-end;animation:pop .4s 3.7s both}
+  /* 2 research */
+  .site{width:100%}
+  .site .bar{height:40px;border-radius:12px;background:#eef2f8;margin-bottom:24px;display:flex;align-items:center;padding-left:20px;font-size:24px;color:#8a97b5}
+  .line{height:22px;border-radius:11px;background:#e3eaf5;margin:16px 0}
+  .hl{background:#fff1b8;border-radius:10px;padding:8px 14px;font-size:30px;font-weight:700;display:inline-block;margin:8px 10px 8px 0;opacity:0;animation:pop .35s both}
+  .scan{position:absolute;left:0;right:0;height:6px;background:#2563c9;opacity:.6;box-shadow:0 0 30px #2563c9;animation:scan 1.6s 6s ease-in-out both}
+  @keyframes scan{from{top:0}to{top:100%}}
+  /* 3 design */
+  .frames{display:flex;gap:22px}
+  .fr{width:200px;height:356px;border-radius:24px;overflow:hidden;box-shadow:0 14px 30px rgba(15,27,51,.18);animation:pop .4s cubic-bezier(.2,1.4,.4,1) both;position:relative}
+  .fr b{position:absolute;left:18px;right:18px;top:120px;font-size:30px;color:#fff;line-height:1.1}
+  .fr i{position:absolute;left:18px;bottom:30px;width:110px;height:30px;border-radius:15px;background:#2cbaea}
+  /* 4 music */
+  .wave{display:flex;align-items:center;gap:12px;height:300px}
+  .wave span{width:22px;border-radius:11px;background:#2563c9;animation:bar .7s ease-in-out infinite alternate}
+  @keyframes bar{from{height:40px}to{height:260px}}
+  .note{font-size:120px;margin-right:40px}
+  /* 5 caption */
+  .cap{font-size:34px;line-height:1.4;color:#0f1b33}
+  .cap .tags{color:#2563c9;margin-top:20px}
+  .type{overflow:hidden;white-space:nowrap;width:0;animation:type 1s steps(30) both}
+  @keyframes type{to{width:100%}}
+  /* 6 live */
+  .ig{width:520px}
+  .ig .top{display:flex;align-items:center;gap:16px;font-size:30px;font-weight:700;margin-bottom:20px}
+  .ig .top img{height:56px;width:56px;object-fit:cover;object-position:left;border-radius:50%;border:3px solid #dbe4f1;background:#fff}
+  .ig .media{height:430px;border-radius:24px;background:linear-gradient(160deg,#012e69,#2cbaea);display:flex;align-items:center;justify-content:center;font-size:120px;color:#fff}
+  .posted{margin-top:24px;text-align:center;font-size:40px;font-weight:800;color:#0b5a2e;background:#d9f7e5;border-radius:22px;padding:16px;animation:pop .45s 15.5s cubic-bezier(.2,1.5,.4,1) both}
+
+  .cta{font-size:52px;font-weight:600;color:#3d4f78;line-height:1.3;margin:30px 0 56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#fff;background:#2563c9;padding:34px 56px;border-radius:999px;animation:up .6s 18.2s both,pulse 1.2s 18.9s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:34px;color:#8a97b5;margin-top:46px}
+</style></head><body>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <section class="scene s1"><div class="center">
+    <div class="big up" style="animation-delay:.2s">How we make<br>your content</div>
+    <div class="big up" style="animation-delay:.9s"><span>on autopilot.</span></div>
+  </div></section>
+
+  <div class="prog"><i></i></div>
+
+  <section class="scene st1">
+    <div class="step up" style="animation-delay:3.3s"><small>STEP 1 OF 6</small><h3>You send a quick brief</h3><p>A one-line message is all it takes.</p></div>
+    <div class="stage" style="flex-direction:column"><div class="bub">“Can you make a reel for our new heaters?”</div></div>
+  </section>
+
+  <section class="scene st2">
+    <div class="step up" style="animation-delay:5.7s"><small>STEP 2 OF 6</small><h3>We research your products</h3><p>Specs and prices pulled straight from your website.</p></div>
+    <div class="stage"><div class="panel site" style="position:relative;overflow:hidden">
+      <div class="bar">yourwebsite.co.uk</div>
+      <div class="line"></div><div class="line" style="width:70%"></div>
+      <span class="hl" style="animation-delay:6.4s">3kW</span><span class="hl" style="animation-delay:6.7s">Built-in thermostat</span><span class="hl" style="animation-delay:7s">£99 inc. VAT</span>
+      <div class="line"></div><div class="line" style="width:55%"></div>
+      <div class="scan"></div>
+    </div></div>
+  </section>
+
+  <section class="scene st3">
+    <div class="step up" style="animation-delay:7.9s"><small>STEP 3 OF 6</small><h3>Designed in your brand</h3><p>Your logo, colours and real product photos.</p></div>
+    <div class="stage"><div class="frames">
+      <div class="fr" style="background:#0b2a55;animation-delay:8.3s"><b>Cold workshop?</b><i></i></div>
+      <div class="fr" style="background:#2a0f05;animation-delay:8.6s"><b>3kW · 12,000 BTU</b><i style="background:#ff8a3d"></i></div>
+      <div class="fr" style="background:#012e69;animation-delay:8.9s"><b>From £99</b><i></i></div>
+    </div></div>
+  </section>
+
+  <section class="scene st4">
+    <div class="step up" style="animation-delay:10.1s"><small>STEP 4 OF 6</small><h3>Original music added</h3><p>Composed for each video, so no copyright worries.</p></div>
+    <div class="stage"><span class="note">🎵</span><div class="wave">
+      <span style="animation-delay:-.1s"></span><span style="animation-delay:-.5s"></span><span style="animation-delay:-.3s"></span><span style="animation-delay:-.6s"></span>
+      <span style="animation-delay:-.2s"></span><span style="animation-delay:-.4s"></span><span style="animation-delay:0s"></span><span style="animation-delay:-.55s"></span>
+      <span style="animation-delay:-.15s"></span><span style="animation-delay:-.35s"></span></div></div>
+  </section>
+
+  <section class="scene st5">
+    <div class="step up" style="animation-delay:12.3s"><small>STEP 5 OF 6</small><h3>Caption &amp; hashtags written</h3><p>In your tone of voice, ready to post.</p></div>
+    <div class="stage"><div class="panel cap" style="width:100%">
+      <div class="type" style="animation-delay:12.7s">Cold workshop? Get warm fast with…</div>
+      <div class="type" style="animation-delay:13.3s">Built-in thermostat. Just £99 inc. VAT.</div>
+      <div class="type tags" style="animation-delay:13.9s">#Workshop #Heating #YourBrand</div>
+    </div></div>
+  </section>
+
+  <section class="scene st6">
+    <div class="step up" style="animation-delay:14.5s"><small>STEP 6 OF 6</small><h3>You approve. It goes live.</h3><p>Posted straight to your Instagram.</p></div>
+    <div class="stage"><div class="panel ig up" style="animation-delay:14.8s">
+      <div class="top"><img src="assets/logo.png" alt="">yourbusiness</div>
+      <div class="media">▶</div>
+      <div class="posted">✓ Posted</div>
+    </div></div>
+  </section>
+
+  <section class="scene s8"><div class="center">
+    <div class="big up" style="animation-delay:17.3s;font-size:92px">Social media<br><span>on autopilot.</span></div>
+    <div class="cta up" style="animation-delay:17.8s">Reels, posts and captions made for your business, every week.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:19s">@byronsystems</div>
+  </div></section>
+</body></html>
