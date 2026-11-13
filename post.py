@@ -24,6 +24,9 @@ API = "https://graph.instagram.com/v23.0"
 CHROME = os.environ.get("CHROME_PATH", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
 WIDTH, HEIGHT = 1080, 1350  # Instagram 4:5 portrait, the largest feed size
 REEL_WIDTH, REEL_HEIGHT, FPS = 1080, 1920, 30  # Reels are 9:16
+# Set VIDEO_SIZE=1920x1080 to render a landscape video instead (e.g. for a website).
+if os.environ.get("VIDEO_SIZE"):
+    REEL_WIDTH, REEL_HEIGHT = map(int, os.environ["VIDEO_SIZE"].split("x"))
 
 # Injected into each video frame: freeze every CSS animation at the frame's time.
 FREEZE = """<script>addEventListener("load",()=>{const t=parseFloat(location.hash.slice(1))*1000;
