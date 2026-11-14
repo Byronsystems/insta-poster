@@ -1,0 +1,114 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#f2f6fb;color:#0f1b33;font-family:"Inter","DejaVu Sans",sans-serif}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+  .logo{position:absolute;left:90px;top:110px;height:84px}
+  .center{position:absolute;left:90px;right:150px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:108px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#2563c9}
+  .big .grey{color:#a3afc4}
+
+  .s1{animation:show 3.8s 0s both}
+  .s2{animation:show 6.6s 3.6s both}
+  .s3{animation:show 4.4s 10s both}
+  .s4{animation:show 2.8s 14.2s both}
+  .s5{animation:showlast 3.2s 16.8s both}
+
+  /* hook: typing dots that go nowhere */
+  .dots{display:flex;gap:18px;margin-top:50px;opacity:0;animation:fadein .3s 1.6s both}
+  .dots i{width:30px;height:30px;border-radius:50%;background:#c5cee0;animation:blink 1.2s ease-in-out infinite}
+  .dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+  @keyframes blink{50%{opacity:.3}}
+  @keyframes fadein{to{opacity:1}}
+
+  /* phone */
+  .phone{position:absolute;left:250px;top:250px;width:560px;height:1100px;border-radius:76px;background:#15171c;padding:15px;box-sizing:border-box;
+         box-shadow:0 0 0 3px #3a3d44 inset,0 40px 100px rgba(15,27,51,.28)}
+  .screen{position:relative;width:100%;height:100%;border-radius:62px;overflow:hidden;background:#fff;color:#111}
+  .island{position:absolute;top:15px;left:50%;width:136px;height:38px;margin-left:-68px;background:#000;border-radius:22px;z-index:9}
+  .sb{height:66px;display:flex;justify-content:space-between;align-items:center;padding:8px 40px 0 52px;font-size:22px;font-weight:700}
+  .home{position:absolute;bottom:10px;left:50%;width:170px;height:6px;margin-left:-85px;border-radius:3px;background:#111}
+  .hd{text-align:center;padding:4px 0 16px;border-bottom:1px solid #eee}
+  .hd i{display:block;width:70px;height:70px;margin:0 auto 6px;border-radius:50%;background:#b8c0cc;color:#fff;font-style:normal;font-size:32px;font-weight:700;line-height:70px}
+  .hd b{font-size:20px;font-weight:600}
+  .chat{padding:20px 20px;display:flex;flex-direction:column;gap:12px}
+  .when{align-self:center;font-size:18px;color:#8a8f98;font-weight:600;margin-top:6px}
+  .m{max-width:80%;font-size:25px;line-height:1.32;padding:14px 20px;border-radius:26px}
+  .us{align-self:flex-end;background:#0a84ff;color:#fff;border-bottom-right-radius:8px}
+  .them{align-self:flex-start;background:#e9e9eb;border-bottom-left-radius:8px}
+  .auto{align-self:flex-end;font-size:17px;font-weight:700;color:#2563c9;background:#e3edff;border-radius:999px;padding:5px 14px;margin-top:-4px}
+  .pdf{display:flex;align-items:center;gap:12px;margin-top:10px;background:rgba(255,255,255,.18);border-radius:14px;padding:10px 14px;font-size:20px;font-weight:600}
+  .pdf i{font-style:normal;background:#fff;color:#e5484d;font-size:14px;font-weight:800;border-radius:6px;padding:6px 7px}
+  .silence{align-self:center;font-size:20px;color:#b0b6c2;font-style:italic}
+
+  .won{position:absolute;left:0;right:0;top:1390px;margin:0 auto;width:fit-content;font-size:46px;font-weight:800;color:#0b5a2e;background:#d9f7e5;border:3px solid #5ccf8a;
+       border-radius:999px;padding:20px 46px;animation:pop .5s 9s cubic-bezier(.2,1.5,.4,1) both}
+
+  .h2{font-size:68px;font-weight:800;line-height:1.1;margin-bottom:46px}
+  .h2 span{color:#2563c9}
+  .row{display:flex;align-items:center;gap:28px;background:#fff;border-radius:32px;padding:30px 34px;margin-bottom:24px;box-shadow:0 14px 34px rgba(15,27,51,.08);
+       animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .row i{flex:none;width:84px;height:84px;border-radius:24px;background:#2563c9;color:#fff;font-style:normal;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .row b{display:block;font-size:42px}
+  .row small{display:block;font-size:30px;color:#5b6b85;margin-top:6px}
+
+  .cta{font-size:54px;font-weight:600;color:#3d4f78;line-height:1.3;margin:10px 0 56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#fff;background:#2563c9;padding:34px 56px;border-radius:999px;
+       animation:up .6s 17.8s both,pulse 1.2s 18.5s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:32px;color:#8a97b5;margin-top:50px}
+</style></head><body>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <section class="scene s1"><div class="center">
+    <div class="big up" style="animation-delay:.2s">You sent<br>the quote.</div>
+    <div class="big up" style="animation-delay:1.3s;margin-top:20px"><span class="grey">Then… silence.</span></div>
+    <div class="dots"><i></i><i></i><i></i></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="phone up" style="animation-delay:3.7s"><div class="screen"><div class="island"></div>
+      <div class="sb">9:41<span>●●● ▮</span></div>
+      <div class="hd"><i>J</i><b>Jess ›</b></div>
+      <div class="chat">
+        <div class="when">Monday</div>
+        <div class="m us up" style="animation-delay:4.1s">Hi Jess, here's your quote as promised. Any questions, just ask!
+          <span class="pdf"><i>PDF</i>Quote.pdf</span></div>
+        <div class="silence up" style="animation-delay:4.9s">No reply…</div>
+        <div class="when up" style="animation-delay:5.6s">Wednesday</div>
+        <div class="m us up" style="animation-delay:5.9s">Hi Jess, just checking the quote came through OK? Happy to help with any questions.</div>
+        <div class="auto up" style="animation-delay:6.4s">⚡ Sent automatically</div>
+        <div class="when up" style="animation-delay:7.3s">Thursday</div>
+        <div class="m them up" style="animation-delay:7.6s">Sorry, it's been a busy week! Looks great, let's go ahead 👍</div>
+      </div>
+      <div class="home"></div>
+    </div></div>
+    <div class="won">✓ Job won</div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:10.1s">Quote follow-ups <span>on autopilot</span></div>
+    <div class="row" style="animation-delay:10.6s"><i>1</i><div><b>Sent if they go quiet</b><small>No chasing, no forgetting</small></div></div>
+    <div class="row" style="animation-delay:11.1s"><i>2</i><div><b>Friendly, in your tone</b><small>Never pushy or salesy</small></div></div>
+    <div class="row" style="animation-delay:11.6s"><i>3</i><div><b>Stops when they reply</b><small>So you take it from there</small></div></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:14.3s;font-size:96px">Stop losing jobs</div>
+    <div class="big up" style="animation-delay:14.8s;font-size:96px"><span>to silence.</span></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="big up" style="animation-delay:16.9s;font-size:84px">Every quote,<br><span>followed up.</span></div>
+    <div class="cta up" style="animation-delay:17.3s">We set up automatic quote follow-ups for your business.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18.7s">Example conversation · @byronsystems</div>
+  </div></section>
+</body></html>
