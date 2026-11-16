@@ -1,0 +1,145 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#0b1430;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.04) 2px,transparent 2px);background-size:60px 60px}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+  @keyframes fadein{to{opacity:1}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:96px;font-weight:800;line-height:1.06;letter-spacing:-2px}
+  .big span{color:#4fc3f7}.big .dim{color:#7f8db3}
+
+  .s1{animation:show 3.8s 0s both}
+  .s2{animation:show 6.8s 3.6s both}
+  .s3{animation:show 4.2s 10.2s both}
+  .s4{animation:show 2.8s 14.2s both}
+  .s5{animation:showlast 3.2s 16.8s both}
+
+  /* keycaps */
+  .keys{display:flex;gap:22px;margin-bottom:60px}
+  .key{display:flex;gap:14px;align-items:center;font-size:44px;font-weight:800;color:#c9d6f2}
+  .key b{display:inline-flex;align-items:center;justify-content:center;min-width:96px;height:96px;padding:0 18px;box-sizing:border-box;border-radius:20px;background:#1b2550;
+         border:3px solid #33407a;box-shadow:0 8px 0 #121a3c;font-size:40px;color:#fff;animation:press .4s ease-in-out 3}
+  .key:nth-child(2) b{animation-delay:.2s}
+  @keyframes press{50%{transform:translateY(8px);box-shadow:0 0 0 #121a3c}}
+
+  /* flow */
+  .ttl{position:absolute;left:100px;right:100px;top:170px;font-size:40px;font-weight:800;color:#4fc3f7;letter-spacing:3px;text-transform:uppercase}
+  .card{position:absolute;background:#fff;color:#0f1b33;border-radius:30px;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+  .enq{left:100px;right:150px;top:250px;padding:28px 32px;animation:pop .5s 3.8s cubic-bezier(.2,1.3,.4,1) both}
+  .enq .tag{display:inline-block;font-size:22px;font-weight:800;color:#fff;background:#2563c9;border-radius:999px;padding:6px 16px;margin-bottom:14px}
+  .enq .f{display:flex;gap:16px;font-size:30px;padding:6px 0}
+  .enq .f span{width:140px;color:#8a97b5;font-weight:600}
+  .enq .f b{font-weight:700}
+  .spine{position:absolute;left:150px;top:560px;width:6px;height:0;border-radius:3px;background:#2e3f80;animation:grow .9s 4.6s ease-out both}
+  @keyframes grow{to{height:780px}}
+  .pulse{position:absolute;left:141px;top:560px;width:24px;height:24px;border-radius:50%;background:#4fc3f7;box-shadow:0 0 24px 6px rgba(79,195,247,.7);opacity:0;
+         animation:travel 1.6s 5s ease-in-out infinite}
+  @keyframes travel{0%{opacity:0;transform:translateY(0)}10%{opacity:1}90%{opacity:1}100%{opacity:0;transform:translateY(780px)}}
+  .branch{position:absolute;left:156px;width:0;height:6px;background:#2e3f80;border-radius:3px;animation:branch .3s ease-out both}
+  @keyframes branch{to{width:74px}}
+  .out{left:230px;right:150px;padding:22px 26px;display:flex;gap:22px;align-items:center;animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:none}}
+  .out .ic{flex:none;width:76px;height:76px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:40px}
+  .out h5{margin:0 0 10px;font-size:32px}
+  .sheet{border:2px solid #e3e8f0;border-radius:10px;overflow:hidden;font-size:19px;width:510px}
+  .sheet div{display:grid;grid-template-columns:120px 170px 1fr;border-top:2px solid #e3e8f0}
+  .sheet div:first-child{border-top:0;background:#f4f6fa;font-weight:700;color:#5b6b85}
+  .sheet span{padding:6px 10px;border-left:2px solid #e3e8f0;white-space:nowrap;overflow:hidden}
+  .sheet span:first-child{border-left:0}
+  .sheet .new{animation:hl .6s 6s both}
+  @keyframes hl{from{background:#fff;opacity:0}to{background:#fff3b0;opacity:1}}
+  .mail{font-size:22px;line-height:1.4;color:#3d4f78}
+  .mail b{color:#0f1b33}
+  .noti{display:flex;gap:12px;align-items:center;background:#1f2433;color:#fff;border-radius:16px;padding:10px 14px;font-size:20px}
+  .noti i{flex:none;width:36px;height:36px;border-radius:9px;background:#2563c9;font-style:normal;display:flex;align-items:center;justify-content:center;font-size:20px}
+  .noti small{display:block;color:#aab4cc;font-size:18px}
+  .tick{position:absolute;right:20px;top:20px;width:44px;height:44px;border-radius:50%;background:#22b35e;color:#fff;font-size:26px;font-weight:800;display:flex;align-items:center;justify-content:center;
+        animation:pop .35s cubic-bezier(.2,1.6,.4,1) both}
+  .auto{position:absolute;left:0;right:0;top:1390px;margin:0 auto;width:fit-content;font-size:40px;font-weight:800;color:#0b1430;background:#4fc3f7;border-radius:999px;padding:18px 42px;
+        animation:pop .5s 8.6s cubic-bezier(.2,1.5,.4,1) both}
+
+  .h2{font-size:68px;font-weight:800;line-height:1.1;margin-bottom:46px}
+  .h2 span{color:#4fc3f7}
+  .row{display:flex;align-items:center;gap:28px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:32px;padding:30px 34px;margin-bottom:24px;
+       animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  .row i{flex:none;width:84px;height:84px;border-radius:24px;background:#4fc3f7;color:#0b1430;font-style:normal;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .row b{display:block;font-size:42px}
+  .row small{display:block;font-size:30px;color:#a9b4cf;margin-top:6px}
+
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:56px}
+  .cta{font-size:56px;font-weight:600;color:#c9d6f2;line-height:1.3;margin-bottom:56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#0b1430;background:#4fc3f7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 17.8s both,pulse 1.2s 18.5s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:32px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="grid"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="keys up" style="animation-delay:.1s"><div class="key"><b>Ctrl</b>+<b>C</b></div><div class="key"><b>Ctrl</b>+<b>V</b></div></div>
+    <div class="big up" style="animation-delay:.4s">Still copying<br>enquiries into</div>
+    <div class="big up" style="animation-delay:1s"><span>a spreadsheet?</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="card enq">
+      <div class="tag">New website enquiry</div>
+      <div class="f"><span>Name</span><b>Lisa Hart</b></div>
+      <div class="f"><span>Service</span><b>End of tenancy clean</b></div>
+      <div class="f"><span>Phone</span><b>07700 900123</b></div>
+    </div>
+    <div class="spine"></div><div class="pulse"></div>
+
+    <div class="branch" style="top:735px;animation-delay:5.2s"></div>
+    <div class="card out" style="top:640px;animation-delay:5.4s">
+      <div class="ic" style="background:#e3f6e9">📊</div>
+      <div><h5>Added to your spreadsheet</h5>
+        <div class="sheet"><div><span>Name</span><span>Service</span><span>Phone</span></div>
+          <div><span>Tom Reid</span><span>Oven clean</span><span>07700 900456</span></div>
+          <div class="new"><span>Lisa Hart</span><span>End of tenancy</span><span>07700 900123</span></div></div></div>
+      <div class="tick" style="animation-delay:6.4s">✓</div>
+    </div>
+
+    <div class="branch" style="top:1000px;animation-delay:6.5s"></div>
+    <div class="card out" style="top:920px;animation-delay:6.7s">
+      <div class="ic" style="background:#e3edff">✉️</div>
+      <div><h5>Customer gets a reply</h5>
+        <div class="mail"><b>Thanks Lisa!</b> We've got your enquiry and will be in touch shortly.</div></div>
+      <div class="tick" style="animation-delay:7.3s">✓</div>
+    </div>
+
+    <div class="branch" style="top:1265px;animation-delay:7.5s"></div>
+    <div class="card out" style="top:1180px;animation-delay:7.7s">
+      <div class="ic" style="background:#fff1d6">🔔</div>
+      <div><h5>You get notified</h5>
+        <div class="noti"><i>B</i><div>New enquiry: Lisa Hart<small>End of tenancy clean</small></div></div></div>
+      <div class="tick" style="animation-delay:8.3s">✓</div>
+    </div>
+    <div class="auto">⚡ All automatic</div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:10.3s">Admin that <span>does itself</span></div>
+    <div class="row" style="animation-delay:10.8s"><i>1</i><div><b>No copy and paste</b><small>Every enquiry logged for you</small></div></div>
+    <div class="row" style="animation-delay:11.3s"><i>2</i><div><b>Nothing slips through</b><small>Every customer gets a reply</small></div></div>
+    <div class="row" style="animation-delay:11.8s"><i>3</i><div><b>Built around your tools</b><small>Your forms, inbox and sheets</small></div></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:14.3s">Less admin.</div>
+    <div class="big up" style="animation-delay:14.8s"><span>More time for<br>the real work.</span></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <img class="logo up" style="animation-delay:16.9s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta up" style="animation-delay:17.2s">We automate the admin that eats up your day.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18.7s">Example workflow · @byronsystems</div>
+  </div></section>
+</body></html>
