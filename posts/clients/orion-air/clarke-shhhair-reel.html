@@ -1,0 +1,128 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  @property --db{syntax:'<integer>';inherits:false;initial-value:95}
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#0d1626;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1200px;height:1200px;border-radius:50%;left:-60px;top:330px;
+        background:radial-gradient(circle,rgba(110,190,255,.18),rgba(110,190,255,0) 62%);animation:breathe 5s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.08)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:104px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#7cc4ff}
+  .logobar{position:absolute;left:100px;top:110px;background:#fff;border-radius:22px;padding:22px 30px}
+  .logobar img{height:52px;display:block}
+  .tag{display:inline-block;font-size:30px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#fff;background:#e3262b;padding:14px 28px;border-radius:999px}
+
+  .s1{animation:show 3.8s 0s both}
+  .s2{animation:show 5.4s 3.6s both}
+  .s3{animation:show 4.2s 8.8s both}
+  .s4{animation:show 4s 12.8s both}
+  .s5{animation:showlast 3.4s 16.6s both}
+
+  /* loud bars that calm down */
+  .bars{display:flex;align-items:flex-end;gap:16px;height:260px;margin-bottom:60px}
+  .bars i{width:46px;border-radius:12px;background:#ff5a5f;animation:loud .25s ease-in-out infinite alternate,calm .8s 2s ease-out both}
+  @keyframes loud{from{height:60%}to{height:100%}}
+  @keyframes calm{to{background:#7cc4ff;transform:scaleY(.25);transform-origin:bottom}}
+
+  /* hero */
+  .htitle{position:absolute;left:100px;right:100px;top:200px}
+  .htitle b{display:block;font-size:62px;font-weight:800;line-height:1.08;margin-top:20px}
+  .card{position:absolute;left:150px;width:780px;top:450px;height:700px;background:#fff;border-radius:50px;overflow:hidden;
+        box-shadow:0 0 120px rgba(110,190,255,.35);animation:heroin .8s 3.8s cubic-bezier(.2,1.2,.4,1) both}
+  @keyframes heroin{from{opacity:0;transform:scale(.7) rotate(-4deg)}to{opacity:1;transform:none}}
+  .card img{width:100%;height:100%;object-fit:contain;padding:40px;box-sizing:border-box}
+  .meter{position:absolute;left:150px;width:780px;top:1190px;display:flex;align-items:center;gap:30px;background:#16233a;border:3px solid #2b4268;border-radius:36px;padding:26px 34px;box-sizing:border-box;
+         animation:up .5s 4.8s both}
+  .db{font-size:110px;font-weight:800;color:#7cc4ff;line-height:1;--db:95;counter-reset:d var(--db);animation:count 1.6s 5.1s cubic-bezier(.3,.7,.3,1) both;min-width:250px}
+  .db:before{content:counter(d)}
+  .db small{font-size:44px}
+  @keyframes count{from{--db:95}to{--db:62}}
+  .meter p{margin:0;font-size:34px;line-height:1.3;color:#cfe3ff}
+  .meter p b{color:#fff}
+
+  /* specs */
+  .h2{font-size:62px;font-weight:800;line-height:1.1;margin-bottom:36px}
+  .h2 span{color:#7cc4ff}
+  .specs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
+  .sp{background:#fff;color:#0d1626;border-radius:28px;padding:24px 28px;animation:pop .45s cubic-bezier(.2,1.4,.4,1) both}
+  .sp span{display:block;font-size:56px;font-weight:800;color:#e3262b;letter-spacing:-1px}
+  .sp b{display:block;font-size:28px;color:#4a5670}
+  .pills{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+  .pill{font-size:32px;font-weight:700;border:3px solid #2b4268;background:#16233a;border-radius:999px;padding:12px 26px;animation:pop .4s both}
+  .price{display:flex;align-items:baseline;gap:18px;animation:pop .5s 11s cubic-bezier(.2,1.5,.4,1) both}
+  .price b{font-size:96px;font-weight:800}
+  .price span{font-size:34px;color:#cfe3ff}
+  .price em{font-style:normal;font-size:30px;font-weight:800;color:#5ee08f;margin-left:10px}
+
+  /* range */
+  .range{display:flex;flex-direction:column;gap:20px}
+  .rg{display:flex;align-items:center;gap:24px;background:#fff;color:#0d1626;border-radius:30px;padding:16px 28px 16px 16px;animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .rg img{width:190px;height:190px;object-fit:contain;flex:none}
+  .rg div{flex:1}
+  .rg b{display:block;font-size:38px;font-weight:800}
+  .rg small{display:block;font-size:28px;color:#4a5670;margin-top:6px}
+  .rg strong{font-size:40px;color:#e3262b;white-space:nowrap}
+
+  .bigLogo{align-self:flex-start;background:#fff;border-radius:28px;padding:30px 40px;margin-bottom:46px}
+  .bigLogo img{height:76px;display:block}
+  .cta{font-size:52px;font-weight:600;color:#cfe3ff;line-height:1.3;margin-bottom:46px}
+  .cta b{color:#fff}
+  .btn{align-self:flex-start;font-size:48px;font-weight:800;color:#fff;background:#e3262b;padding:30px 50px;border-radius:999px;
+       animation:up .6s 17.6s both,pulse 1.2s 18.3s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  .contact{font-size:36px;color:#cfe3ff;margin-top:44px;line-height:1.5}
+  .contact b{color:#fff}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1">
+    <div class="logobar up" style="animation-delay:.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="center">
+      <div class="bars"><i style="animation-delay:0s,2s"></i><i style="animation-delay:-.1s,2.05s"></i><i style="animation-delay:-.2s,2.1s"></i><i style="animation-delay:-.05s,2.15s"></i><i style="animation-delay:-.15s,2.2s"></i><i style="animation-delay:-.08s,2.25s"></i><i style="animation-delay:-.18s,2.3s"></i></div>
+      <div class="big up" style="animation-delay:.3s">Noisy<br>compressor?</div>
+      <div class="big up" style="animation-delay:1.9s"><span>Shhh…</span></div>
+    </div>
+  </section>
+
+  <section class="scene s2">
+    <div class="htitle up" style="animation-delay:3.7s"><span class="tag">Clarke ShhhAir</span><b>SHHH24/150 low noise<br>oil-free compressor</b></div>
+    <div class="card"><img src="shhh/shhh24.png" alt="Clarke SHHH24/150 compressor"></div>
+    <div class="meter"><div class="db"><small>dB</small></div><p><b>Just 62dB.</b><br>About as loud as a conversation.</p></div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:8.9s">Quiet, but <span>still powerful</span></div>
+    <div class="specs">
+      <div class="sp" style="animation-delay:9.2s"><span>1.5HP</span><b>1100W motor</b></div>
+      <div class="sp" style="animation-delay:9.4s"><span>24L</span><b>Air receiver</b></div>
+      <div class="sp" style="animation-delay:9.6s"><span>7cfm</span><b>200 L/min</b></div>
+      <div class="sp" style="animation-delay:9.8s"><span>8 bar</span><b>116psi</b></div>
+    </div>
+    <div class="pills"><div class="pill" style="animation-delay:10.2s">✓ Oil-free</div><div class="pill" style="animation-delay:10.4s">✓ Big wheels &amp; handle</div><div class="pill" style="animation-delay:10.6s">✓ Twin outlets</div></div>
+    <div class="price"><b>£247.14</b><span>inc. VAT</span><em>In stock</em></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center" style="right:110px;left:90px">
+    <div class="h2 up" style="animation-delay:12.9s">More in the <span>ShhhAir range</span></div>
+    <div class="range">
+      <div class="rg" style="animation-delay:13.3s"><img src="shhh/shhh50-150.png" alt=""><div><b>SHHH50/150</b><small>50L · 1.5HP</small></div><strong>£302.34</strong></div>
+      <div class="rg" style="animation-delay:13.7s"><img src="shhh/shhh50-350.png" alt=""><div><b>SHHH50/350</b><small>50L · 3.5HP</small></div><strong>£467.94</strong></div>
+      <div class="rg" style="animation-delay:14.1s"><img src="shhh/ultra50.png" alt=""><div><b>Ultra Shhh Air 50/200</b><small>50L · 2HP · 9cfm</small></div><strong>£605.94</strong></div>
+    </div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="bigLogo up" style="animation-delay:16.7s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="cta up" style="animation-delay:17s">Clarke ShhhAir low noise compressors from <b style="white-space:nowrap">£247.14 inc. VAT</b>.</div>
+    <div class="btn">Shop ShhhAir</div>
+    <div class="contact up" style="animation-delay:18.3s"><b>orionairsales.co.uk</b><br>01234 841221 · info@orionair.co.uk</div>
+  </div></section>
+</body></html>
