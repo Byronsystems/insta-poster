@@ -1,0 +1,115 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif;background:#16080a}
+  .rad{position:absolute;left:540px;top:900px;width:10px;height:10px}
+  .rad i{position:absolute;left:-400px;top:-400px;width:800px;height:800px;border-radius:50%;border:6px solid rgba(255,110,60,.5);opacity:0;animation:wave 3s ease-out infinite}
+  .rad i:nth-child(2){animation-delay:1s}.rad i:nth-child(3){animation-delay:2s}
+  @keyframes wave{0%{transform:scale(.2);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+  .glow{position:absolute;width:1300px;height:1300px;border-radius:50%;left:-110px;top:250px;
+        background:radial-gradient(circle,rgba(255,80,40,.35),rgba(255,80,40,0) 62%);animation:throb 3s ease-in-out infinite}
+  @keyframes throb{50%{transform:scale(1.08)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:104px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#ff6b3d}.big .dim{color:#9aa3b5}
+  .logobar{position:absolute;left:100px;top:110px;background:#fff;border-radius:22px;padding:22px 30px}
+  .logobar img{height:52px;display:block}
+  .tag{display:inline-block;font-size:30px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#fff;background:#e0262d;padding:14px 28px;border-radius:999px}
+
+  .s1{animation:show 3.6s 0s both}
+  .s2{animation:show 5.4s 3.4s both}
+  .s3{animation:show 4.2s 8.6s both}
+  .s4{animation:show 3.8s 12.6s both}
+  .s5{animation:showlast 3.8s 16.2s both}
+
+  .htitle{position:absolute;left:100px;right:100px;top:200px}
+  .htitle b{display:block;font-size:62px;font-weight:800;line-height:1.08;margin-top:20px}
+  .card{position:absolute;left:130px;width:820px;top:470px;height:680px;background:#fff;border-radius:50px;overflow:hidden;
+        box-shadow:0 0 140px rgba(255,90,40,.5);animation:heroin .8s 3.6s cubic-bezier(.2,1.2,.4,1) both}
+  @keyframes heroin{from{opacity:0;transform:scale(.7) rotate(-4deg)}to{opacity:1;transform:none}}
+  .card img{width:100%;height:100%;object-fit:contain;padding:20px;box-sizing:border-box}
+  .call{position:absolute;display:flex;align-items:center;gap:14px;font-size:32px;font-weight:800;color:#fff;background:#e0262d;border-radius:999px;
+        padding:16px 28px;box-shadow:0 10px 30px rgba(0,0,0,.5);animation:pop .4s cubic-bezier(.2,1.5,.4,1) both;white-space:nowrap;z-index:2}
+  .call i{width:18px;height:18px;border-radius:50%;background:#fff}
+  .stock{position:absolute;left:130px;top:1190px;font-size:36px;font-weight:800;color:#5ee08f;animation:up .5s 6.8s both}
+  .stock b{color:#fff;font-size:64px;margin-right:16px}
+  .stock em{font-style:normal;font-size:28px;color:#e8c8c0;font-weight:600;margin-right:18px}
+
+  .h2{font-size:66px;font-weight:800;line-height:1.1;margin-bottom:44px}
+  .h2 span{color:#ff6b3d}
+  .row{display:flex;align-items:center;gap:26px;background:#fff;color:#16080a;border-radius:30px;padding:26px 32px;margin-bottom:20px;animation:pop .45s cubic-bezier(.2,1.4,.4,1) both}
+  .row .ic{flex:none;width:86px;height:86px;border-radius:24px;background:#ffe3d8;display:flex;align-items:center;justify-content:center;font-size:46px}
+  .row b{display:block;font-size:40px;font-weight:800}
+  .row small{display:block;font-size:28px;color:#6b5450;margin-top:4px}
+
+  .models{display:flex;flex-direction:column;gap:24px}
+  .model{background:#fff;color:#16080a;border-radius:34px;padding:30px 36px;animation:slide .5s cubic-bezier(.2,1.3,.4,1) both;position:relative}
+  @keyframes slide{from{opacity:0;transform:translateX(-90px)}to{opacity:1;transform:none}}
+  .model b{display:block;font-size:52px;font-weight:800}
+  .model ul{margin:12px 0 0;padding:0;list-style:none;font-size:30px;line-height:1.5;color:#5a4440}
+  .model li:before{content:"✓ ";color:#e0262d;font-weight:800}
+  .model .p{position:absolute;right:36px;top:30px;text-align:right;font-size:50px;font-weight:800;color:#e0262d}
+  .model .p small{display:block;font-size:24px;color:#6b5450;font-weight:600}
+
+  .bigLogo{align-self:flex-start;background:#fff;border-radius:28px;padding:30px 40px;margin-bottom:46px}
+  .bigLogo img{height:76px;display:block}
+  .cta{font-size:52px;font-weight:600;color:#ffd9cc;line-height:1.3;margin-bottom:46px}
+  .cta b{color:#fff}
+  .btn{align-self:flex-start;font-size:48px;font-weight:800;color:#fff;background:#e0262d;padding:30px 50px;border-radius:999px;
+       animation:up .6s 17.3s both,pulse 1.2s 18s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  .contact{font-size:36px;color:#ffd9cc;margin-top:44px;line-height:1.5}
+  .contact b{color:#fff}
+</style></head><body>
+  <div class="glow"></div>
+  <div class="rad"><i></i><i></i><i></i></div>
+
+  <section class="scene s1">
+    <div class="logobar up" style="animation-delay:.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="center">
+      <div class="big up" style="animation-delay:.3s">Big, cold<br>workspace?</div>
+      <div class="big up" style="animation-delay:1.1s;margin-top:16px"><span>Feel the heat.</span></div>
+      <div class="big up" style="animation-delay:1.7s"><span class="dim">Not the draught.</span></div>
+    </div>
+  </section>
+
+  <section class="scene s2">
+    <div class="htitle up" style="animation-delay:3.5s"><span class="tag">Arcotherm</span><b>FIRE 45 radiant<br>space heater</b></div>
+    <div class="card"><img src="fire/fire45.png" alt="Arcotherm FIRE 45 heater"></div>
+    <div class="call" style="left:90px;top:500px;animation-delay:4.6s"><i></i>Adjustable heat cone</div>
+    <div class="call" style="left:620px;top:600px;animation-delay:5.1s"><i></i>65L fuel tank</div>
+    <div class="call" style="left:560px;top:1080px;animation-delay:5.6s"><i></i>Wheels &amp; handle</div>
+    <div class="stock"><b>£2,472.00</b><em>inc. VAT</em>● In stock</div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:8.7s">Why <span>radiant heat?</span></div>
+    <div class="row" style="animation-delay:9.1s"><div class="ic">🌬️</div><div><b>No air movement</b><small>Heats by radiation, not by blowing</small></div></div>
+    <div class="row" style="animation-delay:9.5s"><div class="ic">🔇</div><div><b>Low noise</b><small>No roaring fan in your ear</small></div></div>
+    <div class="row" style="animation-delay:9.9s"><div class="ic">🌡️</div><div><b>Thermostat or timer</b><small>Can be connected to either</small></div></div>
+    <div class="row" style="animation-delay:10.3s"><div class="ic">🔥</div><div><b>Electronic flame control</b><small>With a photo sensor</small></div></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center" style="right:110px;left:90px">
+    <div class="h2 up" style="animation-delay:12.7s">Two sizes in the <span>FIRE range</span></div>
+    <div class="models">
+      <div class="model" style="animation-delay:13.1s"><b>FIRE 25DV</b><div class="p">£1,368.00<small>inc. VAT</small></div>
+        <ul><li>43L fuel tank</li><li>Dual voltage 110V / 230V</li></ul></div>
+      <div class="model" style="animation-delay:13.6s"><b>FIRE 45</b><div class="p">£2,472.00<small>inc. VAT</small></div>
+        <ul><li>65L fuel tank</li><li>Lifting hooks</li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="bigLogo up" style="animation-delay:16.3s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="cta up" style="animation-delay:16.6s">Arcotherm FIRE radiant heaters from <b style="white-space:nowrap">£1,368.00 inc. VAT</b>.</div>
+    <div class="btn">Shop Arcotherm</div>
+    <div class="contact up" style="animation-delay:18s"><b>orionairsales.co.uk</b><br>01234 841221 · info@orionair.co.uk</div>
+  </div></section>
+</body></html>
