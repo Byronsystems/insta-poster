@@ -1,0 +1,135 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#16130f;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1300px;height:1300px;border-radius:50%;left:-110px;top:320px;
+        background:radial-gradient(circle,rgba(255,180,60,.20),rgba(255,180,60,0) 62%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.08)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:100px;font-weight:800;line-height:1.06;letter-spacing:-2px}
+  .big span{color:#ffb43c}.big .grey{color:#8f877a}
+
+  .s1{animation:show 3.8s 0s both}
+  .s2{animation:show 3.6s 3.6s both}
+  .s3{animation:show 3.6s 7s both}
+  .s4{animation:show 4.2s 10.4s both}
+  .s5{animation:show 2.6s 14.4s both}
+  .s6{animation:showlast 3.4s 16.8s both}
+
+  .voicemail{align-self:flex-start;display:flex;align-items:center;gap:18px;font-size:36px;font-weight:700;color:#c9c1b4;background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.15);
+             border-radius:999px;padding:16px 30px;margin-bottom:50px;animation:pop .4s .1s both}
+
+  /* phone */
+  .phone{position:absolute;left:250px;top:250px;width:560px;height:1100px;border-radius:76px;background:#2a2620;padding:15px;box-sizing:border-box;
+         box-shadow:0 0 0 3px #4a443a inset,0 40px 120px rgba(0,0,0,.6)}
+  .screen{position:relative;width:100%;height:100%;border-radius:62px;overflow:hidden;background:#fff;color:#111}
+  .island{position:absolute;top:15px;left:50%;width:136px;height:38px;margin-left:-68px;background:#000;border-radius:22px;z-index:9}
+  .sb{height:66px;display:flex;justify-content:space-between;align-items:center;padding:8px 40px 0 52px;font-size:22px;font-weight:700}
+  .home{position:absolute;bottom:10px;left:50%;width:170px;height:6px;margin-left:-85px;border-radius:3px;background:#111;z-index:9}
+  .form{padding:10px 28px}
+  .form h4{margin:6px 0 4px;font-size:32px}
+  .form p{margin:0 0 20px;font-size:20px;color:#777}
+  .fld{margin-bottom:16px}
+  .fld label{display:block;font-size:18px;font-weight:700;color:#555;margin-bottom:6px}
+  .fld div{border:2px solid #ddd;border-radius:14px;padding:14px 16px;font-size:23px;overflow:hidden;white-space:nowrap}
+  .typ{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:0;animation:type .5s steps(18) both}
+  @keyframes type{to{width:100%}}
+  .opts{display:flex;gap:10px}
+  .opts span{flex:1;text-align:center;border:2px solid #ddd;border-radius:14px;padding:12px 6px;font-size:20px;font-weight:600}
+  .opts .sel{animation:sel .3s both}
+  @keyframes sel{to{border-color:#e89a10;background:#fff4dd;color:#8a5500}}
+  .submit{margin-top:10px;background:#e89a10;color:#fff;text-align:center;font-weight:800;font-size:24px;border-radius:14px;padding:16px;animation:press .3s 6.4s both}
+  @keyframes press{50%{transform:scale(.95)}}
+
+  .inbox{padding:6px 22px}
+  .inbox .hd{display:flex;align-items:center;gap:14px;padding:6px 0 16px;border-bottom:1px solid #eee}
+  .inbox .hd i{width:56px;height:56px;border-radius:50%;background:#e89a10;font-style:normal;color:#fff;font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center}
+  .inbox .hd b{font-size:22px;display:block}.inbox .hd span{font-size:17px;color:#888}
+  .q{margin-top:20px;font-size:22px;line-height:1.45;color:#333}
+  .quote{margin:18px 0;border:2px solid #f3d9a6;background:#fff9ec;border-radius:20px;padding:20px 22px;animation:pop .45s 8.2s cubic-bezier(.2,1.4,.4,1) both}
+  .quote small{display:block;font-size:18px;color:#8a5500;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  .quote b{display:block;font-size:30px;margin:6px 0}
+  .quote strong{font-size:56px;color:#111}
+  .quote em{font-style:normal;font-size:20px;color:#777}
+  .book{display:block;text-align:center;background:#111;color:#fff;font-weight:800;font-size:22px;border-radius:14px;padding:15px;animation:up .4s 8.8s both}
+  .badge{position:absolute;left:0;right:0;top:1390px;margin:0 auto;width:fit-content;font-size:42px;font-weight:800;color:#1a1306;background:#ffb43c;border-radius:999px;padding:18px 44px;
+         animation:pop .5s 9.2s cubic-bezier(.2,1.5,.4,1) both}
+
+  .h2{font-size:66px;font-weight:800;line-height:1.1;margin-bottom:46px}
+  .h2 span{color:#ffb43c}
+  .row{display:flex;align-items:center;gap:28px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:32px;padding:30px 34px;margin-bottom:24px;
+       animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .row i{flex:none;width:84px;height:84px;border-radius:24px;background:#ffb43c;color:#1a1306;font-style:normal;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .row b{display:block;font-size:42px}
+  .row small{display:block;font-size:30px;color:#bdb4a5;margin-top:6px}
+
+  .logo{height:120px;align-self:flex-start;background:#f8fbff;border-radius:24px;padding:18px 26px;margin-bottom:56px}
+  .cta{font-size:56px;font-weight:600;color:#e6dccb;line-height:1.3;margin-bottom:56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#1a1306;background:#ffb43c;padding:34px 56px;border-radius:999px;
+       animation:up .6s 17.8s both,pulse 1.2s 18.5s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:32px;color:#a39a8b;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1"><div class="center">
+    <div class="voicemail">💬 “We'll get back to you with a price…”</div>
+    <div class="big up" style="animation-delay:.6s">Customers want<br>a price.</div>
+    <div class="big up" style="animation-delay:1.6s"><span class="grey">Not a “we'll<br>get back to you”.</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="phone up" style="animation-delay:3.7s"><div class="screen"><div class="island"></div>
+      <div class="sb">9:41<span>●●● ▮</span></div>
+      <div class="form">
+        <h4>Get your price</h4><p>Mobile car valeting</p>
+        <div class="fld"><label>Service</label><div class="opts"><span>Mini</span><span class="sel" style="animation-delay:4.4s">Full valet</span><span>Premium</span></div></div>
+        <div class="fld"><label>Car</label><div><span class="typ" style="animation-delay:4.9s">Peugeot 108</span></div></div>
+        <div class="fld"><label>Postcode</label><div><span class="typ" style="animation-delay:5.5s">AB12 3CD</span></div></div>
+        <div class="fld"><label>Email</label><div><span class="typ" style="animation-delay:5.9s">alex@email.com</span></div></div>
+        <div class="submit">Get my quote</div>
+      </div>
+      <div class="home"></div>
+    </div></div>
+  </section>
+
+  <section class="scene s3">
+    <div class="phone up" style="animation-delay:7.1s"><div class="screen"><div class="island"></div>
+      <div class="sb">9:41<span>●●● ▮</span></div>
+      <div class="inbox">
+        <div class="hd"><i>V</i><div><b>Your valeting quote</b><span>from Your Valeting Co.</span></div></div>
+        <div class="q up" style="animation-delay:7.6s">Hi Alex, thanks for getting in touch! Your Peugeot 108 counts as a small car, so here's your price:</div>
+        <div class="quote"><small>Your quote</small><b>Full valet · small car</b><strong>£115</strong> <em>from · about 3 hours</em></div>
+        <span class="book">Pick a day and time →</span>
+      </div>
+      <div class="home"></div>
+    </div></div>
+    <div class="badge">⚡ Quote sent automatically</div>
+  </section>
+
+  <section class="scene s4"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:10.5s">Quotes that <span>write themselves</span></div>
+    <div class="row" style="animation-delay:11s"><i>1</i><div><b>Uses your price list</b><small>Sizes, extras and options</small></div></div>
+    <div class="row" style="animation-delay:11.5s"><i>2</i><div><b>Sent to their inbox</b><small>Clear, friendly and on-brand</small></div></div>
+    <div class="row" style="animation-delay:12s"><i>3</i><div><b>Booking link included</b><small>So they can book there and then</small></div></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="big up" style="animation-delay:14.5s;font-size:96px">Clear prices.</div>
+    <div class="big up" style="animation-delay:15s;font-size:96px"><span>More bookings.</span></div>
+  </div></section>
+
+  <section class="scene s6"><div class="center">
+    <img class="logo up" style="animation-delay:16.9s" src="assets/logo.png" alt="Byron AI">
+    <div class="cta up" style="animation-delay:17.2s">We set up automatic quotes for your business.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18.7s">Example quote · @byronsystems</div>
+  </div></section>
+</body></html>
