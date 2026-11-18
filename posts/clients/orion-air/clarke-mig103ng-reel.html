@@ -1,0 +1,106 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  @property --n{syntax:'<integer>';inherits:false;initial-value:0}
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#121212;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .stripe{position:absolute;left:0;right:0;height:22px;background:#ff4b4b}
+  .glow{position:absolute;width:1300px;height:1300px;border-radius:50%;left:-110px;top:300px;
+        background:radial-gradient(circle,rgba(255,70,70,.30),rgba(0,0,0,0) 62%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.08)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:104px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#ff4b4b}
+  .logobar{position:absolute;left:100px;top:110px;background:#fff;border-radius:22px;padding:22px 30px}
+  .logobar img{height:52px;display:block}
+  .tag{display:inline-block;font-size:30px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#121212;background:#ff4b4b;padding:14px 28px;border-radius:999px}
+
+  .s1{animation:show 3.8s 0s both}
+  .s2{animation:show 5.2s 3.6s both}
+  .s3{animation:show 4.4s 8.6s both}
+  .s4{animation:show 3.4s 12.8s both}
+  .s5{animation:showlast 4s 16s both}
+
+  .plug{display:inline-flex;align-items:center;gap:20px;font-size:40px;font-weight:800;color:#ff6b6b;background:rgba(255,107,107,.1);border:3px solid rgba(255,107,107,.4);
+        border-radius:999px;padding:16px 34px;margin-bottom:56px;align-self:flex-start;animation:pop .4s .1s both}
+
+  .htitle{position:absolute;left:100px;right:100px;top:200px}
+  .htitle b{display:block;font-size:62px;font-weight:800;line-height:1.08;margin-top:20px}
+  .card{position:absolute;left:150px;width:780px;top:450px;height:740px;background:#fff;border-radius:50px;overflow:hidden;
+        box-shadow:0 0 120px rgba(255,70,70,.30);animation:heroin .8s 3.8s cubic-bezier(.2,1.2,.4,1) both}
+  @keyframes heroin{from{opacity:0;transform:scale(.7) rotate(-4deg)}to{opacity:1;transform:none}}
+  .card img{width:100%;height:100%;object-fit:contain;padding:30px;box-sizing:border-box}
+  .call{position:absolute;display:flex;align-items:center;gap:14px;font-size:32px;font-weight:800;color:#121212;background:#ff4b4b;border-radius:999px;
+        padding:16px 28px;box-shadow:0 10px 30px rgba(0,0,0,.5);animation:pop .4s cubic-bezier(.2,1.5,.4,1) both;white-space:nowrap;z-index:2}
+  .call i{width:18px;height:18px;border-radius:50%;background:#121212}
+
+  .h2{font-size:64px;font-weight:800;line-height:1.1;margin-bottom:36px}
+  .h2 span{color:#ff4b4b}
+  .specs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .sp{background:#1e1e1e;border:3px solid #333;border-radius:28px;padding:26px 28px;animation:pop .45s cubic-bezier(.2,1.4,.4,1) both}
+  .sp span{display:block;font-size:64px;font-weight:800;color:#ff4b4b;letter-spacing:-1px;line-height:1}
+  .sp b{display:block;font-size:28px;color:#cfcfcf;margin-top:10px;line-height:1.3}
+
+  .uses{display:flex;flex-direction:column;gap:22px}
+  .use{display:flex;align-items:center;gap:26px;font-size:54px;font-weight:800;animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .use i{flex:none;width:96px;height:96px;border-radius:28px;background:#ff4b4b;font-style:normal;font-size:50px;display:flex;align-items:center;justify-content:center}
+
+  .bigLogo{align-self:flex-start;background:#fff;border-radius:28px;padding:30px 40px;margin-bottom:46px}
+  .bigLogo img{height:76px;display:block}
+  .price{font-size:110px;font-weight:800;line-height:1;margin-bottom:10px}
+  .price em{font-style:normal;font-size:36px;color:#cfcfcf;font-weight:600}
+  .stock{font-size:34px;font-weight:800;color:#5ee08f;margin-bottom:40px}
+  .btn{align-self:flex-start;font-size:48px;font-weight:800;color:#121212;background:#ff4b4b;padding:30px 50px;border-radius:999px;
+       animation:up .6s 17.3s both,pulse 1.2s 18s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  .contact{font-size:36px;color:#cfcfcf;margin-top:44px;line-height:1.5}
+  .contact b{color:#fff}
+</style></head><body>
+  <div class="glow"></div>
+  <div class="stripe" style="top:0"></div>
+
+  <section class="scene s1">
+    <div class="logobar up" style="animation-delay:.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="center">
+      <div class="plug">🔥 First time welding?</div>
+      <div class="big up" style="animation-delay:.5s">Start with<br>MIG.</div>
+      <div class="big up" style="animation-delay:1.3s;margin-top:10px"><span>No gas bottle<br>needed.</span></div>
+    </div>
+  </section>
+
+  <section class="scene s2">
+    <div class="htitle up" style="animation-delay:3.7s"><span class="tag">Clarke</span><b>MIG103NG gasless<br>MIG welder</b></div>
+    <div class="card"><img src="welders/mig103.png" alt=""></div>
+    <div class="call" style="left:100px;top:500px;animation-delay:4.8s"><i></i>Torch with on/off control</div>
+    <div class="call" style="left:560px;top:640px;animation-delay:5.4s"><i></i>Plugs into a 13A socket</div>
+    <div class="call" style="left:120px;top:1150px;animation-delay:6s"><i></i>Turbo fan cooling</div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:8.7s">Simple, <span>no-gas</span> MIG</div>
+    <div class="specs">
+      <div class="sp" style="animation-delay:9.1s"><span>35–90A</span><b>Multiple power<br>settings</b></div><div class="sp" style="animation-delay:9.4s"><span>4mm</span><b>Welds mild steel<br>up to 4mm</b></div><div class="sp" style="animation-delay:9.7s"><span>0.9mm</span><b>Wire diameter<br>up to 0.9mm</b></div><div class="sp" style="animation-delay:10.0s"><span>✓</span><b>Thermal overload<br>protection</b></div>
+    </div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="uses">
+      <div class="use" style="animation-delay:12.9s"><i>🚗</i>Car &amp; trailer repairs</div><div class="use" style="animation-delay:13.3s"><i>🏡</i>Gates &amp; garden jobs</div><div class="use" style="animation-delay:13.7s"><i>🧰</i>DIY projects</div>
+    </div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="bigLogo up" style="animation-delay:16.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="price up" style="animation-delay:16.4s">£169 <em>inc. VAT</em></div>
+    <div class="stock up" style="animation-delay:16.7s">● In stock</div>
+    <div class="btn">Shop the MIG103NG</div>
+    <div class="contact up" style="animation-delay:18.2s"><b>orionairsales.co.uk</b><br>01234 841221 · info@orionair.co.uk</div>
+  </div></section>
+  <div class="stripe" style="bottom:0"></div>
+</body></html>
