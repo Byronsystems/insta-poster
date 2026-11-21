@@ -1,0 +1,98 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#0b1d24;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1300px;height:1300px;border-radius:50%;left:-110px;top:320px;
+        background:radial-gradient(circle,rgba(46,212,190,.18),rgba(46,212,190,0) 62%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.08)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:104px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#2ed4be}.big .grey{color:#7f9aa3}
+  .logo{position:absolute;left:100px;top:110px;height:84px;background:#f8fbff;border-radius:18px;padding:12px 18px}
+
+  .s1{animation:show 3.8s 0s both}
+  .s2{animation:show 6.6s 3.6s both}
+  .s3{animation:show 4.2s 10s both}
+  .s4{animation:show 2.8s 14s both}
+  .s5{animation:showlast 3.4s 16.6s both}
+
+  .conf{position:absolute;width:18px;height:30px;border-radius:4px;opacity:0;animation:fall 2.6s .2s ease-in both}
+  @keyframes fall{0%{opacity:1;transform:translateY(-200px) rotate(0)}100%{opacity:0;transform:translateY(900px) rotate(540deg)}}
+
+  .client{position:absolute;left:100px;right:150px;top:270px;display:flex;align-items:center;gap:26px;background:#fff;color:#0b1d24;border-radius:34px;padding:28px 32px;animation:pop .45s 3.7s both}
+  .client i{flex:none;width:96px;height:96px;border-radius:50%;background:#9b5de5;color:#fff;font-style:normal;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .client b{display:block;font-size:44px}
+  .client span{font-size:28px;color:#1a8a6c;font-weight:700}
+  .list{position:absolute;left:100px;right:150px;top:510px;display:flex;flex-direction:column;gap:20px}
+  .it{display:flex;align-items:center;gap:24px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:30px;padding:26px 30px;animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .it .ic{flex:none;width:76px;height:76px;border-radius:22px;background:rgba(46,212,190,.15);font-size:40px;display:flex;align-items:center;justify-content:center}
+  .it b{flex:1;font-size:38px}
+  .it .tk{flex:none;width:56px;height:56px;border-radius:50%;background:#2ed4be;color:#0b1d24;font-size:32px;font-weight:900;display:flex;align-items:center;justify-content:center;animation:pop .3s cubic-bezier(.2,1.6,.4,1) both}
+  .auto{position:absolute;left:0;right:0;top:1390px;margin:0 auto;width:fit-content;font-size:40px;font-weight:800;color:#0b1d24;background:#2ed4be;border-radius:999px;padding:18px 42px;
+        animation:pop .5s 9s cubic-bezier(.2,1.5,.4,1) both}
+
+  .h2{font-size:66px;font-weight:800;line-height:1.1;margin-bottom:46px}
+  .h2 span{color:#2ed4be}
+  .row{display:flex;align-items:center;gap:28px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:32px;padding:30px 34px;margin-bottom:24px;
+       animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  .row i{flex:none;width:84px;height:84px;border-radius:24px;background:#2ed4be;color:#0b1d24;font-style:normal;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .row b{display:block;font-size:42px}
+  .row small{display:block;font-size:30px;color:#a3bcc3;margin-top:6px}
+
+  .cta{font-size:56px;font-weight:600;color:#cfe3e8;line-height:1.3;margin-bottom:56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#0b1d24;background:#2ed4be;padding:34px 56px;border-radius:999px;
+       animation:up .6s 17.7s both,pulse 1.2s 18.4s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:32px;color:#8fb0b8;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <section class="scene s1">
+    <i class="conf" style="left:160px;top:200px;background:#2ed4be"></i><i class="conf" style="left:330px;top:150px;background:#ffd166;animation-delay:.35s"></i>
+    <i class="conf" style="left:520px;top:220px;background:#ef476f;animation-delay:.1s"></i><i class="conf" style="left:700px;top:170px;background:#9b5de5;animation-delay:.5s"></i>
+    <i class="conf" style="left:880px;top:210px;background:#2ed4be;animation-delay:.25s"></i><i class="conf" style="left:420px;top:120px;background:#ffd166;animation-delay:.6s"></i>
+    <div class="center">
+      <div class="big up" style="animation-delay:.2s">New client<br>signed! 🎉</div>
+      <div class="big up" style="animation-delay:1.6s;margin-top:20px"><span class="grey">Now the admin<br>starts…</span></div>
+    </div>
+  </section>
+
+  <section class="scene s2">
+    <div class="client"><i>P</i><div><b>Priya Shah</b><span>● New client</span></div></div>
+    <div class="list">
+      <div class="it" style="animation-delay:4.2s"><div class="ic">✉️</div><b>Welcome email</b><div class="tk" style="animation-delay:4.6s">✓</div></div>
+      <div class="it" style="animation-delay:5s"><div class="ic">📋</div><b>Details form</b><div class="tk" style="animation-delay:5.4s">✓</div></div>
+      <div class="it" style="animation-delay:5.8s"><div class="ic">✍️</div><b>Contract to sign</b><div class="tk" style="animation-delay:6.2s">✓</div></div>
+      <div class="it" style="animation-delay:6.6s"><div class="ic">📅</div><b>Kick-off call booked</b><div class="tk" style="animation-delay:7s">✓</div></div>
+      <div class="it" style="animation-delay:7.4s"><div class="ic">🗂️</div><b>Added to your records</b><div class="tk" style="animation-delay:7.8s">✓</div></div>
+    </div>
+    <div class="auto">⚡ All sent automatically</div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:10.1s">Onboarding <span>on autopilot</span></div>
+    <div class="row" style="animation-delay:10.6s"><i>1</i><div><b>Same smooth start</b><small>For every new client</small></div></div>
+    <div class="row" style="animation-delay:11.1s"><i>2</i><div><b>Nothing forgotten</b><small>Every form, every step</small></div></div>
+    <div class="row" style="animation-delay:11.6s"><i>3</i><div><b>Professional from day one</b><small>In your branding and tone</small></div></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:14.1s;font-size:96px">First impressions,</div>
+    <div class="big up" style="animation-delay:14.6s;font-size:96px"><span>on autopilot.</span></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="big up" style="animation-delay:16.7s;font-size:84px">Wow every client<br><span>from day one.</span></div>
+    <div class="cta up" style="animation-delay:17.1s;margin-top:30px">We set up automatic client onboarding for your business.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18.6s">Example workflow · @byronsystems</div>
+  </div></section>
+</body></html>
