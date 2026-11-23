@@ -1,0 +1,115 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#faf6ef;color:#1d1a16;font-family:"Inter","DejaVu Sans",sans-serif}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  .logo{position:absolute;left:90px;top:110px;height:84px}
+  .center{position:absolute;left:90px;right:150px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:100px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#e8590c}.big b{color:#2563c9}
+
+  .s1{animation:show 3.8s 0s both}
+  .s2{animation:show 6.8s 3.6s both}
+  .s3{animation:show 4.2s 10.2s both}
+  .s4{animation:show 2.8s 14.2s both}
+  .s5{animation:showlast 3.4s 16.8s both}
+
+  /* empty shelf */
+  .shelf{position:relative;height:300px;margin-bottom:50px}
+  .shelf .board{position:absolute;left:0;right:0;bottom:0;height:22px;border-radius:8px;background:#c9a77a}
+  .shelf .box{position:absolute;bottom:22px;width:150px;height:170px;border-radius:14px;background:#e8590c;animation:gone .4s both}
+  .shelf .box:after{content:"";position:absolute;left:20px;right:20px;top:24px;height:14px;border-radius:7px;background:rgba(255,255,255,.5)}
+  @keyframes gone{to{opacity:0;transform:translateY(-60px) scale(.6)}}
+  .shelf .tag{position:absolute;left:50%;bottom:60px;transform:translateX(-50%);font-size:40px;font-weight:800;color:#c92a2a;background:#ffe3e3;border:3px solid #ffa8a8;border-radius:18px;padding:12px 26px;
+              white-space:nowrap;opacity:0;animation:fadein .3s 1.6s both}
+  @keyframes fadein{to{opacity:1}}
+
+  /* stock dashboard */
+  .dash{position:absolute;left:100px;right:150px;top:250px;background:#fff;border-radius:40px;box-shadow:0 24px 60px rgba(40,30,15,.10);padding:32px 36px;animation:pop .5s 3.7s cubic-bezier(.2,1.2,.4,1) both}
+  .dash h4{margin:0 0 18px;font-size:30px;color:#7a6f60;letter-spacing:2px;text-transform:uppercase}
+  .item{padding:16px 0;border-top:2px solid #f1ebe1}
+  .item .top{display:flex;justify-content:space-between;font-size:34px;font-weight:700;margin-bottom:12px}
+  .item .top span{color:#7a6f60;font-weight:600}
+  .bar{height:20px;border-radius:10px;background:#f1ebe1;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:10px;background:#40c057;transform-origin:left}
+  .drain{animation:drain 1.8s 4.4s ease-in both}
+  @keyframes drain{from{transform:scaleX(.7);background:#40c057}70%{background:#fab005}to{transform:scaleX(.08);background:#fa5252}}
+  .low{color:#c92a2a!important;font-weight:800!important;opacity:0;animation:fadein .3s 6.1s both}
+  .alert{position:absolute;left:100px;right:150px;top:940px;background:#1d1a16;color:#fff;border-radius:36px;padding:30px 34px;animation:up .5s 6.6s both}
+  .alert small{display:block;font-size:26px;color:#ffb37a;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+  .alert b{display:block;font-size:40px;line-height:1.25}
+  .alert p{margin:12px 0 22px;font-size:30px;color:#cfc8bd}
+  .alert .btns{display:flex;gap:16px}
+  .alert .btns span{flex:1;text-align:center;font-size:32px;font-weight:800;border-radius:18px;padding:18px}
+  .ok{background:#40c057;color:#fff;animation:press .4s 8.4s both}
+  @keyframes press{50%{transform:scale(.92)}}
+  .edit{background:#3a352e;color:#cfc8bd}
+  .sent{position:absolute;left:0;right:0;top:1340px;margin:0 auto;width:fit-content;font-size:42px;font-weight:800;color:#0b5a2e;background:#d9f7e5;border:3px solid #5ccf8a;border-radius:999px;padding:18px 44px;
+        animation:pop .5s 8.9s cubic-bezier(.2,1.5,.4,1) both}
+
+  .h2{font-size:66px;font-weight:800;line-height:1.1;margin-bottom:46px}
+  .h2 span{color:#e8590c}
+  .row{display:flex;align-items:center;gap:28px;background:#fff;border-radius:32px;padding:30px 34px;margin-bottom:24px;box-shadow:0 14px 34px rgba(40,30,15,.08);
+       animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .row i{flex:none;width:84px;height:84px;border-radius:24px;background:#e8590c;color:#fff;font-style:normal;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .row b{display:block;font-size:42px}
+  .row small{display:block;font-size:30px;color:#7a6f60;margin-top:6px}
+
+  .cta{font-size:54px;font-weight:600;color:#4d463c;line-height:1.3;margin:10px 0 56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#fff;background:#2563c9;padding:34px 56px;border-radius:999px;
+       animation:up .6s 17.9s both,pulse 1.2s 18.6s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:32px;color:#9a8f80;margin-top:50px}
+</style></head><body>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <section class="scene s1"><div class="center">
+    <div class="shelf">
+      <div class="box" style="left:40px;animation-delay:.5s"></div><div class="box" style="left:230px;animation-delay:.8s"></div>
+      <div class="box" style="left:420px;animation-delay:1.1s"></div><div class="box" style="left:610px;animation-delay:1.3s"></div>
+      <div class="board"></div><div class="tag">OUT OF STOCK</div>
+    </div>
+    <div class="big up" style="animation-delay:1.8s">Run out of<br>stock <span>again?</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="dash">
+      <h4>Stock levels</h4>
+      <div class="item"><div class="top">Car shampoo 5L<span class="low">⚠ 4 left</span></div><div class="bar"><i class="drain"></i></div></div>
+      <div class="item"><div class="top">Microfibre cloths<span>62 left</span></div><div class="bar"><i style="transform:scaleX(.62)"></i></div></div>
+      <div class="item"><div class="top">Tyre shine<span>38 left</span></div><div class="bar"><i style="transform:scaleX(.45)"></i></div></div>
+    </div>
+    <div class="alert">
+      <small>⚡ Running low</small>
+      <b>Reorder drafted: 20 × Car shampoo 5L</b>
+      <p>To: your usual supplier</p>
+      <div class="btns"><span class="ok">✓ Approve</span><span class="edit">Edit</span></div>
+    </div>
+    <div class="sent">✓ Order sent to supplier</div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:10.3s">Stock that <span>watches itself</span></div>
+    <div class="row" style="animation-delay:10.8s"><i>1</i><div><b>Tracks your stock</b><small>Every item, every sale</small></div></div>
+    <div class="row" style="animation-delay:11.3s"><i>2</i><div><b>Warns you early</b><small>Before you run out</small></div></div>
+    <div class="row" style="animation-delay:11.8s"><i>3</i><div><b>Drafts the reorder</b><small>Sent once you approve it</small></div></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:14.3s;font-size:96px">Never run out</div>
+    <div class="big up" style="animation-delay:14.8s;font-size:96px"><b>of best sellers.</b></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="big up" style="animation-delay:16.9s;font-size:84px">Fully stocked,<br><b>without the stress.</b></div>
+    <div class="cta up" style="animation-delay:17.3s">We set up automatic stock alerts and reorders for your business.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18.8s">Example workflow · @byronsystems</div>
+  </div></section>
+</body></html>
