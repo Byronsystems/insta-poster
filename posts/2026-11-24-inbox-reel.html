@@ -1,0 +1,110 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  @property --n{syntax:'<integer>';inherits:false;initial-value:3}
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#f2f6fb;color:#0f1b33;font-family:"Inter","DejaVu Sans",sans-serif}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  .logo{position:absolute;left:90px;top:110px;height:84px}
+  .center{position:absolute;left:90px;right:150px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:104px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#2563c9}.big .red{color:#e5484d}
+
+  .s1{animation:show 3.6s 0s both}
+  .s2{animation:show 7s 3.4s both}
+  .s3{animation:show 4.2s 10.2s both}
+  .s4{animation:show 2.8s 14.2s both}
+  .s5{animation:showlast 3.4s 16.8s both}
+
+  .env{position:relative;width:240px;height:170px;border-radius:24px;background:#fff;box-shadow:0 18px 40px rgba(15,27,51,.12);margin-bottom:60px;animation:pop .4s .1s both}
+  .env:before{content:"";position:absolute;left:20px;right:20px;top:20px;height:80px;border-left:100px solid transparent;border-right:100px solid transparent;border-top:70px solid #dbe4f1;box-sizing:border-box}
+  .badge{position:absolute;right:-40px;top:-40px;min-width:110px;height:110px;border-radius:55px;background:#e5484d;color:#fff;font-size:52px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 16px;box-sizing:border-box;
+         --n:3;counter-reset:n var(--n);animation:cnt 2s .5s cubic-bezier(.3,.7,.3,1) both}
+  .badge:before{content:counter(n)}
+  @keyframes cnt{to{--n:86}}
+
+  .box{position:absolute;left:100px;right:150px;top:250px;background:#fff;border-radius:40px;box-shadow:0 24px 60px rgba(15,27,51,.1);overflow:hidden;animation:pop .5s 3.5s cubic-bezier(.2,1.2,.4,1) both}
+  .box h4{margin:0;padding:26px 32px;font-size:32px;border-bottom:2px solid #eef2f8;display:flex;justify-content:space-between}
+  .box h4 span{color:#2563c9;font-size:26px}
+  .em{display:flex;align-items:center;gap:20px;padding:24px 32px;border-bottom:2px solid #eef2f8;position:relative}
+  .em i{flex:none;width:64px;height:64px;border-radius:50%;font-style:normal;color:#fff;font-weight:800;font-size:28px;display:flex;align-items:center;justify-content:center}
+  .em div{flex:1;min-width:0}
+  .em b{display:block;font-size:30px}
+  .em small{display:block;font-size:24px;color:#6b7a94;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lbl{flex:none;font-size:22px;font-weight:800;border-radius:999px;padding:8px 18px;animation:pop .3s cubic-bezier(.2,1.6,.4,1) both}
+  .enq{background:#e3edff;color:#1d4fa8}.inv{background:#d9f7e5;color:#0b5a2e}.urg{background:#ffe3e3;color:#c22d32}.spm{background:#eef0f4;color:#6b7a94}
+  .spam{animation:away .5s 6.6s ease-in both}
+  @keyframes away{to{opacity:0;transform:translateX(120%);height:0;padding:0;border:0}}
+  .draft{position:absolute;left:100px;right:150px;top:1000px;background:#0f1b33;color:#fff;border-radius:34px;padding:30px 34px;animation:up .5s 7.6s both}
+  .draft small{display:block;font-size:24px;font-weight:800;color:#7cb4ff;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+  .draft p{margin:0 0 22px;font-size:30px;line-height:1.4;color:#d6e2fb}
+  .draft .btns{display:flex;gap:16px}
+  .draft .btns span{flex:1;text-align:center;font-size:30px;font-weight:800;border-radius:18px;padding:16px}
+  .send{background:#2563c9;animation:press .4s 9.2s both}
+  @keyframes press{50%{transform:scale(.92)}}
+  .edit{background:#25314d;color:#c9d6f2}
+  .done{position:absolute;left:0;right:0;top:1380px;margin:0 auto;width:fit-content;font-size:42px;font-weight:800;color:#0b5a2e;background:#d9f7e5;border:3px solid #5ccf8a;border-radius:999px;padding:18px 44px;
+        animation:pop .5s 9.6s cubic-bezier(.2,1.5,.4,1) both}
+
+  .h2{font-size:68px;font-weight:800;line-height:1.1;margin-bottom:46px}
+  .h2 span{color:#2563c9}
+  .row{display:flex;align-items:center;gap:28px;background:#fff;border-radius:32px;padding:30px 34px;margin-bottom:24px;box-shadow:0 14px 34px rgba(15,27,51,.08);
+       animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .row i{flex:none;width:84px;height:84px;border-radius:24px;background:#2563c9;color:#fff;font-style:normal;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .row b{display:block;font-size:42px}
+  .row small{display:block;font-size:30px;color:#5b6b85;margin-top:6px}
+
+  .cta{font-size:54px;font-weight:600;color:#3d4f78;line-height:1.3;margin:10px 0 56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#fff;background:#2563c9;padding:34px 56px;border-radius:999px;
+       animation:up .6s 17.9s both,pulse 1.2s 18.6s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:32px;color:#8a97b5;margin-top:50px}
+</style></head><body>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <section class="scene s1"><div class="center">
+    <div class="env"><div class="badge"></div></div>
+    <div class="big up" style="animation-delay:.6s">Drowning in<br>emails?</div>
+    <div class="big up" style="animation-delay:1.5s"><span class="red">Same.</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="box">
+      <h4>Inbox<span>⚡ Sorting…</span></h4>
+      <div class="em"><i style="background:#9b5de5">L</i><div><b>Lisa Hart</b><small>Hi, do you have any availability next week?</small></div><span class="lbl enq" style="animation-delay:4.6s">Enquiry</span></div>
+      <div class="em"><i style="background:#2a9d8f">S</i><div><b>Supplies Ltd</b><small>Invoice #2219 attached</small></div><span class="lbl inv" style="animation-delay:5.1s">Invoice</span></div>
+      <div class="em spam"><i style="background:#adb5bd">W</i><div><b>WIN-BIG-NOW</b><small>You've been selected for a prize!!!</small></div><span class="lbl spm" style="animation-delay:5.6s">Spam</span></div>
+      <div class="em"><i style="background:#e76f51">T</i><div><b>Tom Reid</b><small>Can we move tomorrow's job? Urgent</small></div><span class="lbl urg" style="animation-delay:6.1s">Urgent</span></div>
+    </div>
+    <div class="draft">
+      <small>✍️ Reply drafted for Lisa</small>
+      <p>Hi Lisa, thanks for getting in touch! We've got Tuesday or Thursday free next week. Which suits you best?</p>
+      <div class="btns"><span class="send">Send</span><span class="edit">Edit</span></div>
+    </div>
+    <div class="done">✓ Sorted &amp; replied</div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:10.3s">Your inbox, <span>sorted for you</span></div>
+    <div class="row" style="animation-delay:10.8s"><i>1</i><div><b>Labels every email</b><small>Enquiries, invoices, urgent</small></div></div>
+    <div class="row" style="animation-delay:11.3s"><i>2</i><div><b>Clears the junk</b><small>So you see what matters</small></div></div>
+    <div class="row" style="animation-delay:11.8s"><i>3</i><div><b>Drafts your replies</b><small>You check them and hit send</small></div></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:14.3s;font-size:96px">Less inbox.</div>
+    <div class="big up" style="animation-delay:14.8s;font-size:96px"><span>More business.</span></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="big up" style="animation-delay:16.9s;font-size:84px">Take back<br><span>your inbox.</span></div>
+    <div class="cta up" style="animation-delay:17.3s">We set up AI email sorting and reply drafts for your business.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18.8s">Example inbox · @byronsystems</div>
+  </div></section>
+</body></html>
