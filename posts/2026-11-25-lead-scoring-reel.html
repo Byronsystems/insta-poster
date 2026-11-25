@@ -1,0 +1,107 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#0a1124;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1300px;height:1300px;border-radius:50%;left:-110px;top:320px;
+        background:radial-gradient(circle,rgba(44,167,231,.2),rgba(44,167,231,0) 62%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.08)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:100px;font-weight:800;line-height:1.06;letter-spacing:-2px}
+  .big span{color:#2ca7e7}.big .grey{color:#7d89a8}
+  .logo{position:absolute;left:100px;top:110px;height:84px;background:#f8fbff;border-radius:18px;padding:12px 18px;z-index:3}
+
+  .s1{animation:show 3.8s 0s both}
+  .s2{animation:show 3.4s 3.6s both}
+  .s3{animation:show 3.6s 6.8s both}
+  .s4{animation:show 4.2s 10.2s both}
+  .s5{animation:show 2.8s 14.2s both}
+  .s6{animation:showlast 3.4s 16.8s both}
+
+  .ttl{position:absolute;left:100px;right:150px;top:250px;font-size:56px;font-weight:800;line-height:1.1}
+  .ttl span{color:#2ca7e7}
+  .qs{position:absolute;left:100px;right:150px;top:420px;display:flex;flex-direction:column;gap:22px}
+  .q{display:flex;align-items:center;gap:24px;background:#fff;color:#0a1124;border-radius:30px;padding:28px 30px;animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .q i{flex:none;width:72px;height:72px;border-radius:20px;background:#e3f1fb;font-style:normal;font-size:38px;display:flex;align-items:center;justify-content:center}
+  .q b{font-size:38px}
+  .ai{position:absolute;left:100px;right:150px;top:1180px;font-size:34px;font-weight:700;color:#9ed6f5;animation:up .4s 5.6s both}
+
+  .leads{position:absolute;left:100px;right:150px;top:400px;display:flex;flex-direction:column;gap:24px}
+  .ld{display:flex;align-items:center;gap:22px;background:rgba(255,255,255,.06);border:3px solid rgba(255,255,255,.14);border-radius:32px;padding:26px 28px;animation:up .4s both}
+  .ld .av{flex:none;width:80px;height:80px;border-radius:50%;font-size:36px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .ld div{flex:1;min-width:0}
+  .ld b{display:block;font-size:38px}
+  .ld small{display:block;font-size:27px;color:#aeb8d0;margin-top:4px}
+  .tag{flex:none;font-size:28px;font-weight:800;border-radius:999px;padding:12px 22px;animation:pop .35s cubic-bezier(.2,1.6,.4,1) both}
+  .hot{background:#ff6b3d;color:#fff}.warm{background:#ffd166;color:#3a2a00}.cold{background:#4b587a;color:#d6def0}
+  .hotcard{border-color:#ff6b3d!important;animation:up .4s both,glow 1.2s 8.6s ease-in-out 2}
+  @keyframes glow{50%{box-shadow:0 0 50px rgba(255,107,61,.7)}}
+  .ping{position:absolute;left:0;right:0;top:1250px;margin:0 auto;width:fit-content;font-size:40px;font-weight:800;color:#fff;background:#ff6b3d;border-radius:999px;padding:18px 42px;
+        animation:pop .5s 9s cubic-bezier(.2,1.5,.4,1) both}
+
+  .h2{font-size:66px;font-weight:800;line-height:1.1;margin-bottom:46px}
+  .h2 span{color:#2ca7e7}
+  .row{display:flex;align-items:center;gap:28px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:32px;padding:30px 34px;margin-bottom:24px;
+       animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  .row i{flex:none;width:84px;height:84px;border-radius:24px;background:#2ca7e7;font-style:normal;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .row b{display:block;font-size:42px}
+  .row small{display:block;font-size:30px;color:#a9b4cf;margin-top:6px}
+
+  .cta{font-size:56px;font-weight:600;color:#c9d6f2;line-height:1.3;margin-bottom:56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;background:#2ca7e7;padding:34px 56px;border-radius:999px;
+       animation:up .6s 17.9s both,pulse 1.2s 18.6s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:32px;color:#8da0cc;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <section class="scene s1"><div class="center">
+    <div class="big up" style="animation-delay:.2s">Not every<br>enquiry is a<br>real customer.</div>
+    <div class="big up" style="animation-delay:1.4s;margin-top:16px"><span class="grey">So who do you<br>call back first?</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="ttl up" style="animation-delay:3.7s">Our AI asks <span>the right questions</span></div>
+    <div class="qs">
+      <div class="q" style="animation-delay:4s"><i>📍</i><b>Where are you based?</b></div>
+      <div class="q" style="animation-delay:4.4s"><i>🛠️</i><b>What do you need done?</b></div>
+      <div class="q" style="animation-delay:4.8s"><i>📅</i><b>When do you need it?</b></div>
+    </div>
+    <div class="ai">…in a friendly chat, in your tone of voice.</div>
+  </section>
+
+  <section class="scene s3">
+    <div class="ttl up" style="animation-delay:6.9s">Then sorts <span>every lead</span></div>
+    <div class="leads">
+      <div class="ld hotcard" style="animation-delay:7.1s"><div class="av" style="background:#ff6b3d">J</div><div><b>Jess</b><small>Local · full job · this week</small></div><span class="tag hot" style="animation-delay:7.6s">🔥 Hot</span></div>
+      <div class="ld" style="animation-delay:7.4s"><div class="av" style="background:#c9a227">M</div><div><b>Mark</b><small>Local · small job · next month</small></div><span class="tag warm" style="animation-delay:7.9s">☀️ Warm</span></div>
+      <div class="ld" style="animation-delay:7.7s"><div class="av" style="background:#4b587a">S</div><div><b>Sam</b><small>Outside your area</small></div><span class="tag cold" style="animation-delay:8.2s">❄️ Not a fit</span></div>
+    </div>
+    <div class="ping">📲 Hot leads sent straight to you</div>
+  </section>
+
+  <section class="scene s4"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:10.3s">Lead sorting, <span>on autopilot</span></div>
+    <div class="row" style="animation-delay:10.8s"><i>1</i><div><b>Asks the right questions</b><small>Your questions, your tone</small></div></div>
+    <div class="row" style="animation-delay:11.3s"><i>2</i><div><b>Sorts every lead</b><small>Hot, warm or not a fit</small></div></div>
+    <div class="row" style="animation-delay:11.8s"><i>3</i><div><b>Hot leads to your phone</b><small>So you call the right people first</small></div></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="big up" style="animation-delay:14.3s;font-size:92px">Spend your time</div>
+    <div class="big up" style="animation-delay:14.8s;font-size:92px"><span>on the right<br>customers.</span></div>
+  </div></section>
+
+  <section class="scene s6"><div class="center">
+    <div class="cta up" style="animation-delay:16.9s">We set up AI lead sorting for your business.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18.8s">Example leads · @byronsystems</div>
+  </div></section>
+</body></html>
