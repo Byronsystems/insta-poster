@@ -1,0 +1,118 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#c9a77a;color:#1d1a16;font-family:"Inter","DejaVu Sans",sans-serif;
+       background-image:radial-gradient(rgba(0,0,0,.05) 2px,transparent 2px);background-size:26px 26px}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+
+  /* clipboard */
+  .board{position:absolute;left:60px;right:90px;top:130px;bottom:380px;background:#8b5e34;border-radius:40px;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+  .paper{position:absolute;left:90px;right:120px;top:200px;bottom:420px;background:#fffdf7;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.18);overflow:hidden;
+         background-image:repeating-linear-gradient(#fffdf7 0 78px,#dde6f3 78px 80px)}
+  .clip{position:absolute;left:50%;top:95px;width:300px;height:110px;margin-left:-165px;border-radius:18px;background:linear-gradient(#d8dde3,#9aa3ad);box-shadow:0 6px 14px rgba(0,0,0,.3);z-index:5}
+  .clip:after{content:"";position:absolute;left:110px;top:-30px;width:80px;height:60px;border-radius:30px 30px 0 0;border:14px solid #9aa3ad;border-bottom:0;box-sizing:border-box}
+  .logo{position:absolute;right:150px;top:250px;height:46px;z-index:6}
+
+  .s1{animation:show 3.2s 0s both}
+  .i1{animation:show 2.8s 3s both}.i2{animation:show 2.8s 5.6s both}.i3{animation:show 2.8s 8.2s both}.i4{animation:show 2.8s 10.8s both}.i5{animation:show 2.8s 13.4s both}
+  .s7{animation:showlast 4.2s 16s both}
+
+  .inner{position:absolute;left:140px;right:170px;top:330px}
+  .hook{font-size:92px;font-weight:900;line-height:1.05;letter-spacing:-2px}
+  .hook span{color:#d9480f}
+  .sub{font-size:44px;color:#5d5346;margin-top:30px;font-weight:600}
+
+  .num{display:flex;align-items:center;gap:22px;margin-bottom:24px}
+  .box{flex:none;width:86px;height:86px;border:6px solid #1d1a16;border-radius:16px;position:relative;box-sizing:border-box}
+  .box:after{content:"✓";position:absolute;left:8px;top:-26px;font-size:100px;font-weight:900;color:#2b8a3e;animation:pop .35s cubic-bezier(.2,1.6,.4,1) both;animation-delay:inherit}
+  .num small{font-size:32px;font-weight:800;letter-spacing:4px;color:#8a7f70}
+  .q{font-size:66px;font-weight:900;line-height:1.08;letter-spacing:-1px;margin-bottom:22px}
+  .tip{font-size:36px;line-height:1.35;color:#5d5346;margin-bottom:34px}
+  .tip b{color:#1d1a16}
+  .ex{display:flex;gap:18px}
+  .e{flex:1;background:#fff;border:3px solid #eadfcd;border-radius:24px;padding:14px;text-align:center;animation:up .4s both}
+  .e img{width:100%;height:330px;object-fit:contain}
+  .e b{display:block;font-size:28px;margin-top:6px;line-height:1.2}
+  .e span{display:block;font-size:38px;font-weight:900;color:#d9480f;margin-top:4px}
+
+  .end{position:absolute;left:140px;right:170px;top:330px}
+  .end .t{font-size:84px;font-weight:900;line-height:1.05;letter-spacing:-2px}
+  .end .t span{color:#d9480f}
+  .end p{font-size:42px;color:#5d5346;line-height:1.35;margin:30px 0 44px}
+  .btn{display:inline-block;font-size:46px;font-weight:800;color:#fff;background:#d9480f;padding:28px 48px;border-radius:999px;animation:up .6s 17.2s both}
+  .contact{font-size:34px;color:#5d5346;margin-top:40px;line-height:1.5}
+  .contact b{color:#1d1a16}
+  .olog{height:70px;margin-bottom:40px}
+</style></head><body>
+  <div class="board"></div>
+  <div class="paper"></div>
+  <div class="clip"></div>
+
+  <section class="scene s1"><div class="inner">
+    <img class="olog up" style="animation-delay:.1s" src="logo.png" alt="Orion Air">
+    <div class="hook up" style="animation-delay:.3s">Buying a heater?<br><span>Check these<br>5 things first.</span></div>
+    <div class="sub up" style="animation-delay:1.3s">Save this for later 📌</div>
+  </div></section>
+
+  <section class="scene i1"><div class="inner">
+    <div class="num"><div class="box" style="animation-delay:3.6s"></div><small>CHECK 1 OF 5</small></div>
+    <div class="q up" style="animation-delay:3.2s">What power<br>have you got?</div>
+    <div class="tip up" style="animation-delay:3.4s"><b>Normal socket</b> or <b>110V site supply</b>? Pick a heater to match.</div>
+    <div class="ex">
+      <div class="e" style="animation-delay:3.9s"><img src="oly-j31.jpg" alt=""><b>OLY&#8209;J3/1 · 240V plug</b><span>£99</span></div>
+      <div class="e" style="animation-delay:4.1s"><img src="infrared/devil.jpg" alt=""><b>Clarke Devil · 110V</b><span>£266.29</span></div>
+    </div>
+  </div></section>
+
+  <section class="scene i2"><div class="inner">
+    <div class="num"><div class="box" style="animation-delay:6.2s"></div><small>CHECK 2 OF 5</small></div>
+    <div class="q up" style="animation-delay:5.8s">Electric, diesel<br>or LPG?</div>
+    <div class="tip up" style="animation-delay:6s">No power nearby? <b>Fuel-fired</b> heaters give big heat without a socket.</div>
+    <div class="ex">
+      <div class="e" style="animation-delay:6.5s"><img src="portable/xr60.jpg" alt=""><b>Clarke XR60 · diesel</b><span>£259</span></div>
+      <div class="e" style="animation-delay:6.7s"><img src="portable/gp18m.png" alt=""><b>Arcotherm GP18M · LPG</b><span>£330</span></div>
+    </div>
+  </div></section>
+
+  <section class="scene i3"><div class="inner">
+    <div class="num"><div class="box" style="animation-delay:8.8s"></div><small>CHECK 3 OF 5</small></div>
+    <div class="q up" style="animation-delay:8.4s">Is it well<br>ventilated?</div>
+    <div class="tip up" style="animation-delay:8.6s">Direct fuel-fired heaters are for <b>well-ventilated spaces</b>. Heating a marquee? An <b>indirect</b> heater stays outside.</div>
+    <div class="ex">
+      <div class="e" style="animation-delay:9.1s"><img src="marquee/ec32std.jpg" alt=""><b>Arcotherm EC packages</b><span>from £1,900.53</span></div>
+    </div>
+  </div></section>
+
+  <section class="scene i4"><div class="inner">
+    <div class="num"><div class="box" style="animation-delay:11.4s"></div><small>CHECK 4 OF 5</small></div>
+    <div class="q up" style="animation-delay:11s">Closed room or<br>open space?</div>
+    <div class="tip up" style="animation-delay:11.2s"><b>Fan heaters</b> warm the air in a closed room. <b>Infrared</b> warms people in draughty spaces.</div>
+    <div class="ex">
+      <div class="e" style="animation-delay:11.7s"><img src="jetheat/j15.jpg" alt=""><b>JetHeat fan heaters</b><span>from £92</span></div>
+      <div class="e" style="animation-delay:11.9s"><img src="infrared/consort.jpg" alt=""><b>Infrared heaters</b><span>from £188</span></div>
+    </div>
+  </div></section>
+
+  <section class="scene i5"><div class="inner">
+    <div class="num"><div class="box" style="animation-delay:14s"></div><small>CHECK 5 OF 5</small></div>
+    <div class="q up" style="animation-delay:13.6s">Will you move<br>it around?</div>
+    <div class="tip up" style="animation-delay:13.8s">Look for <b>wheels and handles</b> if it's going from job to job.</div>
+    <div class="ex">
+      <div class="e" style="animation-delay:14.3s"><img src="infrared/ebac.png" alt=""><b>Ebac QZI3000 · on wheels</b><span>£441.59</span></div>
+      <div class="e" style="animation-delay:14.5s"><img src="infrared/rhino110.jpg" alt=""><b>Rhino TQ3 · on wheels</b><span>£235</span></div>
+    </div>
+  </div></section>
+
+  <section class="scene s7"><div class="end">
+    <img class="olog up" style="animation-delay:16.1s" src="logo.png" alt="Orion Air">
+    <div class="t up" style="animation-delay:16.3s">Still not sure?<br><span>We'll help you<br>choose.</span></div>
+    <p class="up" style="animation-delay:16.7s">Tell us your space and we'll point you to the right heater.</p>
+    <div class="btn">Call 01234 841221</div>
+    <div class="contact up" style="animation-delay:17.8s"><b>orionairsales.co.uk</b> · info@orionair.co.uk<br>Prices inc. VAT</div>
+  </div></section>
+</body></html>
