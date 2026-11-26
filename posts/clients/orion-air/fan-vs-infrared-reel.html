@@ -1,0 +1,135 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#f7f3ec;color:#16120e;font-family:"Inter","DejaVu Sans",sans-serif}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}5%,95%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.3) rotate(-20deg)}to{opacity:1;transform:none}}
+  .logobar{position:absolute;left:50%;top:110px;transform:translateX(-50%);background:#fff;border-radius:22px;padding:18px 28px;box-shadow:0 10px 30px rgba(0,0,0,.08);z-index:6}
+  .logobar img{height:48px;display:block}
+
+  .s1{animation:show 3.4s 0s both}
+  .s2{animation:show 3.6s 3.2s both}
+  .r1{animation:show 2.4s 6.6s both}.r2{animation:show 2.4s 8.8s both}.r3{animation:show 2.4s 11s both}
+  .s4{animation:show 3.2s 13.2s both}
+  .s5{animation:showlast 3.8s 16.2s both}
+
+  /* split */
+  .half{position:absolute;left:0;right:0;height:960px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+  .top{top:0;background:#1f6feb;color:#fff;animation:inT .6s cubic-bezier(.2,1.2,.4,1) both}
+  .bot{bottom:0;background:#ff6a2b;color:#fff;animation:inB .6s .15s cubic-bezier(.2,1.2,.4,1) both}
+  @keyframes inT{from{transform:translateY(-100%)}to{transform:none}}
+  @keyframes inB{from{transform:translateY(100%)}to{transform:none}}
+  .half b{font-size:170px;font-weight:900;letter-spacing:-4px;line-height:1}
+  .half small{font-size:44px;font-weight:700;opacity:.9;margin-top:14px}
+  .vs{position:absolute;left:50%;top:960px;width:220px;height:220px;margin:-110px 0 0 -110px;border-radius:50%;background:#16120e;color:#fff;font-size:96px;font-weight:900;
+      display:flex;align-items:center;justify-content:center;border:10px solid #f7f3ec;animation:pop .45s .7s cubic-bezier(.2,1.6,.4,1) both;z-index:5}
+  .q{position:absolute;left:0;right:0;top:260px;z-index:6;text-align:center;font-size:52px;font-weight:800;color:#fff;animation:up .4s 1.3s both}
+
+  /* contenders */
+  .ttl{position:absolute;left:0;right:0;top:250px;text-align:center;font-size:40px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#8a7f70}
+  .cards{position:absolute;left:70px;right:70px;top:330px;display:flex;gap:30px}
+  .c{flex:1;background:#fff;border-radius:40px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.1);animation:up .5s both}
+  .c .hd{padding:20px;text-align:center;font-size:34px;font-weight:900;letter-spacing:3px;color:#fff}
+  .c img{display:block;width:100%;height:420px;object-fit:contain;background:#fff;padding:20px;box-sizing:border-box}
+  .c .bd{padding:24px 28px 30px}
+  .c .bd b{display:block;font-size:34px;line-height:1.15}
+  .c .bd ul{margin:14px 0 18px;padding:0;list-style:none;font-size:26px;line-height:1.6;color:#5d5346}
+  .c .bd strong{font-size:56px}
+  .blue .hd{background:#1f6feb}.blue strong{color:#1f6feb}
+  .orng .hd{background:#ff6a2b}.orng strong{color:#ff6a2b}
+
+  /* rounds */
+  .rn{position:absolute;left:0;right:0;top:300px;text-align:center;font-size:40px;font-weight:900;letter-spacing:5px;color:#8a7f70;animation:up .35s both}
+  .rq{position:absolute;left:80px;right:80px;top:380px;text-align:center;font-size:88px;font-weight:900;line-height:1.08;letter-spacing:-2px;animation:up .4s both}
+  .duel{position:absolute;left:70px;right:70px;top:760px;display:flex;gap:30px}
+  .side{flex:1;border-radius:40px;padding:40px 30px;text-align:center;background:#e9e3d8;color:#9a8f80;transition:none}
+  .side b{display:block;font-size:56px;font-weight:900}
+  .side span{display:block;font-size:30px;margin-top:12px;line-height:1.3}
+  .win{animation:win .45s cubic-bezier(.2,1.5,.4,1) both}
+  .win.blue{--c:#1f6feb}.win.orng{--c:#ff6a2b}
+  @keyframes win{to{background:var(--c);color:#fff;transform:scale(1.06)}}
+  .crown{position:absolute;top:-56px;left:50%;margin-left:-40px;font-size:80px;animation:pop .4s both}
+  .side{position:relative}
+  .why{position:absolute;left:80px;right:80px;top:1180px;text-align:center;font-size:40px;font-weight:700;color:#5d5346;animation:up .4s both}
+
+  /* verdict */
+  .verdict{position:absolute;left:80px;right:80px;top:330px}
+  .verdict h2{font-size:100px;font-weight:900;letter-spacing:-3px;margin:0 0 40px}
+  .vrow{display:flex;align-items:center;gap:26px;border-radius:36px;padding:34px 36px;margin-bottom:26px;color:#fff;animation:up .45s both}
+  .vrow b{display:block;font-size:46px}
+  .vrow span{font-size:32px;opacity:.9}
+  .vrow i{flex:none;font-style:normal;font-size:70px}
+
+  .end{position:absolute;left:80px;right:80px;top:420px;text-align:center}
+  .end .big{font-size:96px;font-weight:900;letter-spacing:-3px;line-height:1.05}
+  .end .big span{color:#ff6a2b}.end .big em{font-style:normal;color:#1f6feb}
+  .end p{font-size:44px;color:#5d5346;margin:36px 0 50px;line-height:1.35}
+  .btn{display:inline-block;font-size:48px;font-weight:800;color:#fff;background:#16120e;padding:30px 54px;border-radius:999px;animation:up .6s 17.4s both}
+  .contact{font-size:36px;color:#5d5346;margin-top:44px;line-height:1.5}
+  .contact b{color:#16120e}
+</style></head><body>
+  <section class="scene s1">
+    <div class="half top"><b>FAN</b><small>heater</small></div>
+    <div class="half bot"><b>INFRARED</b><small>heater</small></div>
+    <div class="vs">VS</div>
+    <div class="q">Which one do you actually need?</div>
+  </section>
+
+  <div class="logobar" style="animation:none"><img src="logo.png" alt="Orion Air"></div>
+
+  <section class="scene s2">
+    <div class="ttl up" style="animation-delay:3.3s">The contenders</div>
+    <div class="cards">
+      <div class="c blue" style="animation-delay:3.5s"><div class="hd">FAN</div><img src="oly-j31.jpg" alt=""><div class="bd"><b>Olympus JetHeat OLY&#8209;J3/1</b><ul><li>3kW</li><li>Standard UK plug</li><li>Adjustable thermostat</li></ul><strong>£99</strong></div></div>
+      <div class="c orng" style="animation-delay:3.8s"><div class="hd">INFRARED</div><img src="infrared/devil.jpg" alt=""><div class="bd"><b>Clarke Devil 371SP</b><ul><li>3kW</li><li>110V site model</li><li>Swivel head</li></ul><strong>£266.29</strong></div></div>
+    </div>
+  </section>
+
+  <section class="scene r1">
+    <div class="rn" style="animation-delay:6.7s">ROUND 1</div>
+    <div class="rq" style="animation-delay:6.8s">Small, closed<br>room?</div>
+    <div class="duel">
+      <div class="side win blue" style="animation-delay:7.5s"><span class="crown" style="animation-delay:7.6s">👑</span><b>FAN</b><span>Warms up all the air in the room</span></div>
+      <div class="side"><b>INFRARED</b><span>Warms what it's pointed at</span></div>
+    </div>
+  </section>
+
+  <section class="scene r2">
+    <div class="rn" style="animation-delay:8.9s">ROUND 2</div>
+    <div class="rq" style="animation-delay:9s">Draughty or<br>open space?</div>
+    <div class="duel">
+      <div class="side"><b>FAN</b><span>Warm air escapes</span></div>
+      <div class="side win orng" style="animation-delay:9.7s"><span class="crown" style="animation-delay:9.8s">👑</span><b>INFRARED</b><span>Heats people, not the air</span></div>
+    </div>
+  </section>
+
+  <section class="scene r3">
+    <div class="rn" style="animation-delay:11.1s">ROUND 3</div>
+    <div class="rq" style="animation-delay:11.2s">Need it<br>quiet?</div>
+    <div class="duel">
+      <div class="side"><b>FAN</b><span>You'll hear the fan</span></div>
+      <div class="side win orng" style="animation-delay:11.9s"><span class="crown" style="animation-delay:12s">👑</span><b>INFRARED</b><span>Silent operation</span></div>
+    </div>
+  </section>
+
+  <section class="scene s4">
+    <div class="verdict">
+      <h2 class="up" style="animation-delay:13.3s">The verdict</h2>
+      <div class="vrow" style="background:#1f6feb;animation-delay:13.6s"><i>🏠</i><div><b>Go FAN</b><span>Garages, offices, closed rooms</span></div></div>
+      <div class="vrow" style="background:#ff6a2b;animation-delay:14s"><i>🏗️</i><div><b>Go INFRARED</b><span>Sites, open workshops, draughty spaces</span></div></div>
+    </div>
+  </section>
+
+  <section class="scene s5">
+    <div class="end">
+      <div class="big up" style="animation-delay:16.3s">Still not sure?<br><em>Ask</em> <span>us.</span></div>
+      <p class="up" style="animation-delay:16.7s">We'll help you pick the right heater for your space.</p>
+      <div class="btn">Shop heaters</div>
+      <div class="contact up" style="animation-delay:17.9s"><b>orionairsales.co.uk</b><br>01234 841221 · info@orionair.co.uk</div>
+    </div>
+  </section>
+</body></html>
