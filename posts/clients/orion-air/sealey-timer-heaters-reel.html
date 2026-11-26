@@ -1,0 +1,121 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif;background:#121417}
+  .glow{position:absolute;width:1300px;height:1300px;border-radius:50%;left:-110px;top:300px;
+        background:radial-gradient(circle,rgba(255,170,40,.26),rgba(255,170,40,0) 62%);animation:throb 3s ease-in-out infinite}
+  @keyframes throb{50%{transform:scale(1.08)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}8%,92%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:104px;font-weight:800;line-height:1.05;letter-spacing:-2px}
+  .big span{color:#ffb020}
+  .logobar{position:absolute;left:100px;top:110px;background:#fff;border-radius:22px;padding:22px 30px;z-index:5}
+  .logobar img{height:52px;display:block}
+
+  /* progress dots */
+  .dots{position:absolute;left:100px;top:230px;display:flex;gap:12px;opacity:0;animation:fadein .3s 3s both,fadeout .3s 10.1s forwards}
+  @keyframes fadein{to{opacity:1}} @keyframes fadeout{from{opacity:1}to{opacity:0}}
+  .dots i{width:110px;height:10px;border-radius:5px;background:rgba(255,255,255,.2);overflow:hidden;position:relative}
+  .dots i:after{content:"";position:absolute;inset:0;background:#ffb020;transform:scaleX(0);transform-origin:left;animation:fill 2.4s linear both;animation-delay:inherit}
+  @keyframes fill{to{transform:scaleX(1)}}
+
+  /* heater cards */
+  .h .kind{position:absolute;left:100px;right:100px;top:290px;font-size:30px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#ffb020}
+  .h .title{position:absolute;left:100px;right:100px;top:340px;font-size:72px;font-weight:800;line-height:1.05}
+  .h .card{position:absolute;left:150px;width:780px;top:560px;height:640px;background:#fff;border-radius:50px;overflow:hidden;box-shadow:0 0 120px rgba(255,120,50,.35)}
+  .h .card img{width:100%;height:100%;object-fit:contain;padding:30px;box-sizing:border-box}
+  .h .info{position:absolute;left:150px;right:150px;top:1230px;display:flex;justify-content:space-between;align-items:flex-end}
+  .h .info div{font-size:32px;line-height:1.35;color:#c9d6f2}
+  .h .info div b{color:#fff}
+  .h .info strong{font-size:30px;color:#c9d6f2;font-weight:600;text-align:right}
+  .h .info strong span{display:block;font-size:72px;font-weight:800;color:#fff;line-height:1}
+  .zoomin{animation:zoom .5s cubic-bezier(.2,1.2,.4,1) both}
+  @keyframes zoom{from{opacity:0;transform:scale(.8) rotate(-3deg)}to{opacity:1;transform:none}}
+
+  .s1{animation:show 3.2s 0s both}
+  .h1{animation:show 2.5s 3s both}.h2{animation:show 2.5s 5.4s both}.h3{animation:show 2.5s 7.8s both}
+  
+  .s8{animation:show 3.4s 10.2s both}
+  .s9{animation:showlast 4.6s 13.4s both}
+
+  /* grid */
+  .gt{position:absolute;left:100px;right:100px;top:260px;font-size:72px;font-weight:800;line-height:1.05}
+  .gt span{color:#ffb020}
+  .grid{position:absolute;left:100px;right:150px;top:470px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .g{background:#fff;border-radius:26px;height:250px;display:flex;align-items:center;justify-content:center;animation:pop .35s cubic-bezier(.2,1.5,.4,1) both}
+  .g img{width:88%;height:88%;object-fit:contain}
+  .fuels{position:absolute;left:100px;right:150px;top:1340px;display:flex;flex-wrap:wrap;gap:14px}
+  .fuels span{font-size:32px;font-weight:800;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3);border-radius:999px;padding:12px 26px;animation:pop .35s both}
+
+  .bigLogo{align-self:flex-start;background:#fff;border-radius:28px;padding:30px 40px;margin-bottom:46px}
+  .bigLogo img{height:76px;display:block}
+  .cta{font-size:52px;font-weight:600;color:#d6e2fb;line-height:1.3;margin-bottom:46px}
+  .cta b{color:#fff}
+  .btn{align-self:flex-start;font-size:48px;font-weight:800;color:#fff;background:#ffb020;padding:30px 50px;border-radius:999px;
+       animation:up .6s 14.4s both,pulse 1.2s 15.1s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  .contact{font-size:36px;color:#d6e2fb;margin-top:44px;line-height:1.5}
+  .contact b{color:#fff}
+  .note{font-size:26px;color:#8ea0c4;margin-top:26px}
+  .whys{display:flex;flex-direction:column;gap:22px;margin-top:40px}
+  .why{display:flex;align-items:center;gap:24px;font-size:46px;font-weight:700;animation:up .4s both}
+  .why i{flex:none;width:84px;height:84px;border-radius:24px;background:#ffb020;font-style:normal;font-size:44px;display:flex;align-items:center;justify-content:center}
+  svg.lights{position:absolute;left:0;top:0;z-index:4}
+  .bulb{animation:twinkle 1.6s ease-in-out infinite}
+  @keyframes twinkle{50%{opacity:.35}}
+  .btn{color:#1a1206!important}
+  .alarm{display:inline-flex;align-items:center;gap:16px;font-size:40px;font-weight:800;color:#1a1206;background:#ffb020;border-radius:999px;padding:14px 30px;margin-bottom:40px;align-self:flex-start;animation:pop .4s .1s both,ring .5s .6s ease-in-out 3}
+  @keyframes ring{25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
+</style></head><body>
+  <div class="glow"></div>
+
+  <section class="scene s1">
+    <div class="logobar up" style="animation-delay:.1s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="center">
+      <div class="alarm">⏰ 7:00am · heater on</div>
+      <div class="big up" style="animation-delay:.3s">Walk into a warm<br>workshop.</div>
+      <div class="big up" style="animation-delay:1.2s;margin-top:16px"><span>Every morning.</span></div>
+    </div>
+  </section>
+
+  <div class="dots"><i style="animation-delay:3s"></i><i style="animation-delay:5.4s"></i><i style="animation-delay:7.8s"></i></div>
+
+  <section class="scene h h1">
+    <div class="kind">7-day timer · plug &amp; go</div><div class="title">Sealey CH30 ceramic heater</div>
+    <div class="card zoomin" style="animation-delay:3.1s"><img src="infrared/ch30.png" alt=""></div>
+    <div class="info"><div><b>1.4kW / 2.8kW · 220V</b><br>Supplied with cable &amp; 3-pin plug</div><strong>just<span>£214</span></strong></div>
+  </section>
+
+  <section class="scene h h2">
+    <div class="kind">7-day timer · tripod stand</div><div class="title">Sealey CH30S</div>
+    <div class="card zoomin" style="animation-delay:5.5s"><img src="infrared/ch30s.png" alt=""></div>
+    <div class="info"><div><b>1.4kW / 2.8kW · 220V</b><br>Foldable tripod stand</div><strong>just<span>£276.42</span></strong></div>
+  </section>
+
+  <section class="scene h h3">
+    <div class="kind">7-day timer · 110V site model</div><div class="title">Sealey IR14110V</div>
+    <div class="card zoomin" style="animation-delay:7.9s"><img src="infrared/ir14.png" alt=""></div>
+    <div class="info"><div><b>1.2kW / 2.4kW · 110V</b><br>Ruby halogen infrared cabinet</div><strong>just<span>£304</span></strong></div>
+  </section>
+
+  <section class="scene s8"><div class="center">
+    <div class="big up" style="animation-delay:10.3s;font-size:84px">Set it once.<br><span>Warm all week.</span></div>
+    <div class="whys">
+      <div class="why" style="animation-delay:10.8s"><i>⏰</i>Built-in 7-day timer</div>
+      <div class="why" style="animation-delay:11.2s"><i>🔥</i>Two heat levels</div>
+      <div class="why" style="animation-delay:11.6s"><i>🔌</i>220V &amp; 110V models</div>
+    </div>
+  </div></section>
+
+  <section class="scene s9"><div class="center">
+    <div class="bigLogo up" style="animation-delay:13.5s"><img src="logo.png" alt="Orion Air"></div>
+    <div class="cta up" style="animation-delay:13.8s">Sealey timer heaters from <b style="white-space:nowrap">£214 inc. VAT</b>.</div>
+    <div class="btn">Shop Sealey heaters</div>
+    <div class="contact up" style="animation-delay:15.2s"><b>orionairsales.co.uk</b><br>01234 841221 · info@orionair.co.uk</div>
+  </div></section>
+</body></html>
