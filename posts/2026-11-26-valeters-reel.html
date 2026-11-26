@@ -1,0 +1,108 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#06142b;color:#fff;font-family:"Inter","DejaVu Sans",sans-serif}
+  .glow{position:absolute;width:1300px;height:1300px;border-radius:50%;left:-110px;top:320px;
+        background:radial-gradient(circle,rgba(44,186,234,.22),rgba(44,186,234,0) 62%);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.08)}}
+  .drop{position:absolute;top:-60px;width:14px;height:22px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:rgba(140,215,255,.6);animation:rain 1.4s linear infinite}
+  @keyframes rain{to{transform:translateY(2050px)}}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  .center{position:absolute;left:100px;right:160px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:96px;font-weight:800;line-height:1.06;letter-spacing:-2px}
+  .big span{color:#2cbaea}
+  .tag{align-self:flex-start;font-size:34px;font-weight:800;letter-spacing:5px;color:#06142b;background:#2cbaea;border-radius:999px;padding:14px 30px;margin-bottom:34px;animation:pop .4s .1s both}
+  .logo{position:absolute;left:100px;top:110px;height:84px;background:#f8fbff;border-radius:18px;padding:12px 18px;z-index:3}
+
+  .s1{animation:show 4.2s 0s both}
+  .s2{animation:show 7s 4s both}
+  .s3{animation:show 4.2s 10.8s both}
+  .s4{animation:show 2.8s 14.8s both}
+  .s5{animation:showlast 3.2s 17.4s both}
+
+  /* phone */
+  .phone{position:absolute;left:250px;top:240px;width:580px;height:1130px;border-radius:78px;background:#15171c;padding:15px;box-sizing:border-box;
+         box-shadow:0 0 0 3px #3a3d44 inset,0 40px 120px rgba(0,0,0,.6)}
+  .screen{position:relative;width:100%;height:100%;border-radius:64px;overflow:hidden;background:#fff;color:#111}
+  .island{position:absolute;top:15px;left:50%;width:136px;height:38px;margin-left:-68px;background:#000;border-radius:22px;z-index:9}
+  .sb{height:66px;display:flex;justify-content:space-between;align-items:center;padding:8px 40px 0 52px;font-size:22px;font-weight:700}
+  .home{position:absolute;bottom:10px;left:50%;width:170px;height:6px;margin-left:-85px;border-radius:3px;background:#111}
+  .hd{display:flex;align-items:center;gap:14px;padding:6px 24px 14px;border-bottom:1px solid #eee}
+  .hd i{width:58px;height:58px;border-radius:50%;background:#2cbaea;font-style:normal;color:#fff;font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center}
+  .hd b{display:block;font-size:22px}.hd span{font-size:17px;color:#1a8a3c}
+  .chat{padding:18px 18px;display:flex;flex-direction:column;gap:12px}
+  .m{max-width:84%;font-size:24px;line-height:1.34;padding:14px 18px;border-radius:24px}
+  .cu{align-self:flex-end;background:#0a84ff;color:#fff;border-bottom-right-radius:8px}
+  .bo{align-self:flex-start;background:#eef2f6;border-bottom-left-radius:8px}
+  .bo b{color:#0a5e8a}
+  .pill{display:block;margin-top:8px;background:#fff;border-radius:12px;padding:8px 12px;font-size:21px}
+  .cal{position:absolute;left:0;right:0;top:1400px;margin:0 auto;width:fit-content;font-size:40px;font-weight:800;color:#06142b;background:#2cbaea;border-radius:999px;padding:18px 40px;
+       animation:pop .5s 9.8s cubic-bezier(.2,1.5,.4,1) both}
+
+  .h2{font-size:66px;font-weight:800;line-height:1.1;margin-bottom:46px}
+  .h2 span{color:#2cbaea}
+  .row{display:flex;align-items:center;gap:28px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:32px;padding:30px 34px;margin-bottom:24px;
+       animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .row i{flex:none;width:84px;height:84px;border-radius:24px;background:#2cbaea;color:#06142b;font-style:normal;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .row b{display:block;font-size:42px}
+  .row small{display:block;font-size:30px;color:#a9bcd6;margin-top:6px}
+
+  .cta{font-size:56px;font-weight:600;color:#d0e3f5;line-height:1.3;margin-bottom:56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#06142b;background:#2cbaea;padding:34px 56px;border-radius:999px;
+       animation:up .6s 18.4s both,pulse 1.2s 19.1s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:30px;color:#8fa7c4;margin-top:50px}
+</style></head><body>
+  <div class="glow"></div>
+  <i class="drop" style="left:90px;animation-delay:-.2s"></i><i class="drop" style="left:240px;animation-delay:-.9s"></i><i class="drop" style="left:400px;animation-delay:-.5s"></i>
+  <i class="drop" style="left:560px;animation-delay:-1.2s"></i><i class="drop" style="left:720px;animation-delay:-.3s"></i><i class="drop" style="left:880px;animation-delay:-.8s"></i><i class="drop" style="left:1010px;animation-delay:-.1s"></i>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <section class="scene s1"><div class="center">
+    <div class="tag">VALETERS</div>
+    <div class="big up" style="animation-delay:.3s">You can't answer<br>the phone with a<br>pressure washer<br>in your hand.</div>
+    <div class="big up" style="animation-delay:1.9s;margin-top:20px"><span>So let this do it.</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="phone up" style="animation-delay:4.1s"><div class="screen"><div class="island"></div>
+      <div class="sb">9:41<span>●●● ▮</span></div>
+      <div class="hd"><i>V</i><div><b>Your Valeting Co.</b><span>● Booking assistant</span></div></div>
+      <div class="chat">
+        <div class="m cu up" style="animation-delay:4.5s">Hi, how much to valet my Peugeot 108?</div>
+        <div class="m bo up" style="animation-delay:5.3s">Your Peugeot 108 counts as a <b>small car</b>:
+          <span class="pill">Mini valet · from £50 · about 1¼ hrs</span><span class="pill">Full valet · from £115 · about 3 hrs</span>Which would you like, and what day?</div>
+        <div class="m cu up" style="animation-delay:6.9s">Mini valet, Monday 9am please</div>
+        <div class="m bo up" style="animation-delay:7.7s">Monday 9am is free! Can you send your address, mobile number and a photo of the car?</div>
+        <div class="m cu up" style="animation-delay:8.7s">📷 Sent!</div>
+        <div class="m bo up" style="animation-delay:9.3s">You're booked in ✅ Monday 9am, Mini valet.</div>
+      </div>
+      <div class="home"></div>
+    </div></div>
+    <div class="cal">📅 Added to your Google Calendar</div>
+  </section>
+
+  <section class="scene s3"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:10.9s">Your bookings, <span>on autopilot</span></div>
+    <div class="row" style="animation-delay:11.4s"><i>1</i><div><b>Sizes the car &amp; quotes</b><small>From your own price list</small></div></div>
+    <div class="row" style="animation-delay:11.9s"><i>2</i><div><b>Books the slot</b><small>Straight into Google Calendar</small></div></div>
+    <div class="row" style="animation-delay:12.4s"><i>3</i><div><b>Handles changes</b><small>Moves and cancellations too</small></div></div>
+  </div></section>
+
+  <section class="scene s4"><div class="center">
+    <div class="big up" style="animation-delay:14.9s">Keep washing.</div>
+    <div class="big up" style="animation-delay:15.4s"><span>We'll keep<br>booking.</span></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="cta up" style="animation-delay:17.6s">Run a valeting business? See the booking bot in action.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:19.3s">Example from our valeting bot · @byronsystems</div>
+  </div></section>
+</body></html>
