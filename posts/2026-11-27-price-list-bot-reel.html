@@ -1,0 +1,120 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+  body{position:relative;background:#f2f6fb;color:#0f1b33;font-family:"Inter","DejaVu Sans",sans-serif}
+  .scene{position:absolute;inset:0;opacity:0}
+  @keyframes show{0%{opacity:0}6%,94%{opacity:1}100%{opacity:0}}
+  @keyframes showlast{0%{opacity:0}12%,100%{opacity:1}}
+  .up{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  .logo{position:absolute;left:90px;top:110px;height:84px}
+  .center{position:absolute;left:90px;right:150px;top:260px;bottom:440px;display:flex;flex-direction:column;justify-content:center}
+  .big{font-size:96px;font-weight:800;line-height:1.06;letter-spacing:-2px}
+  .big span{color:#2563c9}
+  .tag{align-self:flex-start;font-size:34px;font-weight:800;letter-spacing:5px;color:#fff;background:#2563c9;border-radius:999px;padding:14px 30px;margin-bottom:34px;animation:pop .4s .1s both}
+
+  .s1{animation:show 3.6s 0s both}
+  .s2{animation:show 4.2s 3.4s both}
+  .s3{animation:show 4.8s 7.4s both}
+  .s4{animation:show 4s 12s both}
+  .s5{animation:showlast 4.2s 15.8s both}
+
+  /* price list */
+  .ttl{position:absolute;left:90px;right:150px;top:250px;font-size:60px;font-weight:800;line-height:1.1}
+  .ttl span{color:#2563c9}
+  .sheet{position:absolute;left:90px;right:150px;top:470px;background:#fff;border-radius:36px;box-shadow:0 24px 60px rgba(15,27,51,.12);padding:36px;animation:pop .5s 3.7s cubic-bezier(.2,1.2,.4,1) both}
+  .sheet h4{margin:0 0 20px;font-size:36px;display:flex;justify-content:space-between}
+  .sheet h4 small{font-size:24px;color:#8a97b5;font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:36px}
+  th{font-size:26px;color:#5b6b85;text-align:left;padding:14px 10px;border-bottom:3px solid #eef2f8}
+  td{padding:22px 10px;border-bottom:2px solid #eef2f8;font-weight:700}
+  td:first-child{color:#5b6b85;font-weight:600}
+  tr.hl td{background:#e3edff;animation:fadeHL .4s 9.6s both}
+  .cell{opacity:0;animation:pop .3s both}
+  @keyframes fadeHL{from{background:#fff}to{background:#e3edff}}
+  .feed{position:absolute;left:0;right:0;top:1290px;margin:0 auto;width:fit-content;font-size:38px;font-weight:800;color:#fff;background:#2563c9;border-radius:999px;padding:18px 40px;animation:pop .45s 6s both}
+
+  /* phone */
+  .phone{position:absolute;left:250px;top:240px;width:580px;height:1130px;border-radius:78px;background:#15171c;padding:15px;box-sizing:border-box;
+         box-shadow:0 0 0 3px #3a3d44 inset,0 40px 100px rgba(15,27,51,.28)}
+  .screen{position:relative;width:100%;height:100%;border-radius:64px;overflow:hidden;background:#fff;color:#111}
+  .island{position:absolute;top:15px;left:50%;width:136px;height:38px;margin-left:-68px;background:#000;border-radius:22px;z-index:9}
+  .sb{height:66px;display:flex;justify-content:space-between;align-items:center;padding:8px 40px 0 52px;font-size:22px;font-weight:700}
+  .home{position:absolute;bottom:10px;left:50%;width:170px;height:6px;margin-left:-85px;border-radius:3px;background:#111}
+  .hd{display:flex;align-items:center;gap:14px;padding:6px 24px 14px;border-bottom:1px solid #eee}
+  .hd i{width:58px;height:58px;border-radius:50%;background:#2563c9;font-style:normal;color:#fff;font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center}
+  .hd b{display:block;font-size:22px}.hd span{font-size:17px;color:#1a8a3c}
+  .chat{padding:22px 18px;display:flex;flex-direction:column;gap:14px}
+  .m{max-width:84%;font-size:27px;line-height:1.34;padding:16px 20px;border-radius:26px}
+  .cu{align-self:flex-end;background:#0a84ff;color:#fff;border-bottom-right-radius:8px}
+  .bo{align-self:flex-start;background:#eef2f6;border-bottom-left-radius:8px}
+  .bo b{color:#1d4fa8}
+  .pill{display:block;margin-top:10px;background:#fff;border-radius:12px;padding:10px 14px;font-size:25px}
+
+  .h2{font-size:66px;font-weight:800;line-height:1.1;margin-bottom:46px}
+  .h2 span{color:#2563c9}
+  .row{display:flex;align-items:center;gap:28px;background:#fff;border-radius:32px;padding:30px 34px;margin-bottom:24px;box-shadow:0 14px 34px rgba(15,27,51,.08);
+       animation:slide .45s cubic-bezier(.2,1.3,.4,1) both}
+  @keyframes slide{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+  .row i{flex:none;width:84px;height:84px;border-radius:24px;background:#2563c9;color:#fff;font-style:normal;font-size:44px;display:flex;align-items:center;justify-content:center}
+  .row b{display:block;font-size:42px}
+  .row small{display:block;font-size:30px;color:#5b6b85;margin-top:6px}
+
+  .cta{font-size:54px;font-weight:600;color:#3d4f78;line-height:1.3;margin:10px 0 56px}
+  .btn{align-self:flex-start;font-size:52px;font-weight:700;color:#fff;background:#2563c9;padding:34px 56px;border-radius:999px;
+       animation:up .6s 17s both,pulse 1.2s 17.7s ease-in-out 1 both}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .handle{font-size:30px;color:#8a97b5;margin-top:50px}
+</style></head><body>
+  <img class="logo" src="assets/logo.png" alt="Byron AI">
+
+  <section class="scene s1"><div class="center">
+    <div class="tag">VALETERS</div>
+    <div class="big up" style="animation-delay:.3s">You already have<br>what you need<br>for a booking bot.</div>
+    <div class="big up" style="animation-delay:1.6s;margin-top:20px"><span>Your price list.</span></div>
+  </div></section>
+
+  <section class="scene s2">
+    <div class="ttl up" style="animation-delay:3.5s">You send us <span>your prices</span></div>
+    <div class="sheet">
+      <h4>Price list <small>Example</small></h4>
+      <table>
+        <tr><th>Car size</th><th>Mini valet</th><th>Full valet</th></tr>
+        <tr><td>Small</td><td><span class="cell" style="animation-delay:4.2s">£50</span></td><td><span class="cell" style="animation-delay:4.3s">£115</span></td></tr>
+        <tr><td>Medium</td><td><span class="cell" style="animation-delay:4.5s">£60</span></td><td><span class="cell" style="animation-delay:4.6s">£130</span></td></tr>
+        <tr><td>Large / 4x4</td><td><span class="cell" style="animation-delay:4.8s">£70</span></td><td><span class="cell" style="animation-delay:4.9s">£150</span></td></tr>
+      </table>
+    </div>
+    <div class="feed">⚡ We build it into your bot</div>
+  </section>
+
+  <section class="scene s3">
+    <div class="phone up" style="animation-delay:7.5s"><div class="screen"><div class="island"></div>
+      <div class="sb">9:41<span>●●● ▮</span></div>
+      <div class="hd"><i>V</i><div><b>Your Valeting Co.</b><span>● Booking assistant</span></div></div>
+      <div class="chat">
+        <div class="m cu up" style="animation-delay:8s">Hi! How much for a full valet on a Ford Focus?</div>
+        <div class="m bo up" style="animation-delay:8.9s">A Ford Focus is a <b>medium</b> car, so:
+          <span class="pill">Mini valet · £60</span><span class="pill">Full valet · £130</span>Want me to book you in?</div>
+        <div class="m cu up" style="animation-delay:10.3s">Yes please! Friday?</div>
+        <div class="m bo up" style="animation-delay:11s">Friday 10am is free. Shall I book it? 📅</div>
+      </div>
+      <div class="home"></div>
+    </div></div>
+  </section>
+
+  <section class="scene s4"><div class="center" style="right:120px">
+    <div class="h2 up" style="animation-delay:12.1s">Built around <span>your business</span></div>
+    <div class="row" style="animation-delay:12.5s"><i>💷</i><div><b>Your prices</b><small>Quoted by car size</small></div></div>
+    <div class="row" style="animation-delay:12.9s"><i>📅</i><div><b>Your calendar</b><small>Books into your free slots</small></div></div>
+    <div class="row" style="animation-delay:13.3s"><i>💬</i><div><b>Your tone</b><small>Sounds like you, not a robot</small></div></div>
+  </div></section>
+
+  <section class="scene s5"><div class="center">
+    <div class="big up" style="animation-delay:15.9s;font-size:84px">Send us your<br><span>price list.</span></div>
+    <div class="cta up" style="animation-delay:16.3s">We'll turn it into a bot that quotes and books your customers.</div>
+    <div class="btn">DM us “AUTO”</div>
+    <div class="handle up" style="animation-delay:18s">Example prices · @byronsystems</div>
+  </div></section>
+</body></html>
